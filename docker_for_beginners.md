@@ -11,9 +11,11 @@ sh: docker: command not found
 
 If you get this message then you need to install Docker.
 
-Here you will find the instructions for installing Docker on a Mac: <a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Install Docker Desktop for Mac</a> (or alternatively good instructions  <a href="https://runnable.com/docker/install-docker-on-macos" target="_blank">here</a>).
+Here you will find the instructions for installing Docker 
 
-Note that only the newest versions of the Mac OS are supported and you will need at least 4GB of RAM.
+* on a Mac: <a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Install Docker Desktop for Mac</a> (or alternatively good instructions  <a href="https://runnable.com/docker/install-docker-on-macos" target="_blank">here</a>). Note that only the newest versions of the Mac OS are supported and you will need at least 4GB of RAM.
+* on Windows: <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Install Docker Desktop on Windows</a>. Requirements: Windows 10 with 64 bit processor and at least 4GB of RAM.
+* on Linux: <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank">Ubuntu</a>, <a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank">Centos</a>, etc.
 
 
 ### After installation, check Docker version
