@@ -51,8 +51,6 @@ Here you will find the instructions for installing Docker
 
 ### After installation, check Docker version
 
-[Part I: Getting started](#part-i-getting-started)
-
 ```
 [~/docker_for_beginners]$ docker -v
 Docker version 1.13.1, build 07f3374/1.13.1
