@@ -1,3 +1,37 @@
+# Docker for beginners
+
+## Table of Contents
+
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+	- [Part I: Getting started](#part-i-getting-started)
+		* [Install Docker](#install-docker)
+		* [After installation, check Docker version](#after-installation-check-docker-version)
+		* [Download an image from the Docker Hub](#download-an-image-from-the-docker-hub)
+			* [What is Docker Hub?](#what-is-docker-hub)
+			* [What is Alpine Linux?](#what-is-alpine-linux)
+			* [What is an image?](#what-is-an-image)
+			* [Finally, "pull the image"](#finally-pull-the-image)
+		* [Run a simple echo command in a container using the ```alpine``` image](#run-a-simple-echo-command-in-a-container-using-the-alpine-image)
+		* [Run another command in a Docker container](#run-another-command-in-a-docker-container)
+		* [Run command in a Docker container that's not installed](#run-command-in-a-docker-container-thats-not-installed)
+		* [Docker's `hello-world` image](#dockers-hello-world-image)
+			* [List Docker images](#list-docker-images)
+		* [View running Docker containers](#view-running-docker-containers)
+		* [View all Docker containers (running or not)](#view-all-docker-containers-running-or-not)
+		* [Recap: images and containers](#recap-images-and-containers)
+	* [Part II: Basic interactions with containers](#part-ii-basic-interactions-with-containers)
+		* [How to run a Docker container as a daemon](#how-to-run-a-docker-container-as-a-daemon)
+		* [Stop a running container](#stop-a-running-container)
+		* [Run a docker container in the background and keep it alive](#run-a-docker-container-in-the-background-and-keep-it-alive)
+		* [How to "enter" a Docker container](#how-to-enter-a-docker-container)
+		* [How to change your bash prompt in a container](#how-to-change-your-bash-prompt-in-a-container)
+		* [How to remove a container](#how-to-remove-a-container)
+		* [Recap: running containers](#recap-running-containers)
+    
+<!-- /TOC -->
+
+
 ## Part I: Getting started
 ### Install Docker
 
@@ -186,7 +220,7 @@ In place of `docker container ls` (respectively `docker container ls -a`) you ca
 
 We've defined Docker images and containers and seen how to run simple commands in a Docker container and list all our images and containers.
 
-## Part II: Some basic interactions with containers
+## Part II: Basic interactions with containers
 
 ### How to run a Docker container as a daemon
 
@@ -208,7 +242,6 @@ If you now list running containers you should see it
 CONTAINER ID        IMAGE               COMMAND                  CREATED            STATUS           PORTS           NAMES
 a592973ccb20        alpine              "ping host.docker.in…"   8 seconds ago      Up 23 seconds                    nifty_blackwell
 ```
-
 
 ### Stop a running container
 
@@ -300,7 +333,7 @@ Note: since by default `sh` won't read  the `.profile` file but it will read it 
 
 ### How to remove a container
 
-If you don't need a container anymore, you can remove it as follows:
+If you don't need a container anymore, you can delete it as follows:
 
 ```
 [~/docker_for_beginners]$ docker container rm <container ID>
@@ -325,6 +358,22 @@ e3f28fbfb08f        alpine              "cat /etc/motd"          2 days ago     
 b86e65d14484        hello-world         "/hello"                 14 minutes ago       Exited (0) About a minute ago             everent_germain
 ```
 
+As usual, you can refer to a container by its ID or by its name. 
+
+If the container is running, you will get an error message when trying to remove it. In this case, you either first need to stop the container or use the `-f` ("force") option.
+
+```
+[~]$ docker ps
+CONTAINER ID        IMAGE           COMMAND             CREATED             STATUS              PORTS           NAMES
+e3eac2473614        alpine          "/bin/sh"           19 hours ago        Up 19 hours                         jolly_khayyam
+[~]$ docker rm jolly_khayyam
+Error response from daemon: You cannot remove a running container e3eac247361447118efea112a078fa78bcf1b2e86db7acd87bc7357511286e75. Stop the container before attempting removal or force remove
+[~]$ docker rm -f e3eac2473614
+e3eac2473614
+[~]$ docker ps
+CONTAINER ID        IMAGE           COMMAND             CREATED             STATUS              PORTS           NAMES
+```
+
 Note that removing a container does not remove the underlying image. To remove an image use `docker rmi image-name`. If you attempt to remove an image and there are containers (running or not ) using that image you will get an error message
 
 ```
@@ -332,7 +381,7 @@ Note that removing a container does not remove the underlying image. To remove a
 Error response from daemon: conflict: unable to remove repository reference "centos" (must force) - container ecc66757abbf is using its referenced image 67fa590cfc1c
 ```
 
-If you really want to remove the image, you can then either remove all dependent containers first or use the `-f` ("force") option `docker rmi -f image-name`.
+If you really want to remove the image, you can then either remove all dependent containers first or force remove it with `docker rmi -f image-name`.
 
 ### Recap: running containers
 
