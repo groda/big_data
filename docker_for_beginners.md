@@ -2,35 +2,32 @@
 
 ## Table of Contents
 
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
-	- [Part I: Getting started](#part-i-getting-started)
-		* [Install Docker](#install-docker)
-		* [After installation, check Docker version](#after-installation-check-docker-version)
-		* [Download an image from the Docker Hub](#download-an-image-from-the-docker-hub)
-			* [What is Docker Hub?](#what-is-docker-hub)
-			* [What is Alpine Linux?](#what-is-alpine-linux)
-			* [What is an image?](#what-is-an-image)
-			* [Finally, "pull the image"](#finally-pull-the-image)
-		* [Run a simple echo command in a container using the ```alpine``` image](#run-a-simple-echo-command-in-a-container-using-the-alpine-image)
-		* [Run another command in a Docker container](#run-another-command-in-a-docker-container)
-		* [Run command in a Docker container that's not installed](#run-command-in-a-docker-container-thats-not-installed)
-		* [Docker's `hello-world` image](#dockers-hello-world-image)
-			* [List Docker images](#list-docker-images)
-		* [View running Docker containers](#view-running-docker-containers)
-		* [View all Docker containers (running or not)](#view-all-docker-containers-running-or-not)
-		* [Recap: images and containers](#recap-images-and-containers)
-	* [Part II: Basic interactions with containers](#part-ii-basic-interactions-with-containers)
-		* [How to run a Docker container as a daemon](#how-to-run-a-docker-container-as-a-daemon)
-		* [Stop a running container](#stop-a-running-container)
-		* [Run a docker container in the background and keep it alive](#run-a-docker-container-in-the-background-and-keep-it-alive)
-		* [How to "enter" a Docker container](#how-to-enter-a-docker-container)
-		* [How to change your bash prompt in a container](#how-to-change-your-bash-prompt-in-a-container)
-		* [How to remove a container](#how-to-remove-a-container)
-		* [Recap: running containers](#recap-running-containers)
+* [Part I: Getting started](#part-i-getting-started)
+  * [Install Docker](#install-docker)
+  * [After installation, check Docker version](#after-installation-check-docker-version)
+  * [Download an image from the Docker Hub](#download-an-image-from-the-docker-hub)
+    * [What is Docker Hub?](#what-is-docker-hub)
+    * [What is Alpine Linux?](#what-is-alpine-linux)
+    * [What is an image?](#what-is-an-image)
+    * [Finally, "pull the image"](#finally-pull-the-image)
+  * [Run a simple echo command in a container using the ```alpine``` image](#run-a-simple-echo-command-in-a-container-using-the-alpine-image)
+  * [Run another command in a Docker container](#run-another-command-in-a-docker-container)
+  * [Run command in a Docker container that's not installed](#run-command-in-a-docker-container-thats-not-installed)
+  * [Docker's `hello-world` image](#dockers-hello-world-image)
+  * [List Docker images](#list-docker-images)
+  * [View running Docker containers](#view-running-docker-containers)
+  * [View all Docker containers (running or not)](#view-all-docker-containers-running-or-not)
+  * [Recap: images and containers](#recap-images-and-containers)
+* [Part II: Basic interactions with containers](#part-ii-basic-interactions-with-containers)
+  * [How to run a Docker container as a daemon](#how-to-run-a-docker-container-as-a-daemon)
+  * [Stop a running container](#stop-a-running-container)
+  * [Run a docker container in the background and keep it alive](#run-a-docker-container-in-the-background-and-keep-it-alive)
+  * [How to "enter" a Docker container](#how-to-enter-a-docker-container)
+  * [How to change your bash prompt in a container](#how-to-change-your-bash-prompt-in-a-container)
+  * [How to remove a container](#how-to-remove-a-container)
+  * [Recap: running containers](#recap-running-containers)
+	
     
-<!-- /TOC -->
-
 
 ## Part I: Getting started
 ### Install Docker
@@ -53,6 +50,8 @@ Here you will find the instructions for installing Docker
 
 
 ### After installation, check Docker version
+
+[Part I: Getting started](#part-i-getting-started)
 
 ```
 [~/docker_for_beginners]$ docker -v
@@ -177,7 +176,7 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 ```
 
-#### List Docker images
+### List Docker images
 
 To show all locally available Docker images use `docker images`. These are the images that we have pulled sometime in the past.
 
