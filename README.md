@@ -1,6 +1,6 @@
 # Big Data for beginners
 
-Some tutorials and demos on Hadoop, Spark, etc. in form of Jupyter notebooks.
+Some tutorials and demos on Hadoop, Spark, etc., mostly in the form of Jupyter notebooks.
 
 - **[mapreduce_with_bash.ipynb](mapreduce_with_bash.ipynb)** An introduction to MapReduce using MapReduce Streaming and bash to create mapper and reducer
 - **[TestDFSio.ipynb](TestDFSio.ipynb)** Demo of TestDFSio for benchmarking Hadoop clusters
