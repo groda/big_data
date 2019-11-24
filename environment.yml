@@ -3,7 +3,8 @@ channels:
   - conda-forge
 dependencies:
   - numpy
-  - pandas
-  - psutil
-  - bokeh
+  - pandas==0.24.1
+  - urllib3==1.24.1
+  - requests==2.21.0
+  - bokeh==1.4.0
   
