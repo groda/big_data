@@ -1,0 +1,10 @@
+name: myEnvironment
+channels:
+  - conda-forge
+dependencies:
+  - urllib
+  - numpy
+  - pandas
+  - psutil
+  - bokeh
+  
