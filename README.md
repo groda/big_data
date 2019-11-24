@@ -7,4 +7,4 @@ Some tutorials and demos on Hadoop, Spark, etc., mostly in the form of Jupyter n
 - **[docker_for_beginners.md](docker_for_beginners.md)** Docker for beginners: an introduction to the world of containers
 - **[demoSparkSQLPython.ipynb](docker_for_beginners.md)** Pyspark basic demo 
 - **[Encoding+dataframe+columns.ipynb](Encoding+dataframe+columns.ipynb)** Encoding Spark dataframe columns 
-- **[Unicode.ipynb](Unicode.ipynb)** Exploring Unicode categories 
+- **[Unicode.ipynb](Unicode.ipynb)** Exploring Unicode categories ([![live on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/groda/big_data/master?filepath=Unicode.ipynb))
