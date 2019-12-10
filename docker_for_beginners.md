@@ -1,7 +1,7 @@
 # Docker for beginners
 
 ## Table of Contents
-
+* [Introduction](#introduction)
 * [Part I: Getting started](#part-i-getting-started)
   * [Install Docker](#install-docker)
   * [After installation, check Docker version](#after-installation-check-docker-version)
@@ -22,12 +22,15 @@
   * [How to run a Docker container as a daemon](#how-to-run-a-docker-container-as-a-daemon)
   * [Stop a running container](#stop-a-running-container)
   * [Run a docker container in the background and keep it alive](#run-a-docker-container-in-the-background-and-keep-it-alive)
-  * [How to "enter" a Docker container](#how-to-enter-a-docker-container)
+  * [How to "enter" a running Docker container](#how-to-enter-a-running-docker-container)
   * [How to change your bash prompt in a container](#how-to-change-your-bash-prompt-in-a-container)
   * [How to remove a container](#how-to-remove-a-container)
   * [Recap: running containers](#recap-running-containers)
-	
-    
+
+
+## Introduction
+
+Containers are useful tools for saving the computing environments for running applications and this tutorial provides the bare minimum to get started with them. Written while learning Docker myself, this guide has the quality of naivety that only a real beginner can attain.
 
 ## Part I: Getting started
 ### Install Docker
@@ -42,7 +45,7 @@ sh: docker: command not found
 
 If you get this message then you need to install Docker.
 
-Here you will find the instructions for installing Docker 
+Here you will find the instructions for installing Docker
 
 * on a Mac: <a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Install Docker Desktop for Mac</a> (or alternatively good instructions  <a href="https://runnable.com/docker/install-docker-on-macos" target="_blank">here</a>). Note that only the newest versions of the Mac OS are supported and you will need at least 4GB of RAM.
 * on Windows: <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Install Docker Desktop on Windows</a>. Requirements: Windows 10 with 64 bit processor and at least 4GB of RAM.
@@ -69,7 +72,7 @@ You will need an image to get started with Docker—for this we're going to use 
 
 Alpine Linux (Alpine for short) is a minimal Linux image, designed to run from the computer's RAM. Its size is 5MB.
 
-This is off-topic for a beginner's tutorial, but you're interested in learning more about Alpine Linux you can read an interview with its creator (<a href="https://thenewstack.io/alpine-linux-heart-docker/" target="_blank">https://thenewstack.io/alpine-linux-heart-docker/</a>) or the Wikipedia entry for Alpine Linux (<a href="https://en.wikipedia.org/wiki/Alpine_Linux" target="_blank">https://en.wikipedia.org/wiki/Alpine_Linux</a>).
+This is off-topic for a beginner's tutorial, but if you're interested in learning more about Alpine Linux you can read an interview with its creator (<a href="https://thenewstack.io/alpine-linux-heart-docker/" target="_blank">https://thenewstack.io/alpine-linux-heart-docker/</a>) or the Wikipedia entry for Alpine Linux (<a href="https://en.wikipedia.org/wiki/Alpine_Linux" target="_blank">https://en.wikipedia.org/wiki/Alpine_Linux</a>).
 
 #### What is an image?
 
@@ -217,6 +220,19 @@ In place of `docker container ls` (respectively `docker container ls -a`) you ca
 
 We've defined Docker images and containers and seen how to run simple commands in a Docker container and list all our images and containers.
 
+Here's a list of Docker commands used so far:
+
+how to: | command
+------------ | -------------
+check Docker version | `docker -v`
+download the Linux Alpine image | `docker pull alpine`  
+run a simple echo command  |  `docker container run alpine echo "Hello World!"``
+view the message-of-the-day in alpine  |  `docker container run alpine cat /etc/motd`
+print "Hello World!" in Linux Centos (image is downloaded if not present) | `docker container run centos echo "Hello World!"`  
+show all locally available images  |  `docker images`
+list Docker containers  |  `docker container ls` (also: `docker ps`)   
+view all Docker containers (running or not)  |  `docker container ls -a` (also: `docker ps -a`)   
+
 ## Part II: Basic interactions with containers
 
 ### How to run a Docker container as a daemon
@@ -281,9 +297,9 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 Now the "hungry_chaplygin" alpine container is up even though it has no process running.
 
-### How to "enter" a Docker container
+### How to "enter" a running Docker container
 
-To run a command in a running Docker container use `exec`.
+To execute a command in a running Docker container use `exec`.
 
 ```
 $ docker container ls
@@ -355,7 +371,7 @@ e3f28fbfb08f        alpine              "cat /etc/motd"          2 days ago     
 b86e65d14484        hello-world         "/hello"                 14 minutes ago       Exited (0) About a minute ago             everent_germain
 ```
 
-As usual, you can refer to a container by its ID or by its name. 
+As usual, you can refer to a container by its ID or by its name.
 
 If the container is running, you will get an error message when trying to remove it. In this case, you either first need to stop the container or use the `-f` ("force") option.
 
@@ -383,3 +399,15 @@ If you really want to remove the image, you can then either remove all dependent
 ### Recap: running containers
 
 We've seen how to: start a container in detached mode, keep a container alive, enter and exit a container, run a command in a running container, stop a container, remove a container.
+
+how to: | command
+------------ | -------------
+start a container in the background | `docker container run -d alpine ping host.docker.internal`
+run a container in the background and keep it alive  |  `docker container run -di alpine`
+stop a running container  |  `docker stop container_name_or_id`
+execute the command `uname -a` in a running Docker container  |  `docker exec -it container_name_or_id uname -a`
+start a shell inside a running container  |  `docker exec -it container_name /bin/sh`
+delete a container  |  `docker container rm container_name_or_id`
+force-delete a running  container  |  `docker container rm -f container_name_or_id`   
+remove an image  |  `docker rmi centos`
+force-remove an image  |  `docker rmi -f centos`
