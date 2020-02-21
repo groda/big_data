@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --job-name=spark-wordcount
+#SBATCH --nodes=4
+#SBATCH --time=00:10:00
+#SBATCH --partition=binf
+
+module purge
+module load anaconda3 hadoop/2.7 apache_spark/2.4.4
+
+. vsc_start_spark.sh
+
+# runs on all nodes
+command="$SPARK_HOME/bin/spark-submit --master spark://${SPARK_MASTER_HOST}:${SPARK_MASTER_PORT} --total-executor-cores $NUMCORES --executor-memory 2G $WDIR/pi.py 10000"
+echo $command
+$command
+
