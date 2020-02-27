@@ -104,10 +104,10 @@ In the Docker world, downloading an image is known as _pulling an image_ because
 ### Run a simple echo command in a container using the ```alpine``` image
 
 ```
-[~/docker_for_beginners]$ docker container run alpine echo "Hello World!"
+[~/docker_for_beginners]$ docker container run alpine echo 'Hello World!'
 ```
 
-You should see the string `Hello World!`. What has happened behind the scene? Docker created a container from your newly downloaded `alpine` image and you ran the command `echo "Hello World!"` inside this container. The result of the command is shown on your terminal.
+You should see the string `Hello World!`. What has happened behind the scene? Docker created a container from your newly downloaded `alpine` image and you ran the command `echo 'Hello World!'` inside this container. The result of the command is shown on your terminal.
 
 ### Run another command in a Docker container
 
@@ -130,11 +130,11 @@ You may change this message by editing /etc/motd.
 
 If you run a command in a container whose image is not yet installed, the image will be downloaded automatically from the Docker Hub. This is quite a practical feature!
 
-We're going to `echo "Hello World!"` in a `centos` container.
+We're going to `echo 'Hello World!'` in a `centos` container.
 
 
 ```
-[~/docker_for_beginners]$ docker container run centos echo "Hello World!"
+[~/docker_for_beginners]$ docker container run centos echo 'Hello World!'
 Unable to find image 'centos:latest' locally
 Trying to pull repository docker.io/library/centos ...
 latest: Pulling from docker.io/library/centos
@@ -147,7 +147,7 @@ Status: Downloaded newer image for docker.io/centos:latest
 Hello World!
 ```
 
-So, in the previous example, instead of running `docker pull alpine` followed by `docker container run alpine echo "Hello World"` we could have just used the latter command. Still, one might also need sometimes to download an image without running it, so it' good to know how to do that.
+So, in the previous example, instead of running `docker pull alpine` followed by `docker container run alpine echo 'Hello World'` we could have just used the latter command. Still, one might also need sometimes to download an image without running it, so it' good to know how to do that.
 
 ### Docker's `hello-world` image
 
