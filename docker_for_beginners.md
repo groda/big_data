@@ -226,9 +226,9 @@ how to: | command
 ------------ | -------------
 check Docker version | `docker -v`
 download the Linux Alpine image | `docker pull alpine`  
-run a simple echo command  |  `docker container run alpine echo "Hello World!"`
+run a simple echo command  |  `docker container run alpine echo 'Hello World!'`
 view the message-of-the-day in alpine  |  `docker container run alpine cat /etc/motd`
-print "Hello World!" in Linux Centos (image is downloaded if not present) | `docker container run centos echo "Hello World!"`  
+print 'Hello World!' in Linux Centos (image is downloaded if not present) | `docker container run centos echo 'Hello World!'` 
 show all locally available images  |  `docker images`
 list Docker containers  |  `docker container ls` (also: `docker ps`)   
 view all Docker containers (running or not)  |  `docker container ls -a` (also: `docker ps -a`)   
