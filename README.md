@@ -3,8 +3,8 @@
 Some tutorials and demos on Hadoop, Spark, etc., mostly in the form of Jupyter notebooks.
 
 - **[mapreduce_with_bash.ipynb](mapreduce_with_bash.ipynb)** An introduction to MapReduce using MapReduce Streaming and bash to create mapper and reducer
-- **[mrjob_wordcount.ipynb](mrjob_wordcount.ipynb)** A simple MapReduce job with mrjob
 - **[simplest_mapreduce_bash_wordcount.ipynb](simplest_mapreduce_bash_wordcount.ipynb)** A very basic MapReduce wordcount example
+- **[mrjob_wordcount.ipynb](mrjob_wordcount.ipynb)** A simple MapReduce job with mrjob
 - **[Hadoop_spilling.ipynb](Hadoop_spilling.ipynb)** Hadoop spilling explained
 - **[TestDFSio.ipynb](TestDFSio.ipynb)** Demo of TestDFSio for benchmarking Hadoop clusters
 - **[docker_for_beginners.md](docker_for_beginners.md)** Docker for beginners: an introduction to the world of containers
