@@ -14,4 +14,5 @@ Some tutorials and demos on Hadoop, Spark, etc., mostly in the form of Jupyter n
 - **[Unicode.ipynb](Unicode.ipynb)** Exploring Unicode categories ([![live on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/groda/big_data/master?filepath=Unicode.ipynb))
 - **[polynomial_regression.ipynb](polynomial_regression.ipynb)** Worked out example of polynomial regression with numpy
 - **[generate_data_with_Faker.ipynb](generate_data_with_Faker.ipynb)** Generate fake data with the Faker Python library
+- **[online_resources.md](online_resources.md)** Online resources for learning Big Data
 
