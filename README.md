@@ -2,6 +2,7 @@
 
 Some tutorials and demos on Hadoop, Spark, etc., mostly in the form of Jupyter notebooks.
 
+- **[Hadoop_Setting_up_a_Single_Node_Cluster.ipynb](Hadoop_Setting_up_a_Single_Node_Cluster.ipynb)** Set up a single-node Hadoop cluster on Google Colab and run some basic HDFS and MapReduce examples 
 - **[mapreduce_with_bash.ipynb](mapreduce_with_bash.ipynb)** An introduction to MapReduce using MapReduce Streaming and bash to create mapper and reducer
 - **[simplest_mapreduce_bash_wordcount.ipynb](simplest_mapreduce_bash_wordcount.ipynb)** A very basic MapReduce wordcount example
 - **[mrjob_wordcount.ipynb](mrjob_wordcount.ipynb)** A simple MapReduce job with mrjob
