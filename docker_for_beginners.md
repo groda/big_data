@@ -106,7 +106,15 @@ In the Docker world, downloading an image is known as _pulling an image_ because
 ```
 [~/docker_for_beginners]$ docker container run alpine echo 'Hello World!'
 ```
-
+ 
+ Alternatively, if you prefer to use double quotes, you can type:
+ 
+ ```
+[~/docker_for_beginners]$ docker container run alpine echo "Hello World\!"
+```
+ 
+ (note the [_slash escape character_](https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_03.html) before the exclamstion mark)
+ 
 You should see the string `Hello World!`. What has happened behind the scene? Docker created a container from your newly downloaded `alpine` image and you ran the command `echo 'Hello World!'` inside this container. The result of the command is shown on your terminal.
 
 ### Run another command in a Docker container
