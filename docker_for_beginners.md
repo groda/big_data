@@ -36,7 +36,7 @@ Containers are useful tools for saving the computing environments for running ap
 ### Install Docker
 
 If Docker is not installed, you need to install Docker.
-At a command prompt type:
+At a command prompt type `docker -v`:
 
 ```
 [~/docker_for_beginners]$ docker -v
@@ -277,7 +277,7 @@ Note that you can use either the container's id or name as an argument to `stop`
 
 Check:
 ```
-[~/Documents/my/docker_for_beginners]$ docker container ls
+[~/docker_for_beginners]$ docker container ls
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 ```
 Indeed, the container is no more running.
@@ -310,7 +310,7 @@ Now the "hungry_chaplygin" alpine container is up even though it has no process 
 To execute a command in a running Docker container use `exec`.
 
 ```
-$ docker container ls
+[~/docker_for_beginners]$ docker container ls
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 10f7ffbddbb9        alpine              "/bin/sh"           10 minutes ago      Up 10 minutes                           hungry_chaplygin
 ```
@@ -324,7 +324,7 @@ Linux 10f7ffbddbb9 4.9.125-linuxkit #1 SMP Fri Sep 7 08:20:28 UTC 2018 x86_64 Li
 Start a shell inside the container, run some commands and exit.
 
 ```
-$ docker exec -it hungry_chaplygin /bin/sh
+[~/docker_for_beginners]$ docker exec -it hungry_chaplygin /bin/sh
 / # pwd
 /
 / # ls -p
@@ -384,21 +384,21 @@ As usual, you can refer to a container by its ID or by its name.
 If the container is running, you will get an error message when trying to remove it. In this case, you either first need to stop the container or use the `-f` ("force") option.
 
 ```
-[~]$ docker ps
+[~/docker_for_beginners]$ docker ps
 CONTAINER ID        IMAGE           COMMAND             CREATED             STATUS              PORTS           NAMES
 e3eac2473614        alpine          "/bin/sh"           19 hours ago        Up 19 hours                         jolly_khayyam
-[~]$ docker rm jolly_khayyam
+[~/docker_for_beginners]$ docker rm jolly_khayyam
 Error response from daemon: You cannot remove a running container e3eac247361447118efea112a078fa78bcf1b2e86db7acd87bc7357511286e75. Stop the container before attempting removal or force remove
-[~]$ docker rm -f e3eac2473614
+[~/docker_for_beginners]$ docker rm -f e3eac2473614
 e3eac2473614
-[~]$ docker ps
+[~/docker_for_beginners]$ docker ps
 CONTAINER ID        IMAGE           COMMAND             CREATED             STATUS              PORTS           NAMES
 ```
 
 Note that removing a container does not remove the underlying image. To remove an image use `docker rmi image-name`. If you attempt to remove an image and there are containers (running or not ) using that image you will get an error message
 
 ```
-[~]$ docker rmi centos
+[~/docker_for_beginners]$ docker rmi centos
 Error response from daemon: conflict: unable to remove repository reference "centos" (must force) - container ecc66757abbf is using its referenced image 67fa590cfc1c
 ```
 
