@@ -2,12 +2,11 @@
 
 Some tutorials and demos on Hadoop, Spark, etc., mostly in the form of Jupyter notebooks.
 - Hadoop single-node setup on Google Colab
-  - **[Hadoop_Setting_up_a_Single_Node_Cluster.ipynb](Hadoop_Setting_up_a_Single_Node_Cluster.ipynb)** Set up a single-node Hadoop cluster on Google Colab and run some basic HDFS and MapReduce examples (<a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/Hadoop_Setting_up_a_Single_Node_Cluster.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>)
-  - **[Hadoop_single_node_cluster_setup_Python.ipynb](Hadoop_single_node_cluster_setup_Python.ipynb)** Set up a single-node Hadoop cluster on Google Colab using Python (<a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/Hadoop_single_node_cluster_setup_Python.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>)
-- **[Hadoop_Setting_up_Spark_Standalone_on_Google_Colab.ipynb](Hadoop_Setting_up_Spark_Standalone_on_Google_Colab.ipynb)** Set up a single-node Spark server on Google Colab and run the PiSpark example (<a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/Hadoop_Setting_up_Spark_Standalone_on_Google_Colab.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>)
+  - **[Hadoop_Setting_up_a_Single_Node_Cluster.ipynb](Hadoop_Setting_up_a_Single_Node_Cluster.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/Hadoop_Setting_up_a_Single_Node_Cluster.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Set up a single-node Hadoop cluster on Google Colab and run some basic HDFS and MapReduce examples 
+  - **[Hadoop_single_node_cluster_setup_Python.ipynb](Hadoop_single_node_cluster_setup_Python.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/Hadoop_single_node_cluster_setup_Python.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Set up a single-node Hadoop cluster on Google Colab using Python 
+- Apache Spark standalone on Google Colab
+  - **[Hadoop_Setting_up_Spark_Standalone_on_Google_Colab.ipynb](Hadoop_Setting_up_Spark_Standalone_on_Google_Colab.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/Hadoop_Setting_up_Spark_Standalone_on_Google_Colab.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Set up a single-node Spark server on Google Colab and estimate „π“ with a Montecarlo method
 - **[mapreduce_with_bash.ipynb](mapreduce_with_bash.ipynb)** An introduction to MapReduce using MapReduce Streaming and bash to create mapper and reducer
 - **[simplest_mapreduce_bash_wordcount.ipynb](simplest_mapreduce_bash_wordcount.ipynb)** A very basic MapReduce wordcount example
 - **[mrjob_wordcount.ipynb](mrjob_wordcount.ipynb)** A simple MapReduce job with mrjob
