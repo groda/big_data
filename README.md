@@ -20,6 +20,6 @@ Some tutorials and demos on Hadoop, Spark, etc., mostly in the form of Jupyter n
 - **[generate_data_with_Faker.ipynb](generate_data_with_Faker.ipynb)** Generate fake data with the Faker Python library
 - Virtualization
   - **[docker_for_beginners.md](docker_for_beginners.md)** Docker for beginners: an introduction to the world of containers
-  - **[Terraform for beginners.md](docker_for_beginners.md)** Getting started with Terraform
+  - **[Terraform for beginners.md](terraform_for_beginners.md)** Getting started with Terraform
 - **[online_resources.md](online_resources.md)** Online resources for learning Big Data
 
