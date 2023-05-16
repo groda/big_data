@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Terraform for beginners</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+  body {
+    padding: 2cm; 
+  }
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">Terraform for beginners</h1>
+
+<p><strong>Color boxes used in this tutorial</strong></p>
+
+<p>In this tutorial I&#39;m using colored boxes according to the following conventions:</p>
+
+<div style="background-color:rgb(255, 218, 185);border:2px solid rgb(255,191,134);padding:3px">
+<span style="font-variant:small-caps;font-weight:bold">Recap</span><br>
+Useful summaries and takeaways.
+</div>
+
+<p><p></p>
+
+<div style="background-color:rgb(16, 163, 127,.2);border:2px solid rgb(16, 163, 127,.3);padding:3px;">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320"  style="width:32px;height:32px;"><g fill="currentColor"><path d="m297.06 130.97c7.26-21.79 4.76-45.66-6.85-65.48-17.46-30.4-52.56-46.04-86.84-38.68-15.25-17.18-37.16-26.95-60.13-26.81-35.04-.08-66.13 22.48-76.91 55.82-22.51 4.61-41.94 18.7-53.31 38.67-17.59 30.32-13.58 68.54 9.92 94.54-7.26 21.79-4.76 45.66 6.85 65.48 17.46 30.4 52.56 46.04 86.84 38.68 15.24 17.18 37.16 26.95 60.13 26.8 35.06.09 66.16-22.49 76.94-55.86 22.51-4.61 41.94-18.7 53.31-38.67 17.57-30.32 13.55-68.51-9.94-94.51zm-120.28 168.11c-14.03.02-27.62-4.89-38.39-13.88.49-.26 1.34-.73 1.89-1.07l63.72-36.8c3.26-1.85 5.26-5.32 5.24-9.07v-89.83l26.93 15.55c.29.14.48.42.52.74v74.39c-.04 33.08-26.83 59.9-59.91 59.97zm-128.84-55.03c-7.03-12.14-9.56-26.37-7.15-40.18.47.28 1.3.79 1.89 1.13l63.72 36.8c3.23 1.89 7.23 1.89 10.47 0l77.79-44.92v31.1c.02.32-.13.63-.38.83l-64.41 37.19c-28.69 16.52-65.33 6.7-81.92-21.95zm-16.77-139.09c7-12.16 18.05-21.46 31.21-26.29 0 .55-.03 1.52-.03 2.2v73.61c-.02 3.74 1.98 7.21 5.23 9.06l77.79 44.91-26.93 15.55c-.27.18-.61.21-.91.08l-64.42-37.22c-28.63-16.58-38.45-53.21-21.95-81.89zm221.26 51.49-77.79-44.92 26.93-15.54c.27-.18.61-.21.91-.08l64.42 37.19c28.68 16.57 38.51 53.26 21.94 81.94-7.01 12.14-18.05 21.44-31.2 26.28v-75.81c.03-3.74-1.96-7.2-5.2-9.06zm26.8-40.34c-.47-.29-1.3-.79-1.89-1.13l-63.72-36.8c-3.23-1.89-7.23-1.89-10.47 0l-77.79 44.92v-31.1c-.02-.32.13-.63.38-.83l64.41-37.16c28.69-16.55 65.37-6.7 81.91 22 6.99 12.12 9.52 26.31 7.15 40.1zm-168.51 55.43-26.94-15.55c-.29-.14-.48-.42-.52-.74v-74.39c.02-33.12 26.89-59.96 60.01-59.94 14.01 0 27.57 4.92 38.34 13.88-.49.26-1.33.73-1.89 1.07l-63.72 36.8c-3.26 1.85-5.26 5.31-5.24 9.06l-.04 89.79zm14.63-31.54 34.65-20.01 34.65 20v40.01l-34.65 20-34.65-20z"></path></svg>
+Answers from ChatGPT or GPT-4.
+</div>
+
+<p><p></p>
+
+<div style="background-color:rgb(245, 245, 220);padding:3px">
+<b>Digressions</b><br>
+Just random digressions and musings.
+</div>
+
+<h2 id="toc_1">What is Terraform?</h2>
+
+<p>So, you might have heard about Terraform, but what exactly is Terraform?</p>
+
+<p>Let&#39;s ask ChatGPT:</p>
+
+<div style="background-color:rgb(16, 163, 127,.2);border:2px solid rgb(16, 163, 127,.3);padding:3px;">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320"  style="width:32px;height:32px;"><g fill="currentColor"><path d="m297.06 130.97c7.26-21.79 4.76-45.66-6.85-65.48-17.46-30.4-52.56-46.04-86.84-38.68-15.25-17.18-37.16-26.95-60.13-26.81-35.04-.08-66.13 22.48-76.91 55.82-22.51 4.61-41.94 18.7-53.31 38.67-17.59 30.32-13.58 68.54 9.92 94.54-7.26 21.79-4.76 45.66 6.85 65.48 17.46 30.4 52.56 46.04 86.84 38.68 15.24 17.18 37.16 26.95 60.13 26.8 35.06.09 66.16-22.49 76.94-55.86 22.51-4.61 41.94-18.7 53.31-38.67 17.57-30.32 13.55-68.51-9.94-94.51zm-120.28 168.11c-14.03.02-27.62-4.89-38.39-13.88.49-.26 1.34-.73 1.89-1.07l63.72-36.8c3.26-1.85 5.26-5.32 5.24-9.07v-89.83l26.93 15.55c.29.14.48.42.52.74v74.39c-.04 33.08-26.83 59.9-59.91 59.97zm-128.84-55.03c-7.03-12.14-9.56-26.37-7.15-40.18.47.28 1.3.79 1.89 1.13l63.72 36.8c3.23 1.89 7.23 1.89 10.47 0l77.79-44.92v31.1c.02.32-.13.63-.38.83l-64.41 37.19c-28.69 16.52-65.33 6.7-81.92-21.95zm-16.77-139.09c7-12.16 18.05-21.46 31.21-26.29 0 .55-.03 1.52-.03 2.2v73.61c-.02 3.74 1.98 7.21 5.23 9.06l77.79 44.91-26.93 15.55c-.27.18-.61.21-.91.08l-64.42-37.22c-28.63-16.58-38.45-53.21-21.95-81.89zm221.26 51.49-77.79-44.92 26.93-15.54c.27-.18.61-.21.91-.08l64.42 37.19c28.68 16.57 38.51 53.26 21.94 81.94-7.01 12.14-18.05 21.44-31.2 26.28v-75.81c.03-3.74-1.96-7.2-5.2-9.06zm26.8-40.34c-.47-.29-1.3-.79-1.89-1.13l-63.72-36.8c-3.23-1.89-7.23-1.89-10.47 0l-77.79 44.92v-31.1c-.02-.32.13-.63.38-.83l64.41-37.16c28.69-16.55 65.37-6.7 81.91 22 6.99 12.12 9.52 26.31 7.15 40.1zm-168.51 55.43-26.94-15.55c-.29-.14-.48-.42-.52-.74v-74.39c.02-33.12 26.89-59.96 60.01-59.94 14.01 0 27.57 4.92 38.34 13.88-.49.26-1.33.73-1.89 1.07l-63.72 36.8c-3.26 1.85-5.26 5.31-5.24 9.06l-.04 89.79zm14.63-31.54 34.65-20.01 34.65 20v40.01l-34.65 20-34.65-20z"></path></svg>
+Terraform is an infrastructure as code software that allows you to provision and manage cloud, infrastructure, and network resources.
+</div>
+
+<p>Hmm... I&#39;m not sure what that means...</p>
+
+<p>Let&#39;s look at another definition 
+from <a href="https://kodekloud.com/playgrounds/playground-terraform">https://kodekloud.com/playgrounds/playground-terraform</a>:</p>
+
+<blockquote>
+<h3 id="toc_2">What is Terraform?</h3>
+
+<p>Terraform is an infrastructure provisioning tool. It helps automate the process of creating and managing infrastructure using configuration files. </p>
+
+<h4 id="toc_3">Terraform Workflow</h4>
+
+<p>To provision infrastructure in Terraform, we follow three main steps: write, plan &amp; apply.</p>
+
+<p><strong>Writing:</strong> In the writing stage, we define the infrastructure we want in a Terraform configuration file. </p>
+
+<p><strong>Planning:</strong> After writing our Terraform configuration, we use the &quot;terraform plan&quot; command to preview the changes that will be made to our infrastructure. We use this step to verify that the changes are correct before applying them. </p>
+
+<p><strong>Applying:</strong> The final step in the process is to use the &quot;terraform apply&quot; command to apply the changes defined in the execution plan. This will create/change the infrastructure to match the desired state defined in the configuration file. </p>
+
+<h4 id="toc_4">Terraform Composition</h4>
+
+<p>Terraform consists of two essential parts: the core &amp; the providers.</p>
+
+<p><a id="core"></a><strong>Core:</strong> Terraform is powered by an engine called Terraform core. The core is the Terraform binary (program) that provides all the basic functionality.</p>
+
+<p><strong>Providers:</strong> Terraform uses providers (plugins) to interact with different infrastructure providers, such as AWS, Azure, or Google Cloud. The providers handle all the logic required to authenticate with the providers and make API requests on our behalf. They also handle timeouts and errors that may occur during resource management.</p>
+</blockquote>
+
+<p>I think the best thing to do at this point is to try out an example. But first we&#39;re going to need to:</p>
+
+<h2 id="toc_5">Install Terraform</h2>
+
+<p>Terraform is a tool that can be installed on your computer. </p>
+
+<p>The installation should be straightforward. Here are the instructions for installing Terraform on Mac/Linux or Windows
+<a href="https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli#install-terraform">https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli#install-terraform</a>.</p>
+
+<p>The software we just installed is the <em>Terraform core</em> <a href="#core">mentioned earlier</a>.</p>
+
+<h3 id="toc_6">Verify the installation</h3>
+
+<p>After the installation, type</p>
+
+<div><pre><code class="language-none">% terraform -help</code></pre></div>
+
+<p>or </p>
+
+<div><pre><code class="language-none">% terraform -version
+Terraform v1.4.5
+on darwin_amd64
+
+Your version of Terraform is out of date! The latest version
+is 1.4.6. You can update by downloading from https://www.terraform.io/downloads.html</code></pre></div>
+
+<p>at a command-prompt (note: <code>%</code> is my prompt).</p>
+
+<p>In fact, I just noticed that the version that I installed not long ago (Terraform v1.4.5) is already out of date!</p>
+
+<h2 id="toc_7">Is Terraform open source?</h2>
+
+<p>Yes. Terraform is open source and it&#39;s written in Go. The source code can be found at: <a href="https://github.com/hashicorp/terraform">https://github.com/hashicorp/terraform</a>.</p>
+
+<div style="background-color:rgb(255, 218, 185);border:2px solid rgb(255,191,134);padding:3px">
+<span style="font-variant:small-caps;font-weight:bold">Recap</span><br>
+Terraform is an infrastructure as code software that allows you to provision and manage cloud, infrastructure, and network resources. 
+<p>
+To install Terraform on your machine follow the instructions at: <a href="https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli#install-terraform">https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli#install-terraform</a>
+<p>
+Terraform is written in Go and it's open source.
+</div>
+
+<h2 id="toc_8">What is a provider?</h2>
+
+<blockquote>
+<p>Providers are a logical abstraction of an upstream API. They are responsible for understanding API interactions and exposing resources.</p>
+</blockquote>
+
+<p>(quote from: <a href="https://registry.terraform.io/browse/providers">https://registry.terraform.io/browse/providers</a>)</p>
+
+<h3 id="toc_9">What is an upstream API?</h3>
+
+<p>I&#39;m not sure what is meant by &quot;<em>upstream API</em>&quot; and how a  &quot;<em>backstream API</em>&quot; relates to it. </p>
+
+<p>As far as I understand, backstream APIs or services depend upon upstream ones.</p>
+
+<p>Here are some examples of upstream and downstream for APIs and in a general context</p>
+
+<table>
+<thead>
+<tr>
+<th>upstream</th>
+<th>downstream</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>database</td>
+<td>application using the database</td>
+</tr>
+<tr>
+<td>back-end</td>
+<td>front-end</td>
+</tr>
+<tr>
+<td>extracting raw materials</td>
+<td>processing of materials into a product</td>
+</tr>
+</tbody>
+</table>
+
+<p>In a software system, an application relying on a database a is an example of downstream while the database offers the upstream service; a front-end is downstream to a back-end because it depends on the back-end; a production process involves collecting raw materials during the upstream stage and processing them into a finished product during the downstream stage.</p>
+
+<p>In a river, downstream is the direction the river flows.  Upstream is going in the opposite direction to the river flow. </p>
+
+<p>Let&#39;s ask GPT4 (*)</p>
+
+<div style="background-color:rgb(16, 163, 127,.2);border:2px solid rgb(16, 163, 127,.3);padding:3px">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320"  style="width:32px;height:32px;"><g fill="currentColor"><path d="m297.06 130.97c7.26-21.79 4.76-45.66-6.85-65.48-17.46-30.4-52.56-46.04-86.84-38.68-15.25-17.18-37.16-26.95-60.13-26.81-35.04-.08-66.13 22.48-76.91 55.82-22.51 4.61-41.94 18.7-53.31 38.67-17.59 30.32-13.58 68.54 9.92 94.54-7.26 21.79-4.76 45.66 6.85 65.48 17.46 30.4 52.56 46.04 86.84 38.68 15.24 17.18 37.16 26.95 60.13 26.8 35.06.09 66.16-22.49 76.94-55.86 22.51-4.61 41.94-18.7 53.31-38.67 17.57-30.32 13.55-68.51-9.94-94.51zm-120.28 168.11c-14.03.02-27.62-4.89-38.39-13.88.49-.26 1.34-.73 1.89-1.07l63.72-36.8c3.26-1.85 5.26-5.32 5.24-9.07v-89.83l26.93 15.55c.29.14.48.42.52.74v74.39c-.04 33.08-26.83 59.9-59.91 59.97zm-128.84-55.03c-7.03-12.14-9.56-26.37-7.15-40.18.47.28 1.3.79 1.89 1.13l63.72 36.8c3.23 1.89 7.23 1.89 10.47 0l77.79-44.92v31.1c.02.32-.13.63-.38.83l-64.41 37.19c-28.69 16.52-65.33 6.7-81.92-21.95zm-16.77-139.09c7-12.16 18.05-21.46 31.21-26.29 0 .55-.03 1.52-.03 2.2v73.61c-.02 3.74 1.98 7.21 5.23 9.06l77.79 44.91-26.93 15.55c-.27.18-.61.21-.91.08l-64.42-37.22c-28.63-16.58-38.45-53.21-21.95-81.89zm221.26 51.49-77.79-44.92 26.93-15.54c.27-.18.61-.21.91-.08l64.42 37.19c28.68 16.57 38.51 53.26 21.94 81.94-7.01 12.14-18.05 21.44-31.2 26.28v-75.81c.03-3.74-1.96-7.2-5.2-9.06zm26.8-40.34c-.47-.29-1.3-.79-1.89-1.13l-63.72-36.8c-3.23-1.89-7.23-1.89-10.47 0l-77.79 44.92v-31.1c-.02-.32.13-.63.38-.83l64.41-37.16c28.69-16.55 65.37-6.7 81.91 22 6.99 12.12 9.52 26.31 7.15 40.1zm-168.51 55.43-26.94-15.55c-.29-.14-.48-.42-.52-.74v-74.39c.02-33.12 26.89-59.96 60.01-59.94 14.01 0 27.57 4.92 38.34 13.88-.49.26-1.33.73-1.89 1.07l-63.72 36.8c-3.26 1.85-5.26 5.31-5.24 9.06l-.04 89.79zm14.63-31.54 34.65-20.01 34.65 20v40.01l-34.65 20-34.65-20z"></path></svg>
+Upstream APIs typically refer to the APIs that a particular software system or service depends on to function properly. In other words, an upstream API is like a supplier of data or functionality that another system relies on. For example, if you have an app that needs to retrieve weather data from a weather service API, then the weather service API is considered the upstream API.
+<p>
+On the other hand, downstream APIs refer to the APIs that are dependent on a particular system or service. A downstream API is like a consumer of data or functionality that another system provides. For example, if you have an app that provides a payment gateway for customers to purchase products, then the payment gateway API is considered the downstream API because it relies on your app to function.
+<p>
+In summary, upstream APIs are the ones that supply data or functionality to a system, while downstream APIs are the ones that consume data or functionality provided by a system.
+</div>
+<p>
+
+<div style="background-color:rgb(245, 245, 220);padding:3px">
+<b>(*)</b><br>
+I'm currently using the free trial of GPT-4 since my ChatGPT trial expired. I'm planning to get a license for one of the two after my current trial expires. I've found these language models very useful for my daily work—even though they are missing the "reasoning" part, they contain a great amount of knowledge (albeit sometimes not up-to-date) and they can often understand my information needs better than Google—at least that's my impression so far, very good at reformulating text, elaborating on a given topic, documenting code, debugging scripts, generate demos, ... but this would the topic of a longer discussion ...
+</div>
+
+<h3 id="toc_10">The terraform Registry</h3>
+
+<p>Terraform providers are listed in the Terraform registry (<a href="https://registry.terraform.io/">https://registry.terraform.io/</a>).</p>
+
+<p>The first three providers listed in the Terraform registry when you click on &quot;browse providers&quot; are:</p>
+
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th># Downloads this month</th>
+<th># Downloads overall</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://registry.terraform.io/providers/hashicorp/aws/latest">AWS</a></td>
+<td>34.7M</td>
+<td>1.7B</td>
+</tr>
+<tr>
+<td><a href="https://registry.terraform.io/providers/hashicorp/azurerm/latest">Azure</a></td>
+<td>6.2M</td>
+<td>330.5M</td>
+</tr>
+<tr>
+<td><a href="https://registry.terraform.io/providers/hashicorp/google/latest">Google Cloud</a></td>
+<td>9.2M</td>
+<td>290.8M</td>
+</tr>
+</tbody>
+</table>
+
+<p>I&#39;m just going to add two other providers that interest me: Openstack because I&#39;m working with it and local because we are going to use it for a demo later on.</p>
+
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th># Downloads this month</th>
+<th># Downloads overall</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest">OpenStack</a></td>
+<td>388,655</td>
+<td>11.4M</td>
+</tr>
+<tr>
+<td><a href="https://registry.terraform.io/providers/hashicorp/local/latest">local</a></td>
+<td>4.6M</td>
+<td>198.1M</td>
+</tr>
+</tbody>
+</table>
+
+<p>By clicking on <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs">&quot;Documentation&quot;</a> for the AWS provider you get a description of what this provider has to offer:</p>
+
+<blockquote>
+<p><strong>AWS Provider</strong>
+Use the Amazon Web Services (AWS) provider to interact with the many resources supported by AWS. You must configure the provider with the proper credentials before you can use it.</p>
+
+<p>Use the navigation to the left to read about the available resources.</p>
+
+<p>To learn the basics of Terraform using this provider, follow the hands-on <a href="https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code">get started tutorials</a>. Interact with AWS services, including Lambda, RDS, and IAM by following the <a href="https://learn.hashicorp.com/collections/terraform/aws">AWS services tutorials</a>.</p>
+</blockquote>
+
+<div style="background-color:rgb(245, 245, 220);padding:3px">
+<b>Hashicorp's tutorials are great</b><br>
+Still, it might be convenient to finish the present tutorial first if you're a beginner at Terraform.</div>
+
+<p><p></p>
+
+<div style="background-color:rgb(255, 218, 185);border:2px solid rgb(255,191,134);padding:3px">
+<span style="font-variant:small-caps;font-weight:bold">Recap</span><br>
+Terraform providers are abstractions of so-called <em>upstream APIs</em>. These are typically the APIs used to set up a computing infrastructure in the cloud, such as AWS, Azure, or Google Cloud.
+<p>
+Terraform providers are listed in the Terraform registry (<a href="https://registry.terraform.io/">https://registry.terraform.io/</a>).
+<p>
+The Terraform registry also contains a trove of documentation, examples, tutorials, and interactive labs.
+</div>
+
+<h2 id="toc_11">Try an online example</h2>
+
+<p>The best way to try out Terraform is to use the hands-on labs provided by Hashicorp. These are live environments where one can try things out while learning <a href="https://developer.hashicorp.com/tutorials/library?product=terraform&amp;isInteractive=true">https://developer.hashicorp.com/tutorials/library?product=terraform&amp;isInteractive=true</a>.</p>
+
+<h3 id="toc_12">Run online hands-on lab</h3>
+
+<p><a href="https://developer.hashicorp.com/tutorials/library?product=terraform&amp;isInteractive=true">https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli</a> is a lab where you&#39;re guided throught the installation of an nginx Docker container.</p>
+
+<div style="background-color:rgb(245, 245, 220);padding:3px">
+If you don't know what Docker is you can check the tutorial <a href="https://github.com/groda/big_data/blob/master/docker_for_beginners.md">Docker for beginners</a>.
+</div>
+
+<p>Click on &quot;Show Terminal&quot; and in the next screen on &quot;Start&quot;. The setup  takes a couple of minutes. Once the environment is setup, you can work with it 20 minutes before it expires.</p>
+
+<p>In this environment you can choose between &quot;Code Editor&quot; and &quot;Terminal&quot;. &quot;Code Editor&quot; is a simple text editor and &quot;Terminal&quot; is a Linux terminal where you can enter the commands suggested in the side panel.</p>
+
+<div style="background-color:rgb(245, 245, 220);padding:3px">
+<b>A small digression</b><br>
+The lab environment is itself a Linux virtual machine with 2GB RAM and 20GB disk space. You can see this by running the following commands:
+
+<img src="./handson_lab_docker_inspect.png">
+The command <a href="https://www.freedesktop.org/software/systemd/man/systemd-detect-virt.html"><code>systemd-detect-virt</code></a> detects execution in a virtualized environment (in this case <code>kvm</code>).
+</div>
+
+<h4 id="toc_13">The <code>main.tf</code> file</h4>
+
+<p>The first step in the tutorial consists in creating a <code>main.tf</code> file. You can copy-and-paste the text using the editor or else type this command in the terminal to populate the <code>main.tf</code> file:</p>
+
+<div><pre><code class="language-none">cat &gt;main.tf &lt;&lt;EOF
+terraform {
+  required_providers {
+    docker = {
+      source  = &quot;kreuzwerker/docker&quot;
+      version = &quot;~&gt; 2.15.0&quot;
+    }
+  }
+}
+
+provider &quot;docker&quot; {}
+
+resource &quot;docker_image&quot; &quot;nginx&quot; {
+  name         = &quot;nginx:latest&quot;
+  keep_locally = false
+}
+
+resource &quot;docker_container&quot; &quot;nginx&quot; {
+  image = docker_image.nginx.latest
+  name  = &quot;tutorial&quot;
+  ports {
+    internal = 80
+    external = 8000
+  }
+}
+EOF</code></pre></div>
+
+<div style="background-color:rgb(245, 245, 220);padding:3px">
+<b>Another digression</b><br>
+The construct <code>&lt;&lt;EOF</code> is useful for creating files on the command-line. Note that you can use any other string in place of <code>EOF</code> (as long as it matches the final one). I often use <code>LOL</code> in place of <code>EOF</code> because why not?
+<p>
+See also: <a href="https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash">How does "cat << EOF" work in bash?</a>
+</div>
+
+<p>A <code>.tf</code> file is a plain text file containing Terraform code. Sometimes <code>.tf</code> files are also called <em>configuration files</em> (see <a href="https://developer.hashicorp.com/terraform/language/files">https://developer.hashicorp.com/terraform/language/files</a>).</p>
+
+<p>Terraform code can be saved all in one file or spread across multiple <code>.tf</code> files for convenience in the case of larger projects.</p>
+
+<h4 id="toc_14">Initialize the project</h4>
+
+<p>By running
+<code>
+terraform init
+</code>
+in the terminal you initialize the project. The initialization consists in downloading a plugin that allows Terraform to interact with Docker.</p>
+
+<h4 id="toc_15">Run the project</h4>
+
+<p>With 
+<code>
+terraform apply
+</code>
+you&#39;re going to start the infrastructure defined in the <code>main.tf</code> configuration file. </p>
+
+<p>You&#39;ll be required to enter <code>yes</code> to confirm that you want to proceed. To skip this step, use
+<code>
+terraform apply -auto-approve
+</code></p>
+
+<h4 id="toc_16">Is the project running?</h4>
+
+<p>Use the command
+<code>
+docker ps
+</code>
+to check that a Docker container is running. 
+This is the container that has been started (&quot;<em>provisioned</em>&quot;) by Terraform using Terraform&#39;s Docker provider.</p>
+
+<h4 id="toc_17">Destroy the infrastructure</h4>
+
+<p>Use the command
+<code>
+terraform destroy
+</code>
+to stop the Docker container.</p>
+
+<div style="background-color:rgb(255, 218, 185);border:2px solid rgb(255,191,134);padding:3px">
+<span style="font-variant:small-caps;font-weight:bold">Recap</span><br>
+Terraform is a tool for running projects. A project is defined in one or more Terraform configuration files. These are text files ending with <code>.tf</code> that resemble a JSON files.
+<p>
+
+Terraform tutorials and learning environments can be found at <a href="https://developer.hashicorp.com/terraform/tutorials">https://developer.hashicorp.com/terraform/tutorials</a>.
+<p>
+You can install Terraform on your machine or use Terraform's online learning environments to try out an initial demo. 
+
+The main commands for launching a project with Terraform are:
+<ul>
+<li> <code>terraform init</code>
+<li> <code>terraform apply</code> (or <code>terraform apply -auto-approve</code>)
+<li> <code>terraform destroy</code>
+</ul>
+
+In Terraform lingo this is also called "<em>provisioning an infrastructure</em>".
+</div>
+
+<h2 id="toc_18">A brief introduction to the Terraform language</h2>
+
+<p>Terraform configuration uses the Terraform language  </p>
+
+<blockquote>
+<p>which is a rich language designed to be relatively easy for humans to read and write. The constructs in the Terraform language can also be expressed in JSON syntax, which is harder for humans to read and edit but easier to generate and parse programmatically. </p>
+</blockquote>
+
+<p>(quote from <a href="https://developer.hashicorp.com/terraform/language/syntax/configuration">https://developer.hashicorp.com/terraform/language/syntax/configuration</a>)</p>
+
+<h4 id="toc_19">Arguments and blocks</h4>
+
+<p>The Terraform language syntax is built around two key syntax constructs: <em>arguments</em> and <em>blocks</em> ((see <a href="https://developer.hashicorp.com/terraform/language/syntax/configuration#identifiers">https://developer.hashicorp.com/terraform/language/syntax/configuration#identifiers</a>).</p>
+
+<p>An argument assigns a value to a particular name:</p>
+
+<div><pre><code class="language-none">image_id = &quot;abc123&quot;</code></pre></div>
+
+<p>A block is a container for other content:</p>
+
+<div><pre><code class="language-none">resource &quot;aws_instance&quot; &quot;example&quot; {
+  ami = &quot;abc123&quot;
+
+  network_interface {
+    # ...
+  }
+}</code></pre></div>
+
+<blockquote>
+<p>A block has a type (<code>resource</code>in this example). Each block type defines how many labels must follow the type keyword. The <code>resource</code> block type expects two labels, which are <code>aws_instance</code> and <code>example</code> in the example above. A particular block type may have any number of required labels, or it may require none as with the nested <code>network_interface</code> block type.</p>
+
+<p>Following the block type keyword and any labels, the block body is delimited by the curly brackets ({}). Within the block body, further arguments and blocks may be nested, creating a hierarchy of blocks and their associated arguments.</p>
+</blockquote>
+
+<h4 id="toc_20">The <code>terraform</code> block to begin with</h4>
+
+<p>The first block type that usually appears in a Terraform configuration file is the <code>terraform</code> block type. 
+The <code>terraform</code> block type can be used to:</p>
+
+<ul>
+<li>specifying which version of Terraform we want</li>
+<li>what providers are required for running the project (<code>required_providers</code> block) </li>
+</ul>
+
+<p>The Terraform block is often put into a separate file called <code>terraform.tf</code> as a way to separate settings into their own file.</p>
+
+<p>Here&#39;s a sample <code>terraform.tf</code> file (from <a href="https://dev.to/af/hashicorp-configuration-language-hcl-blocks-5627">https://dev.to/af/hashicorp-configuration-language-hcl-blocks-5627</a>:</p>
+
+<div><pre><code class="language-none">terraform {
+  required_providers {
+    aws = {
+      source  = &quot;hashicorp/aws&quot;
+      version = &quot;~&gt; 2.0&quot;
+    }
+  }
+  required_version = &quot;&gt;= 1.0.1&quot;
+}</code></pre></div>
+
+<p>Note that the <code>terraform</code> block type requires no labels, it is just: <code>terraform { ... }</code>. Same for the <code>required_providers</code> block type.</p>
+
+<p>The line <code>required_version = &quot;&gt;= 1.0.1&quot;</code> tells Terraform that we need at least version 1.0.1 for Terraform. </p>
+
+<p>In the block <code>required_providers</code> we require the <code>aws</code> provider, specify where to find it (in <code>source</code>) and what is the minimal allowed version (<code>&quot;~&gt; 2.0&quot;</code> means all versions that begin with <code>2</code>—see <a href="https://developer.hashicorp.com/terraform/language/expressions/version-constraints">the official documentation</a> on how to specify version constraints).</p>
+
+<p>Here can be found all Terraform providers with examples on how to use them: <a href="https://registry.terraform.io/browse/providers">https://registry.terraform.io/browse/providers</a>.</p>
+
+<h4 id="toc_21">Identifiers</h4>
+
+<blockquote>
+<p>Argument names, block type names, and the names of most Terraform-specific constructs like resources, input variables, etc. are all identifiers.</p>
+
+<p>Identifiers can contain letters, digits, underscores (_), and hyphens (-). The first character of an identifier must not be a digit, to avoid ambiguity with literal numbers.
+(<a href="https://developer.hashicorp.com/terraform/language/syntax/configuration#identifiers">https://developer.hashicorp.com/terraform/language/syntax/configuration#identifiers</a>)</p>
+</blockquote>
+
+<p>In the <code>terraform</code> block</p>
+
+<div><pre><code class="language-none">terraform {
+  required_providers {
+    aws = {
+      source  = &quot;hashicorp/aws&quot;
+      version = &quot;~&gt; 2.0&quot;
+    }
+  }
+  required_version = &quot;&gt;= 1.0.1&quot;
+}</code></pre></div>
+
+<p><code>terraform</code>, <code>required_providers</code>, <code>aws</code>, <code>source</code>, <code>version</code>, and <code>required_version</code> are all identifiers.</p>
+
+<p>Honestly, I&#39;m still not sure what&#39;s the difference between an identifier and a variable.</p>
+
+<h4 id="toc_22">Comments</h4>
+
+<p>Useful to know: <a href="https://developer.hashicorp.com/terraform/language/syntax/configuration#comments">comments</a> can be</p>
+
+<ul>
+<li>single-lines beginning with a <code>#</code> or a <code>//</code></li>
+<li>multi-line between <code>/*</code> and <code>*/</code></li>
+</ul>
+
+<div style="background-color:rgb(245, 245, 220);padding:3px">
+<b>On comment-lines starting with <code>#</code> or <code>//</code></b><br>
+I find it nice to be able to choose between <code>#</code> and <code>//</code> for single-line comments, also because I once tried to use <code>#</code> for comments in Javascript—it was a Proxy Auto-Configuration file and it took me forever to find out why it wasn't working—in Terraform that wouldn't have been a mistake!
+</div>
+
+<h4 id="toc_23">Does the order matter?</h4>
+
+<p>So, Terraform relies on a series of blocks and arguments that can be spread across different files. 
+But does the order of these chunks of configuration within files matter? Does the naming of the files matter? </p>
+
+<p>Up until now we&#39;ve seen two different configuration files:</p>
+
+<ul>
+<li><code>main.tf</code></li>
+<li><code>terraform.tf</code></li>
+</ul>
+
+<p>About ordering of files/blocks: according to the answer to <a href="https://stackoverflow.com/questions/74441521/can-we-order-tf-files-in-terraform">&quot;can we order .tf files in terraform?&quot;</a>:</p>
+
+<blockquote>
+<p>Terraform does not make any use of the order of .tf files or of the declarations in those files. Instead, Terraform decodes all of the blocks across all of your files and analyzes them to look for references between objects.</p>
+</blockquote>
+
+<p>Also confirmed by <a href="https://stackoverflow.com/a/59516275/">&quot;Multiple .tf files in a folder&quot;</a>:</p>
+
+<blockquote>
+<p>In Terraform 0.12+ (including 1.x), the load order of *.tf files is no longer specified. Behind the scenes Terraform reads all of the files in a directory and then determines a resource ordering that makes sense regardless of the order the files were actually read.</p>
+</blockquote>
+
+<div style="background-color:rgb(245, 245, 220);padding:3px">
+<b>Btw</b><br>
+I find it a pity that a legitimate beginner's question like <a href="https://stackoverflow.com/questions/74441521/can-we-order-tf-files-in-terraform">"can we order .tf files in terraform?"</a> gets so many downvotes on Stack Overflow. 
+</div>
+
+<h4 id="toc_24"><code>.tf</code> files naming conventions</h4>
+
+<p>About file naming, I haven&#39;t found anything about rules for the names of <code>.tf</code> files, so I assume here it&#39;s all about conventions, best practices, common sense, ... just doing what everybody else does. 
+<div style="background-color:rgb(245, 245, 220);padding:3px">
+<b>Go with the flow?</b><br>
+I&#39;m not recommending it as a general principle. Let&#39;s hear what GPT-4 has to say.
+</div>
+<p></p>
+
+<div style="background-color:rgb(16, 163, 127,.2);border:2px solid rgb(16, 163, 127,.3);padding:3px">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320"  style="width:32px;height:32px;"><g fill="currentColor"><path d="m297.06 130.97c7.26-21.79 4.76-45.66-6.85-65.48-17.46-30.4-52.56-46.04-86.84-38.68-15.25-17.18-37.16-26.95-60.13-26.81-35.04-.08-66.13 22.48-76.91 55.82-22.51 4.61-41.94 18.7-53.31 38.67-17.59 30.32-13.58 68.54 9.92 94.54-7.26 21.79-4.76 45.66 6.85 65.48 17.46 30.4 52.56 46.04 86.84 38.68 15.24 17.18 37.16 26.95 60.13 26.8 35.06.09 66.16-22.49 76.94-55.86 22.51-4.61 41.94-18.7 53.31-38.67 17.57-30.32 13.55-68.51-9.94-94.51zm-120.28 168.11c-14.03.02-27.62-4.89-38.39-13.88.49-.26 1.34-.73 1.89-1.07l63.72-36.8c3.26-1.85 5.26-5.32 5.24-9.07v-89.83l26.93 15.55c.29.14.48.42.52.74v74.39c-.04 33.08-26.83 59.9-59.91 59.97zm-128.84-55.03c-7.03-12.14-9.56-26.37-7.15-40.18.47.28 1.3.79 1.89 1.13l63.72 36.8c3.23 1.89 7.23 1.89 10.47 0l77.79-44.92v31.1c.02.32-.13.63-.38.83l-64.41 37.19c-28.69 16.52-65.33 6.7-81.92-21.95zm-16.77-139.09c7-12.16 18.05-21.46 31.21-26.29 0 .55-.03 1.52-.03 2.2v73.61c-.02 3.74 1.98 7.21 5.23 9.06l77.79 44.91-26.93 15.55c-.27.18-.61.21-.91.08l-64.42-37.22c-28.63-16.58-38.45-53.21-21.95-81.89zm221.26 51.49-77.79-44.92 26.93-15.54c.27-.18.61-.21.91-.08l64.42 37.19c28.68 16.57 38.51 53.26 21.94 81.94-7.01 12.14-18.05 21.44-31.2 26.28v-75.81c.03-3.74-1.96-7.2-5.2-9.06zm26.8-40.34c-.47-.29-1.3-.79-1.89-1.13l-63.72-36.8c-3.23-1.89-7.23-1.89-10.47 0l-77.79 44.92v-31.1c-.02-.32.13-.63.38-.83l64.41-37.16c28.69-16.55 65.37-6.7 81.91 22 6.99 12.12 9.52 26.31 7.15 40.1zm-168.51 55.43-26.94-15.55c-.29-.14-.48-.42-.52-.74v-74.39c.02-33.12 26.89-59.96 60.01-59.94 14.01 0 27.57 4.92 38.34 13.88-.49.26-1.33.73-1.89 1.07l-63.72 36.8c-3.26 1.85-5.26 5.31-5.24 9.06l-.04 89.79zm14.63-31.54 34.65-20.01 34.65 20v40.01l-34.65 20-34.65-20z"></path></svg>
+Deciding whether to go with the flow or do what everyone else is doing is a personal choice that depends on your individual circumstances, values, and goals. Here are a few considerations to help you make your decision:
+<p>
+Individuality and Authenticity: Going with the flow may sometimes mean compromising your own unique perspectives, interests, or ambitions to align with the majority. If expressing your individuality and staying true to yourself is important to you, deviating from the norm might be a better choice.
+<p>
+Critical Thinking and Personal Growth: Following the crowd often involves accepting commonly held beliefs, practices, or trends without questioning them. If you value critical thinking and personal growth, it may be beneficial to challenge the status quo and explore alternative paths that align better with your own beliefs and aspirations.
+<p>
+Risk and Reward: Going against the grain can be riskier as it may involve uncertainty and resistance from others. However, it can also lead to greater rewards and opportunities. Consider the potential benefits and drawbacks of both options before making a decision.
+<p>
+Context and Consequences: Evaluate the specific situation and context in which you find yourself. Sometimes, going with the flow might be the most practical or efficient choice, especially if it aligns with your goals or if the deviation requires significant effort or resources.
+<p>
+Balance and Flexibility: It's not always an all-or-nothing decision. You can find a balance between going with the flow and asserting your individuality. Assess the situations where conformity is necessary and those where breaking away is beneficial. Flexibility allows you to adapt and make choices that serve you best in different circumstances.
+<p>
+Ultimately, the choice is yours, and there is no one-size-fits-all answer. Reflect on your values, aspirations, and what brings you fulfillment. Consider seeking guidance from trusted mentors or loved ones who understand your goals and can offer valuable insights.
+</div>
+
+<p><p>
+<div style="background-color:rgb(255, 218, 185);border:2px solid rgb(255,191,134);padding:3px">
+<span style="font-variant:small-caps;font-weight:bold">Recap</span><br>
+Terraform files are composed of 
+<ul>
+<li><em>arguments</em>
+<li><em>blocks</em>
+</ul> 
+An argument assigns a value to a given name, for instance <code>image_id = &quot;abc123&quot;</code>.</p>
+
+<p>A block is a container composed by a <em>block type</em>, zero or more <em>labels</em> and some content within curly brackets, like for instance <code>terraform { ... }</code>.
+<p>
+The <code>terraform</code> block type can contain requirements on the Terraform version needed as well as on the required providers. 
+<p>
+Terraform configuration can be written to a single file or to multiple files. Ordering of configuration items does not matter as Terraform will take care of dependencies. 
+<p>
+Comment lines start with <code>#</code> or <code>//</code>, multi-line comments are between <code>/<em></code> and <code></em>/</code>.</p>
+
+<p></div></p>
+
+<h2 id="toc_25">Hello, World!</h2>
+
+<p>Let&#39;s build a &quot;Hello, World!&quot; project using the <a href="https://registry.terraform.io/providers/hashicorp/local/latest"><code>local</code></a> provider. </p>
+
+<p>This is the provider used to:</p>
+
+<blockquote>
+<p>manage local resources, such as creating files</p>
+</blockquote>
+
+<p>Everyone has access to a local provider—that&#39;s the filesystem you&#39;re currently working on—and there&#39;s no need for authentication.</p>
+
+<p>From the <a href="https://registry.terraform.io/providers/hashicorp/local/latest/docs">docs</a>: the local provider provides Resources for generating files (<code>local_file</code> and <code>local_sensitive_file</code>) and Data Sources for reading files (<code>local_file</code> and <code>local_sensitive_file</code>).</p>
+
+<p>I&#39;m not sure about the meaning of <em>sensitive</em> in Terraform, I believe it&#39;s about data such as passwords that should not be shown in plain text, but let us ignore that for now and just use <code>local_file</code>.</p>
+
+<p>Open a terminal on your machine or start a terminal online (<a href="https://developer.hashicorp.com/terraform/tutorials/aws-get-started/infrastructure-as-code">https://developer.hashicorp.com/terraform/tutorials/aws-get-started/infrastructure-as-code</a> / Show Terminal / Launch --&gt; / Start / Terminal) and type:</p>
+
+<div><pre><code class="language-none">cat &gt;main.tf &lt;&lt;LOL
+terraform {
+  required_providers {
+    local = {
+      source = &quot;hashicorp/local&quot;
+      version = &quot;2.4.0&quot;
+    }
+  }
+}
+
+resource &quot;local_file&quot; &quot;hello&quot; {
+  filename = &quot;/root/learn-terraform-docker-container/hello&quot;
+  content  = &quot;Hello, World!\n&quot;
+  file_permission = &quot;0400&quot;
+}
+LOL</code></pre></div>
+
+<p>followed by:</p>
+
+<div><pre><code class="language-none">terraform init
+terraform apply -auto-approve</code></pre></div>
+
+<p>These commands will create a file called <code>hello</code> whose content is the string <code>&quot;Hello, World!\n&quot;</code>.</p>
+
+<div style="background-color:rgb(245, 245, 220);padding:3px">
+<b>I'm beginning to like ...</b><br>
+... the succinct and intuitive Terraform syntax without semicolons or indentation.
+</div>
+
+<p>Now type:</p>
+
+<div><pre><code class="language-none">cat hello</code></pre></div>
+
+<p>If everything worked, you should get the output: <code>Hello, World!</code>. In this example the only thing you might need to change is <code>filename</code> in the <code>terraform</code> provider.</p>
+
+<p>Let us introduce a variable named <code>hello</code>:</p>
+
+<div><pre><code class="language-none">cat&gt;main.tf &lt;&lt;EOF
+variable &quot;hello&quot; {
+  type = string
+  description = &quot;greeting&quot;
+  default = &quot;Hello. World!&quot;
+}
+output &quot;hello&quot; {
+  value = var.hello
+}
+EOF</code></pre></div>
+
+<p>Now use <code>terraform plan</code> to see what Terraform is going to do when calling <code>apply</code>:</p>
+
+<div><pre><code class="language-none">root@workstation:~/learn-terraform-docker-container# terraform plan
+local_file.hello: Refreshing state... [id=60fde9c2310b0d4cad4dab8d126b04387efba289]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are
+indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # local_file.hello will be destroyed
+  - resource &quot;local_file&quot; &quot;hello&quot; {
+      - content              = &lt;&lt;-EOT
+            Hello, World!
+        EOT -&gt; null
+      - content_base64sha256 = &quot;yYwktnfv9Ehgr+pvSTu67FuxxMuyCcb8K7tH9m/yrTE=&quot; -&gt; null
+      - content_base64sha512 = &quot;khYYvG2fgFlDfF4Dl7E/lzq3x6e4HwyjG3C/RI/YAKRgtn79oAIAiLyXv32dqXqeLOeyDUbgZkYuxEz2AoT5pw==&quot; -&gt; null
+      - content_md5          = &quot;bea8252ff4e80f41719ea13cdf007273&quot; -&gt; null
+      - content_sha1         = &quot;60fde9c2310b0d4cad4dab8d126b04387efba289&quot; -&gt; null
+      - content_sha256       = &quot;c98c24b677eff44860afea6f493bbaec5bb1c4cbb209c6fc2bbb47f66ff2ad31&quot; -&gt; null
+      - content_sha512       = &quot;921618bc6d9f8059437c5e0397b13f973ab7c7a7b81f0ca31b70bf448fd800a460b67efda0020088bc97bf7d9da97a9e2ce7b20d46e066462ec44cf60284f9a7&quot; -&gt; null
+      - directory_permission = &quot;0777&quot; -&gt; null
+      - file_permission      = &quot;0400&quot; -&gt; null
+      - filename             = &quot;/root/learn-terraform-docker-container/hello&quot; -&gt; null
+      - id                   = &quot;60fde9c2310b0d4cad4dab8d126b04387efba289&quot; -&gt; null
+    }
+
+Plan: 0 to add, 0 to change, 1 to destroy.
+
+Changes to Outputs:
+  + hello = &quot;Hello. World!&quot;
+</code></pre></div>
+
+<blockquote>
+<p>The terraform plan command lets you to preview the actions Terraform would take to modify your infrastructure, or save a speculative plan which you can apply later</p>
+</blockquote>
+
+<p>(quote from <a href="https://developer.hashicorp.com/terraform/tutorials/cli/plan#create-a-plan">https://developer.hashicorp.com/terraform/tutorials/cli/plan#create-a-plan</a>)</p>
+
+<p>Since all we are asking for in our Terraform configuration file is to create a variable (<code>variable &quot;hello&quot; { }</code> block), when running <code>apply</code> Terraform is going to destroy the existing file.</p>
+
+<p>Now run <code>apply -auto-approve</code></p>
+
+<div><pre><code class="language-none">root@workstation:~/learn-terraform-docker-container# terraform apply -auto-approve
+[ . . .]
+local_file.hello: Destroying... [id=60fde9c2310b0d4cad4dab8d126b04387efba289]
+local_file.hello: Destruction complete after 0s
+
+Apply complete! Resources: 0 added, 0 changed, 1 destroyed.
+
+Outputs:
+
+hello = &quot;Hello. World!&quot;</code></pre></div>
+
+<p>Note that in this last example we did not use any provider but relied just on the Terraform core.</p>
+
+<div style="background-color:rgb(255, 218, 185);border:2px solid rgb(255,191,134);padding:3px">
+<span style="font-variant:small-caps;font-weight:bold">Recap</span><br>
+
+Terraform allows to manage any infrastructure in a structured and succint way.
+<p>
+
+Terraform plugins called providers let Terraform interact with cloud platforms and other services via their application programming interfaces (APIs).
+<p>
+Providers can be found in the Terraform Registry.
+</div>
+
+
+
+
+</body>
+
+</html>
