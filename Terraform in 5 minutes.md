@@ -208,7 +208,7 @@ Terraform relies on a series of blocks and arguments that can be spread across d
 The answer is given in ["can we order .tf files in terraform?"](https://stackoverflow.com/questions/74441521/can-we-order-tf-files-in-terraform):
 > Terraform does not make any use of the order of .tf files or of the declarations in those files. Instead, Terraform decodes all of the blocks across all of your files and analyzes them to look for references between objects.
 
-So, no the order does not mattewr and Terraform takes care of dependencies and order of execution.
+So, no, the order does not matter and Terraform takes care of dependencies and order of execution.
 
 ## Happy Terraforming!
  
