@@ -1,9 +1,8 @@
 # Terraform in 5 minutes
 
-## Install Terraform
-
 Terraform is a powerful and popular tool for infrastructure provisioning and management. Its declarative syntax and infrastructure-as-code approach make it concise and efficient for defining and managing infrastructure resources across various cloud providers.
 
+## Install Terraform
 
 Terraform is an installable tool that you can set up on your computer.
 
