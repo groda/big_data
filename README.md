@@ -22,5 +22,6 @@ Some tutorials and demos on Hadoop, Spark, etc., mostly in the form of Jupyter n
 - Virtualization
   - **[docker_for_beginners.md](docker_for_beginners.md)** Docker for beginners: an introduction to the world of containers
   - **[Terraform for beginners.md](terraform_for_beginners.md)** Getting started with Terraform
+  - **[Terraform in 5 minutes](Terraform%20in%205%20minutes.md)** A short introduction to Terraform, the powerful and popular tool for infrastructure provisioning and management
 - **[online_resources.md](online_resources.md)** Online resources for learning Big Data
 
