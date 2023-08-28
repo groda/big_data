@@ -32,9 +32,11 @@ is 1.4.6. You can update by downloading from https://www.terraform.io/downloads.
 
 ## Introduction to Terraform providers
 
-Terraform is an infrastructure as code tool that enables the provisioning and management of resources across different cloud and infrastructure _providers_ by utilizing provider plugins as the central mechanism for interfacing with those providers.
+Terraform is an _infrastructure as code_ tool that enables the provisioning and management of resources across different cloud and infrastructure _providers_ by utilizing provider plugins as the central mechanism for interfacing with those providers.
 
-In simple terms, a Terraform provider is a plugin that allows Terraform to interact with a specific infrastructure or service provider, such as AWS, Azure, or GCP. It provides the necessary functionality to create, manage, and delete resources within that provider's environment using Terraform configuration files.
+In simple terms, a Terraform provider is a plugin that allows Terraform to interact with a specific infrastructure or service provider, such as AWS, Azure, or GCP. It provides the necessary functionality to create, manage, and delete resources within that provider's environment using Terraform configuration files. 
+
+Storing all elements of your infrastructure – such as virtual machines, networks, and security configurations – within files understandable to computers characterises the concept of "infrastructure as code".
 
 
 ### The Terraform Registry
