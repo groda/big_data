@@ -323,7 +323,7 @@ Terraform excels in abstracting infrastructure as code, liberating users from th
 
 To get started with Terraform:
 1. install Terraform on your machine
-2. create three files: `main.tf`, `variables.tf`, and `terraform.tfvars` containing respectively infrastructure configuration, variables declarations, and variables values. If you prefer put the `terraform` block in a separate file `terraform.tf`.
+2. create three files: `main.tf`, `variables.tf`, and `terraform.tfvars` containing respectively infrastructure configuration, variables declarations, and variables values. Fill these files with code from your [provider's documentation](https://registry.terraform.io/browse/providers).
 4. run the command `terraform init` followed by `terraform apply` in the same directory where you stored the configuration files
 5. when you're done run the command `terraform destroy` to avoid avoid unnecessary resource consumption
 
