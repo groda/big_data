@@ -25,7 +25,6 @@ Terraform is a powerful and popular tool for _infrastructure provisioning and ma
   * [Terraform variables files](#terraform-variables-files)
     + [The advantage of `terraform.tfvars`](#the-advantage-of-terraformtfvars)
   * [How to generate Terraform configuration files](#how-to-generate-terraform-configuration-files)
-  * [A note on ordering of files and blocks](#a-note-on-ordering-of-files-and-blocks)
   * [Infrastructure as Code with Automated Dependency Management](#infrastructure-as-code-with-automated-dependency-management)
   * [Recap](#recap)
   * [Happy Terraforming!](#happy-terraforming)
@@ -308,24 +307,16 @@ Once you know what you need for your infrastructure, there are many options for 
  - I haven't used this yet but it exists: the [reverse Terraform](https://github.com/GoogleCloudPlatform/terraformer) to get Terraform file from an existing infrastructure
 
 
-<!-- TOC --><a name="a-note-on-ordering-of-files-and-blocks"></a>
-## A note on ordering of files and blocks
 
-Terraform relies on a series of blocks and arguments that can be spread across different files. Does the order of these chunks of configuration within files matter? Does the naming of the files matter? 
+<!-- TOC --><a name="infrastructure-as-code-with-automated-dependency-management"></a>
+## Infrastructure as code with automated dependency management
 
-The answer is given in ["can we order .tf files in terraform?"](https://stackoverflow.com/questions/74441521/can-we-order-tf-files-in-terraform):
-> Terraform does not make any use of the order of `.tf` files or of the declarations in those files. Instead, Terraform decodes all of the blocks across all of your files and analyzes them to look for references between objects.
-
-So, no, the order does not matter and Terraform takes care of dependencies and order of execution.
+Terraform relies on a series of blocks and arguments that can be spread across different files. Does the order of these chunks of configuration within files matter? Does the naming of the files matter? No, the naming and order of the files does not matter and Terraform takes care of dependencies and order of execution.
 
 This is precisely Terraform's main strength: **infrastructure as code with automated dependency management**
 
-<!-- TOC --><a name="infrastructure-as-code-with-automated-dependency-management"></a>
-## Infrastructure as Code with Automated Dependency Management
-
 Terraform excels in abstracting infrastructure as code, liberating users from the burden of manually specifying the order of resource creation and their interdependencies. It automatically resolves dependencies, ensuring a consistent and reliable deployment process. This strength simplifies infrastructure management, reduces human error, and enhances the overall stability and reproducibility of infrastructure deployments.
 
-In summary, Terraform's power lies in its ability to transform complex infrastructure requirements into simple and declarative code, letting users focus on what infrastructure should look like rather than how to create it and how to manage dependencies. This simplifies infrastructure management and enhances the efficiency and reliability of infrastructure operations.
 
 <!-- TOC --><a name="recap"></a>
 ## Recap
@@ -335,6 +326,8 @@ To get started with Terraform:
 2. create three files: `main.tf`, `variables.tf`, and `terraform.tfvars` containing respectively infrastructure configuration, variables declarations, and variables values. If you prefer put the `terraform` block in a separate file `terraform.tf`.
 4. run the command `terraform init` followed by `terraform apply` in the same directory where you stored the configuration files
 5. when you're done run the command `terraform destroy` to avoid avoid unnecessary resource consumption
+
+Terraform's power lies in its ability to transform complex infrastructure requirements into simple and declarative code, letting users focus on what infrastructure should look like rather than how to create it and how to manage dependencies. This simplifies infrastructure management and enhances the efficiency and reliability of infrastructure operations.
 
 
 <!-- TOC --><a name="happy-terraforming"></a>
