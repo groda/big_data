@@ -1,6 +1,7 @@
 # Big Data for beginners
 
-Some tutorials and demos on Hadoop, Spark, etc., mostly in the form of Jupyter notebooks.
+Explore a variety of tutorials and interactive demonstrations focused on Big Data technologies like Hadoop, Spark, and more, primarily presented in the format of Jupyter notebooks.
+
 ## Hadoop single-node setup on Google Colab
   - **[Hadoop_Setting_up_a_Single_Node_Cluster.ipynb](Hadoop_Setting_up_a_Single_Node_Cluster.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/Hadoop_Setting_up_a_Single_Node_Cluster.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Set up a single-node Hadoop cluster on Google Colab and run some basic HDFS and MapReduce examples 
