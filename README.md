@@ -13,7 +13,8 @@ Explore a variety of tutorials and interactive demonstrations focused on Big Dat
   - **[Run_Spark_on_Google_Colab.ipynb](Run_Spark_on_Google_Colab.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/Run_Spark_on_Google_Colab.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Set up a single-node standalone Spark server on Google Colab including Web UI and History Server - compact version
   - **[PySpark_On_Google_Colab.ipynb](PySpark_On_Google_Colab.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/PySparkOnColab.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Explore the inner workings of PySpark on Google Colab 🆕
 
-## Notes 
+## Miscellaneous tutorials
+- **[generate_data_with_Faker.ipynb](generate_data_with_Faker.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/generate_data_with_Faker.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Generate fake data with the Faker Python library
 - **[mapreduce_with_bash.ipynb](mapreduce_with_bash.ipynb)** An introduction to MapReduce using MapReduce Streaming and bash to create mapper and reducer
 - **[simplest_mapreduce_bash_wordcount.ipynb](simplest_mapreduce_bash_wordcount.ipynb)** A very basic MapReduce wordcount example
 - **[mrjob_wordcount.ipynb](mrjob_wordcount.ipynb)** A simple MapReduce job with mrjob
@@ -24,7 +25,7 @@ Explore a variety of tutorials and interactive demonstrations focused on Big Dat
 - **[Encoding+dataframe+columns.ipynb](Encoding+dataframe+columns.ipynb)** Encoding Spark dataframe columns 
 - **[Unicode.ipynb](Unicode.ipynb)** Exploring Unicode categories ([![live on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/groda/big_data/master?filepath=Unicode.ipynb))
 - **[polynomial_regression.ipynb](polynomial_regression.ipynb)** Worked out example of polynomial regression with numpy
-- **[generate_data_with_Faker.ipynb](generate_data_with_Faker.ipynb)** Generate fake data with the Faker Python library
+
 
 ## Virtualization
   - **[docker_for_beginners.md](docker_for_beginners.md)** Docker for beginners: an introduction to the world of containers
