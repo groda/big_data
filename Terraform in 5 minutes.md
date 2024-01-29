@@ -15,6 +15,8 @@ Terraform is a powerful and popular tool for _infrastructure provisioning and ma
     + [A basic provider block example](#a-basic-provider-block-example)
   * [Terraform project and configuration files](#terraform-project-and-configuration-files)
     + [`terraform init`](#terraform-init)
+    + [`terraform validate`](#terraform-validate)
+    + [`terraform plan`](#terraform-plan)
     + [`terraform apply`](#terraform-apply)
     + [`terraform destroy`](#terraform-destroy)
   * [A brief introduction to the Terraform language](#a-brief-introduction-to-the-terraform-language)
@@ -65,6 +67,9 @@ is 1.4.6. You can update by downloading from https://www.terraform.io/downloads.
 ## Introduction to Terraform providers
 
 Terraform is an _infrastructure as code_ tool that enables the provisioning and management of resources across different cloud and infrastructure _providers_ by utilizing _provider plugins_ as the central mechanism for interfacing with those providers.
+
+![](https://developer.hashicorp.com/_next/image?url=https%3A%2F%2Fcontent.hashicorp.com%2Fapi%2Fassets%3Fproduct%3Dterraform%26version%3Drefs%252Fheads%252Fv1.7%26asset%3Dwebsite%252Fimg%252Fdocs%252Fintro-terraform-apis.png%26width%3D2048%26height%3D644&w=3840&q=75)
+
 
 In simple terms, a Terraform provider is a plugin that allows Terraform to interact with a specific infrastructure or service provider, such as AWS, Azure, GCP, or OpenStack. It provides the necessary functionality to create, manage, and delete resources within that provider's environment using Terraform configuration files. 
 
@@ -117,6 +122,8 @@ The main commands for managing an infrastructure with Terraform are:
 
 ```
 terraform init
+terraform validate
+terraform plan
 terraform apply 
 terraform destroy
 ```
@@ -127,6 +134,14 @@ Terraform, by default, will automatically search for and process all files with 
 ### `terraform init`
 With `terraform init` terraform one initializes the project. This includes downloading the required Terraform plugins. Generally one only needs to run `terraform init` once for a given Terraform project or when significant changes are made to the configuration, such as adding new providers or modifying backend configurations. 
 
+<!-- TOC --><a name="terraform-validate"></a>
+### `terraform validate`
+Checks the syntax, provider configurations, resource dependencies, and variable references in Terraform configuration files.
+
+<!-- TOC --><a name="terraform-plan"></a>
+### `terraform plan`
+Provides a preview of proposed changes to your infrastructure without actually applying them.
+
 <!-- TOC --><a name="terraform-apply"></a>
 ### `terraform apply`
 After the initial initialization, subsequent changes in the configuaration can be applied using `terraform apply` without the need to re-run `terraform init`. In Terraform lingo this is also called "provisioning an infrastructure".
@@ -135,6 +150,8 @@ After the initial initialization, subsequent changes in the configuaration can b
 ### `terraform destroy`
 Finally, `terraform destroy` is the command used to remove the infrastructure created by `apply`. This is a non-trivial step because destroying an infrastructure manually can take time and it requires knowing the correct sequence of steps.
 
+![Infrastructure provisioning with Terraform](https://developer.hashicorp.com/_next/image?url=https%3A%2F%2Fcontent.hashicorp.com%2Fapi%2Fassets%3Fproduct%3Dterraform%26version%3Drefs%252Fheads%252Fv1.7%26asset%3Dwebsite%252Fimg%252Fdocs%252Fintro-terraform-workflow.png%26width%3D2038%26height%3D1773&w=3840&q=75)
+
 <!-- TOC --><a name="a-brief-introduction-to-the-terraform-language"></a>
 ## A brief introduction to the Terraform language
 
@@ -142,6 +159,8 @@ Terraform configuration uses the Terraform language
 > which is a rich language designed to be relatively easy for humans to read and write. The constructs in the Terraform language can also be expressed in JSON syntax, which is harder for humans to read and edit but easier to generate and parse programmatically. 
 
 (quote from [https://developer.hashicorp.com/terraform/language/syntax/configuration](https://developer.hashicorp.com/terraform/language/syntax/configuration))
+
+Terraform configuration files are also referred to as "HCL files" as the Terraform language adheres to the syntax of the [HashiCorp Configuration Language](https://github.com/hashicorp/hcl) (HCL). 
 
 <!-- TOC --><a name="arguments-and-blocks"></a>
 #### Arguments and blocks
@@ -313,7 +332,7 @@ Once you know what you need for your infrastructure, there are many options for 
 
 Terraform relies on a series of blocks and arguments that can be spread across different files. Does the order of these chunks of configuration within files matter? Does the naming of the files matter? No, the naming and order of the files does not matter and Terraform takes care of dependencies and order of execution.
 
-This is precisely Terraform's main strength: **infrastructure as code with automated dependency management**
+This is precisely Terraform's main strength: **infrastructure as code with automated dependency management**.
 
 Terraform excels in abstracting infrastructure as code, liberating users from the burden of manually specifying the order of resource creation and their interdependencies. It automatically resolves dependencies, ensuring a consistent and reliable deployment process. This strength simplifies infrastructure management, reduces human error, and enhances the overall stability and reproducibility of infrastructure deployments.
 
@@ -324,7 +343,7 @@ Terraform excels in abstracting infrastructure as code, liberating users from th
 To get started with Terraform:
 1. install Terraform on your machine
 2. create three files: `main.tf`, `variables.tf`, and `terraform.tfvars` containing respectively infrastructure configuration, variables declarations, and variables values. Fill these files with code from your [provider's documentation](https://registry.terraform.io/browse/providers).
-4. run the command `terraform init` followed by `terraform apply` in the same directory where you stored the configuration files
+4. run the command `terraform init` followed by `terraform plan` and, finally, `terraform apply` in the same directory where you stored the configuration files
 5. when you're done run the command `terraform destroy` to avoid avoid unnecessary resource consumption
 
 Terraform's power lies in its ability to transform complex infrastructure requirements into simple and declarative code, letting users focus on what infrastructure should look like rather than how to create it and how to manage dependencies. This simplifies infrastructure management and enhances the efficiency and reliability of infrastructure operations.
