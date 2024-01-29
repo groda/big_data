@@ -1,4 +1,4 @@
-![big_data](https://socialify.git.ci/groda/big_data/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Diagonal%20Stripes&stargazers=1&theme=Light)
+![big_data](https://socialify.git.ci/groda/big_data/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Diagonal%20Stripes&stargazers=1&forks=1&theme=Light)
 
 # Big Data for beginners
 
