@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: Run Notebooks on Ubuntu
 run-name: Run notebooks 🚀
 # work in progress
 # this action runs two jobs: List-Notebook-Files and Run-Notebooks
@@ -52,8 +52,7 @@ jobs:
         git config user.email github-actions@github.com
         set -e
         # just notebooks containing "Colab" in name
-        # Apache_Sedona_with_PySpark.ipynb
-        for n in Run_Spark_on_Google_Colab.ipynb 
+        for n in Run_Spark_on_Google_Colab.ipynb Apache_Sedona_with_PySpark.ipynb
         do
           jupyter nbconvert --to notebook --execute $n
           [ $? -eq 0 ] && jupyter nbconvert --to python $n
