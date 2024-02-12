@@ -1,0 +1,72 @@
+name: GitHub Actions Demo
+run-name: Run notebooks 🚀
+# work in progress
+# this action runs two jobs: List-Notebook-Files and Run-Notebooks
+# Run-Notebooks converts ipynb files to Python with nbconvert and runs them on the Ubuntu box
+# (at the moment this is done only for one file since not all notebook files are ready)
+# also it would be better to create an image instead of downloading software every time
+on: 
+  #workflow_dispatch
+  push:
+    branches: [master]
+permissions:
+  contents: write
+jobs:
+  List-Notebook-Files:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}/*.ipynb
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+  Run-Notebooks:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python environment
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    # Install requirements
+    - name: Install requirements
+      run: |
+        python --version
+        python -m pip install -r requirements.txt
+
+    # Runs a set of commands using the runners shell
+    - name: Run Jupyter Notebooks testing
+      run: |
+        date > action_log.txt
+        git pull
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        set -e
+        # just notebooks containing "Colab" in name
+        # Apache_Sedona_with_PySpark.ipynb
+        for n in Run_Spark_on_Google_Colab.ipynb 
+        do
+          jupyter nbconvert --to notebook --execute $n
+          [ $? -eq 0 ] && jupyter nbconvert --to python $n
+          [ $? -eq 0 ] && echo  ✅ $n >>action_log.txt
+          # get the Python file's name by removing .ipynb extension from $n and then adding .py
+          file=$(basename $n ipynb)py
+          header="# This file was generated from $n with nbconvert\n# Source: https://github.com/${{ github.repository }}\n\n"
+          echo -e "$header" "$(cat $file)" >$file
+          # push .py file
+          git add $file
+        done
+        # https://github.com/actions/checkout?tab=readme-ov-file#push-a-commit-using-the-built-in-token
+        git add ./action_log.txt
+        git commit -m "generated"
+        git push          
+ 
