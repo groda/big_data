@@ -6,9 +6,9 @@ run-name: Run notebooks 🚀
 # (at the moment this is done only for one file since not all notebook files are ready)
 # also it would be better to create an image instead of downloading software every time
 on: 
-  #workflow_dispatch
-  push:
-    branches: [master]
+  workflow_dispatch
+  #push:
+    #branches: [master]
 permissions:
   contents: write
 jobs:
