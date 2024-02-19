@@ -51,8 +51,8 @@ jobs:
         git config user.name github-actions
         git config user.email github-actions@github.com
         set -e
-        # just notebooks containing "Colab" in name
-        for n in Run_Spark_on_Google_Colab.ipynb Hadoop_single_node_cluster_setup_Python.ipynb
+        # just notebooks containing "Colab" in name Run_Spark_on_Google_Colab.ipynb
+        for n in Hadoop_single_node_cluster_setup_Python.ipynb
         do
           jupyter nbconvert --to notebook --execute $n
           [ $? -eq 0 ] && jupyter nbconvert --to python $n
