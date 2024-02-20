@@ -65,6 +65,7 @@ jobs:
           echo -e "$header" "$(cat $file)" >$file
           # push .py file
           git add $file
+          git add ${file}nbconvert.ipynb 
         done
         # https://github.com/actions/checkout?tab=readme-ov-file#push-a-commit-using-the-built-in-token
         git add ./action_log.txt
