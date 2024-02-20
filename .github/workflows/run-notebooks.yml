@@ -54,18 +54,22 @@ jobs:
         # just notebooks containing "Colab" in name 
         # Run_Spark_on_Google_Colab.ipynb OK
         # Hadoop_single_node_cluster_setup_Python.ipynb cannot install ssh server
-        for n in PySpark_On_Google_Colab.ipynb  
+        for n in PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb
         do
           jupyter nbconvert --to notebook --execute $n
-          [ $? -eq 0 ] && jupyter nbconvert --to python $n
-          [ $? -eq 0 ] && echo  ✅ $n >>action_log.txt
-          # get the Python file's name by removing .ipynb extension from $n and then adding .py
-          file=$(basename $n ipynb)py
-          header="# This file was generated from $n with nbconvert\n# Source: https://github.com/${{ github.repository }}\n\n"
-          echo -e "$header" "$(cat $file)" >$file
-          # push .py file
-          git add $file
-          git add $(basename $n ipynb)nbconvert.ipynb 
+          if [ $? -eq 0 ]; then
+           echo ✅ $n >>action_log.txt
+           jupyter nbconvert --to python $n 
+           # get the Python file's name by removing .ipynb extension from $n and then adding .py
+           file=$(basename $n ipynb)py
+           header="# This file was generated from $n with nbconvert\n# Source: https://github.com/${{ github.repository }}\n\n"
+           echo -e "$header" "$(cat $file)" >$file
+           # push .py file
+           git add $file
+           git add $(basename $n ipynb)nbconvert.ipynb 2>/dev/null
+          else
+            echo ❌ $n >>action_log.txt
+          fi
         done
         # https://github.com/actions/checkout?tab=readme-ov-file#push-a-commit-using-the-built-in-token
         git add ./action_log.txt
