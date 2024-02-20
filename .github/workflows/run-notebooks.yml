@@ -67,11 +67,11 @@ jobs:
           git add $file
           #git add ${file}nbconvert.ipynb 
         done
-    - name: List files currently in the workspace
-      run: |
-          ls ${{ github.workspace }}/*.ipynb
         # https://github.com/actions/checkout?tab=readme-ov-file#push-a-commit-using-the-built-in-token
         git add ./action_log.txt
         git commit -m "generated"
-        git push          
+        git push 
+    - name: List files currently in the workspace
+      run: |
+        ls ${{ github.workspace }}/*.ipynb
  
