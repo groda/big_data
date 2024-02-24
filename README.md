@@ -21,7 +21,7 @@ Explore a variety of tutorials and interactive demonstrations focused on Big Dat
 - **[Hadoop_spilling.ipynb](Hadoop_spilling.ipynb)** Hadoop spilling explained
 - **[TestDFSio.ipynb](TestDFSio.ipynb)** Demo of TestDFSio for benchmarking Hadoop clusters
 - **[demoSparkSQLPython.ipynb](demoSparkSQLPython.ipynb)** Pyspark basic demo 
-- **[ngrams_with_pyspark.ipynb](ngrams_with_pyspark.ipynb)** Basic example of ngrams generation with pyspark
+- **[ngrams_with_pyspark.ipynb](ngrams_with_pyspark.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/ngrams_with_pyspark.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Basic example of n-grams extraction with PySpark ![recently updated](https://github.com/groda/big_data/blob/master/updated.gif?raw=true)
 - **[Encoding+dataframe+columns.ipynb](Encoding+dataframe+columns.ipynb)** Encoding Spark dataframe columns 
 - **[Unicode.ipynb](Unicode.ipynb)** Exploring Unicode categories ([![live on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/groda/big_data/master?filepath=Unicode.ipynb))
 - **[polynomial_regression.ipynb](polynomial_regression.ipynb)** Worked out example of polynomial regression with numpy
