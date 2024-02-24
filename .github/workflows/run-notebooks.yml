@@ -47,14 +47,16 @@ jobs:
     - name: Run Jupyter Notebooks testing
       run: |
         date > action_log.txt
-        git pull
+        git checkout dev
+        git fetch origin
+        git merge origin/master
         git config user.name github-actions
         git config user.email github-actions@github.com
         set -e
         # just notebooks containing "Colab" in name 
         # Run_Spark_on_Google_Colab.ipynb OK
         # Hadoop_single_node_cluster_setup_Python.ipynb cannot install ssh server
-        for n in PySpark_On_Google_Colab.ipynb  
+        for n in ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb  
         do
           jupyter nbconvert --to notebook --execute $n
           [ $? -eq 0 ] && jupyter nbconvert --to python $n
