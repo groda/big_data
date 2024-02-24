@@ -6,9 +6,9 @@ run-name: Run notebooks 🚀
 # (at the moment this is done only for one file since not all notebook files are ready)
 # also it would be better to create an image instead of downloading software every time
 on: 
-  workflow_dispatch
-  #push:
-    #branches: [master]
+  #workflow_dispatch
+  push:
+    branches: [dev]
 permissions:
   contents: write
 jobs:
@@ -54,7 +54,7 @@ jobs:
         # just notebooks containing "Colab" in name 
         # Run_Spark_on_Google_Colab.ipynb OK
         # Hadoop_single_node_cluster_setup_Python.ipynb cannot install ssh server
-        for n in PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb
+        for n in ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb 
         do
           jupyter nbconvert --to notebook --execute $n
           if [ $? -eq 0 ]; then
