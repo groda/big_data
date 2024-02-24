@@ -48,7 +48,7 @@ jobs:
       run: |
         date > action_log.txt
         git checkout dev
-        git fetch origin
+        git fetch origin dev
         git merge origin/master
         git config user.name github-actions
         git config user.email github-actions@github.com
@@ -71,5 +71,5 @@ jobs:
         # https://github.com/actions/checkout?tab=readme-ov-file#push-a-commit-using-the-built-in-token
         git add ./action_log.txt
         git commit -m "generated"
-        git push          
+        git push origin/dev       
  
