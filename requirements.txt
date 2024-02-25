@@ -1,3 +1,2 @@
 nbconvert
 jupyter
-pandas==1.5.3
