@@ -7,7 +7,7 @@ run-name: Run notebooks 🚀
 # also it would be better to create an image instead of downloading software every time
 ## see https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 on: 
-  #workflow_dispatch
+  # workflow_dispatch
   # trigger workflow on push to the dev branch but not for changes in workflows
   push:
     branches: [dev]
