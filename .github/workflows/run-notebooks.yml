@@ -10,7 +10,7 @@ on:
   # workflow_dispatch
   # trigger workflow on push to the master branch of .ipynb file
   push:
-    branches: [master]
+    branches: [master, dev]
     paths:
       - '/*.ipynb'
 permissions:
