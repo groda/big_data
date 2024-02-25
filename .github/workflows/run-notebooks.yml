@@ -5,6 +5,7 @@ run-name: Run notebooks 🚀
 # Run-Notebooks converts ipynb files to Python with nbconvert and runs them on the Ubuntu box
 # (at the moment this is done only for one file since not all notebook files are ready)
 # also it would be better to create an image instead of downloading software every time
+## see https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 on: 
   #workflow_dispatch
   # trigger workflow on push to the dev branch but not for changes in workflows
