@@ -8,11 +8,11 @@ run-name: Run notebooks 🚀
 ## see https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 on: 
   # workflow_dispatch
-  # trigger workflow on push to the dev branch but not for changes in workflows
+  # trigger workflow on push to the master branch of .ipynb file
   push:
-    branches: [dev]
-    paths-ignore:
-      - '/.github/workflows/*'
+    branches: [master]
+    paths:
+      - '/*.ipynb'
 permissions:
   contents: write
 jobs:
