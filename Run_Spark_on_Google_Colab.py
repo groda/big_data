@@ -19,7 +19,7 @@
 # 
 # The following code should also run on any Ubuntu machine or Docker container except for the Web servers links.
 
-# In[ ]:
+# In[1]:
 
 
 import requests
@@ -79,7 +79,7 @@ else:
 print("
 1️⃣   Download and install Hadoop and Spark")
 # URL for downloading Hadoop and Spark
-SPARK_VERSION = "3.5.0"
+SPARK_VERSION = "3.5.1"
 HADOOP_SPARK_URL = "https://dlcdn.apache.org/spark/spark-" + SPARK_VERSION + \
                    "/spark-" + SPARK_VERSION + "-bin-hadoop3.tgz"
 r = requests.head(HADOOP_SPARK_URL)
@@ -197,7 +197,7 @@ if IN_COLAB:
 # 
 # $100$ is the number of iterations.
 
-# In[ ]:
+# In[2]:
 
 
 get_ipython().run_cell_magic('bash', '', '
@@ -217,7 +217,7 @@ $SPARK_HOME/bin/spark-submit \
 # 
 # The source code for this example is available on GitHub at: https://github.com/apache/spark/blob/master/examples/src/main/java/org/apache/spark/examples/JavaWordCount.java
 
-# In[ ]:
+# In[3]:
 
 
 get_ipython().run_cell_magic('bash', '', '
@@ -227,7 +227,7 @@ URL="https://www.gutenberg.org/cache/epub/71036/pg71036.txt"
 ')
 
 
-# In[ ]:
+# In[4]:
 
 
 get_ipython().run_cell_magic('bash', '', '
@@ -252,7 +252,7 @@ head /tmp/JavaWordCount.out
 # 
 # The Spark Web UI is available at:
 
-# In[ ]:
+# In[5]:
 
 
 if IN_COLAB:
@@ -266,7 +266,7 @@ if IN_COLAB:
 # 
 # The Spark History Server is available at:
 
-# In[ ]:
+# In[6]:
 
 
 if IN_COLAB:
@@ -278,7 +278,7 @@ if IN_COLAB:
 
 # ### Logs for the Spark Master
 
-# In[ ]:
+# In[7]:
 
 
 get_ipython().system('head -20 $SPARK_HOME/logs/*Master*.out')
@@ -286,7 +286,7 @@ get_ipython().system('head -20 $SPARK_HOME/logs/*Master*.out')
 
 # ### Logs for the Spark Worker
 
-# In[ ]:
+# In[8]:
 
 
 get_ipython().system('head -20 $SPARK_HOME/logs/*Worker*.out')
@@ -294,7 +294,7 @@ get_ipython().system('head -20 $SPARK_HOME/logs/*Worker*.out')
 
 # ### Spark events (used by History Server)
 
-# In[ ]:
+# In[9]:
 
 
 get_ipython().system('head -20 /tmp/spark-events/*')
@@ -305,7 +305,7 @@ get_ipython().system('head -20 /tmp/spark-events/*')
 # To customize Spark use the configuration templates in `$SPARK_HOME/conf` (remove the template extension).
 # 
 
-# In[ ]:
+# In[10]:
 
 
 get_ipython().system('ls -al $SPARK_HOME/conf')
@@ -315,7 +315,7 @@ get_ipython().system('ls -al $SPARK_HOME/conf')
 # 
 # Stop all services.
 
-# In[ ]:
+# In[11]:
 
 
 get_ipython().run_cell_magic('bash', '', '$SPARK_HOME/sbin/stop-history-server.sh
