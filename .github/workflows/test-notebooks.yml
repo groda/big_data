@@ -1,18 +1,14 @@
-name: Run Notebooks on Ubuntu v2
-run-name: Run notebooks v2 🚀
+name: Run Notebooks on Ubuntu
+run-name: Run notebooks 🚀
 # work in progress
 # this action runs two jobs: List-Notebook-Files and Run-Notebooks
 # Run-Notebooks converts ipynb files to Python with nbconvert and runs them on the Ubuntu box
 # (at the moment this is done only for one file since not all notebook files are ready)
 # also it would be better to create an image instead of downloading software every time
-## see https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 on: 
   workflow_dispatch
-  # trigger workflow on push to the master branch of .ipynb file
-  # push:
-  #   branches: [master, dev]
-  #   paths:
-  #     - '/*.ipynb'
+  #push:
+    #branches: [master]
 permissions:
   contents: write
 jobs:
@@ -35,12 +31,8 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        sparse-checkout: |
-          ngrams_with_pyspark.ipynb
-          PySpark_On_Google_Colab.ipynb
-          
+      uses: actions/checkout@v3
+
     - name: Set up Python environment
       uses: actions/setup-python@v2
       with:
@@ -55,12 +47,12 @@ jobs:
     - name: Run Jupyter Notebooks testing
       run: |
         date > action_log.txt
-        git status
-        git pull --rebase --autostash origin master
+        git pull
         git config user.name github-actions
         git config user.email github-actions@github.com
         set -e
-        # just "runnable" notebooks  
+        # just notebooks containing "Colab" in name 
+        # Run_Spark_on_Google_Colab.ipynb OK
         # Hadoop_single_node_cluster_setup_Python.ipynb cannot install ssh server
         for n in ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb 
         do
