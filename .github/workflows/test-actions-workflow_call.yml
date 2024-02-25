@@ -1,4 +1,4 @@
-name: Test Github Actions: on.workflow_call.inputs
+name: Test Github Actions workflow_call.inputs
 run-name: Testing actions: on.workflow_call.inputs 🔍
 # work in progress
 # this action runs two jobs: Job1 and Job2
