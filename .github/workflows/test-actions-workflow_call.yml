@@ -1,5 +1,5 @@
 name: Test Github Actions workflow_call.inputs
-run-name: Testing actions: on.workflow_call.inputs 🔍
+run-name: Testing actions on.workflow_call.inputs 🔍
 # work in progress
 # this action runs two jobs: Job1 and Job2
 ## see https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
