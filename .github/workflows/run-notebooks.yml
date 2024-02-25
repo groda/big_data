@@ -61,7 +61,8 @@ jobs:
         set -e
         # just "runnable" notebooks  
         # Hadoop_single_node_cluster_setup_Python.ipynb cannot install ssh server
-        for n in ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb 
+        # OK: ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb 
+        for n in Apache_Sedona_with_PySpark.ipynb 
         do
           jupyter nbconvert --to notebook --execute $n
           if [ $? -eq 0 ]; then
