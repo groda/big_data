@@ -58,11 +58,12 @@ jobs:
         git config user.name github-actions
         git config user.email github-actions@github.com
         date > action_log.txt
+        echo "These notebooks were tested on ubuntu-latest:" >> action_log.txt
         set -e
         # just "runnable" notebooks  
         # Hadoop_single_node_cluster_setup_Python.ipynb cannot install ssh server
         # OK: ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb 
-        for n in Apache_Sedona_with_PySpark.ipynb 
+        for n in Apache_Sedona_with_PySpark.ipynb ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb
         do
           jupyter nbconvert --to notebook --execute $n
           if [ $? -eq 0 ]; then
