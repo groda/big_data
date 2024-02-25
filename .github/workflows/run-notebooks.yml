@@ -7,12 +7,12 @@ run-name: Run notebooks 🚀
 # also it would be better to create an image instead of downloading software every time
 ## see https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 on: 
-  # workflow_dispatch
+  workflow_dispatch
   # trigger workflow on push to the master branch of .ipynb file
-  push:
-    branches: [master, dev]
-    paths:
-      - '/*.ipynb'
+  # push:
+  #   branches: [master, dev]
+  #   paths:
+  #     - '/*.ipynb'
 permissions:
   contents: write
 jobs:
