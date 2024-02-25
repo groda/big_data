@@ -1,5 +1,6 @@
-Sun Feb 25 21:33:03 UTC 2024
+Sun Feb 25 22:04:01 UTC 2024
 These notebooks were tested on ubuntu-latest:
+✅ generate_data_with_Faker.ipynb
 ✅ Apache_Sedona_with_PySpark.ipynb
 ✅ ngrams_with_pyspark.ipynb
 ✅ PySpark_On_Google_Colab.ipynb
