@@ -7,8 +7,11 @@ run-name: Run notebooks 🚀
 # also it would be better to create an image instead of downloading software every time
 on: 
   #workflow_dispatch
-  #push:
-    #branches: [dev]
+  # trigger workflow on push to the dev branch but not for changes in workflows
+  push:
+    branches: [dev]
+    paths-ignore:
+      - '/.github/workflows/'
 permissions:
   contents: write
 jobs:
