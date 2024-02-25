@@ -54,10 +54,10 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Run Jupyter Notebooks testing
       run: |
-        date > action_log.txt
         git pull
         git config user.name github-actions
         git config user.email github-actions@github.com
+        date > action_log.txt
         set -e
         # just "runnable" notebooks  
         # Hadoop_single_node_cluster_setup_Python.ipynb cannot install ssh server
