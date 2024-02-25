@@ -1,0 +1,12 @@
+name: Call other test-actions workflows 
+run-name: Test all actions 🚀
+# work in progress
+## see https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+## see https://docs.github.com/en/actions/using-workflows/reusing-workflows#calling-a-reusable-workflow
+on: 
+  workflow_dispatch
+jobs:
+  call-workflow-1-in-local-repo:
+    uses: ./.github/workflows/test-actions-workflow_call.yml
+# call-workflow-in-another-repo:
+#   uses: octo-org/another-repo/.github/workflows/workflow.yml@v1
