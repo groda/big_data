@@ -7,8 +7,8 @@ run-name: Run notebooks 🚀
 # also it would be better to create an image instead of downloading software every time
 on: 
   #workflow_dispatch
-  push:
-    branches: [dev]
+  #push:
+    #branches: [dev]
 permissions:
   contents: write
 jobs:
@@ -31,8 +31,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
-
+      uses: actions/checkout@v4
+      with:
+        sparse-checkout: |
+          ngrams_with_pyspark.ipynb
+          PySpark_On_Google_Colab.ipynb
+          
     - name: Set up Python environment
       uses: actions/setup-python@v2
       with:
