@@ -38,5 +38,9 @@ Explore a variety of tutorials and interactive demonstrations focused on Big Dat
 
 # About this repository
 
+## Testing/CI 
+
 All executable Jupyter notebooks are run on an Ubuntu machine through a GitHub automated workflow. The log file for successful executions is named: [action_log.txt](https://github.com/groda/big_data/blob/master/action_log.txt).
+
+Current status: [![Run Notebooks on Ubuntu](https://github.com/groda/big_data/actions/workflows/run-notebooks.yml/badge.svg)](https://github.com/groda/big_data/actions/workflows/run-notebooks.yml)
 
