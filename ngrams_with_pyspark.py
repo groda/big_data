@@ -206,7 +206,7 @@ While n-grams were crucial in the early development of language models, the fiel
 # 
 # ## Comparing model sizes: a rough estimate of N-gram versus Transformer dimensions
 # 
-# An interesting point to note is that n-gram models have an order of magnitude smaller storage footprint compared to transformer models, especially in terms of model size. This discrepancy is apparent because transformers learn more intricate patterns, relationships, and context-aware representations, resulting in significantly larger model sizes.
+# An interesting point to note is that n-gram models have an order of magnitude smaller storage footprint compared to transformer models, especially in terms of model size. This discrepancy is not surprising given the fact that transformers learn more intricate patterns, relationships, and context-aware representations, resulting in significantly larger model sizes.
 # 
 # Here are some rough estimates of model sizes just to get an idea:
 # 
