@@ -36,3 +36,7 @@ Explore a variety of tutorials and interactive demonstrations focused on Big Dat
 ## Links
 - **[online_resources.md](online_resources.md)** Online resources for learning Big Data
 
+# About this repository
+
+All executable Jupyter notebooks are run on an Ubuntu machine through a GitHub automated workflow. The log file for successful executions is named: [action_log.txt](https://github.com/groda/big_data/blob/master/action_log.txt).
+
