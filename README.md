@@ -14,7 +14,7 @@ Explore a variety of tutorials and interactive demonstrations focused on Big Dat
   - **[PySpark_On_Google_Colab.ipynb](PySpark_On_Google_Colab.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/PySparkOnColab.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Explore the inner workings of PySpark on Google Colab ![recently updated](https://github.com/groda/big_data/blob/master/updated.gif?raw=true)
 
 ## Miscellaneous tutorials
-- **[generate_data_with_Faker.ipynb](generate_data_with_Faker.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/generate_data_with_Faker.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Generate fake data with the Faker Python library
+- **[generate_data_with_Faker.ipynb](generate_data_with_Faker.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/generate_data_with_Faker.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Data Generation and Aggregation with Python's Faker Library and PySpark ![recently updated](https://github.com/groda/big_data/blob/master/updated.gif?raw=true)
 - **[mapreduce_with_bash.ipynb](mapreduce_with_bash.ipynb)** An introduction to MapReduce using MapReduce Streaming and bash to create mapper and reducer
 - **[simplest_mapreduce_bash_wordcount.ipynb](simplest_mapreduce_bash_wordcount.ipynb)** A very basic MapReduce wordcount example
 - **[mrjob_wordcount.ipynb](mrjob_wordcount.ipynb)** A simple MapReduce job with mrjob
