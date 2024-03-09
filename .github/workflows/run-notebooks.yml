@@ -74,7 +74,7 @@ jobs:
            # get the Python file's name by removing .ipynb extension from $n and then adding .py
            file=$(basename $n .ipynb)'.py'
            echo "Python file: $file"
-           if ! [ -f /path/to/file ]; then
+           if ! [ -f $file ]; then
              echo "File does not exist."
            else
               header="# This file was generated from $n with nbconvert\n# Source: https://github.com/${{ github.repository }}\n\n"
@@ -82,7 +82,7 @@ jobs:
               # push .py file
               git add $file
            fi
-           git add $(basename $n ipynb)nbconvert.ipynb 2>/dev/null
+           git add $(basename $n .ipynb)'.nbconvert.ipynb' 2>/dev/null
           else
             echo ❌ $n >>action_log.txt
           fi
