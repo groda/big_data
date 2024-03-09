@@ -63,7 +63,7 @@ jobs:
         # just "runnable" notebooks  
         # Hadoop_single_node_cluster_setup_Python.ipynb cannot install ssh server
         # OK: ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb 
-        for n in Encoding+dataframe+columns.ipynb \
+        for n in MapReduce_Primer_HelloWorld Encoding+dataframe+columns.ipynb \
                  generate_data_with_Faker.ipynb Apache_Sedona_with_PySpark.ipynb \
                  ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb
         do
