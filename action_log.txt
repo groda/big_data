@@ -1,5 +1,6 @@
-Mon Feb 26 10:11:30 UTC 2024
-These notebooks were tested on ubuntu-latest:
+Sat Mar  9 20:33:04 UTC 2024
+The following notebooks were successfully executed on ubuntu-latest:
+✅ MapReduce_Primer_HelloWorld
 ✅ Encoding+dataframe+columns.ipynb
 ✅ generate_data_with_Faker.ipynb
 ✅ Apache_Sedona_with_PySpark.ipynb
