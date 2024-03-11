@@ -90,7 +90,9 @@ jobs:
           fi
         done
         end=`date +%s`
-        echo "Runtime: $((end-start))" >>action_log.txt
+        sec2min() { printf "%d:%02d" "$((10#$1 / 60))" "$((10#$1 % 60))"; }
+        runtime=$(sec2min $((end-start)))
+        echo "Runtime: $runtime" >>action_log.txt
         # https://github.com/actions/checkout?tab=readme-ov-file#push-a-commit-using-the-built-in-token
         git add ./action_log.txt
         git commit -m "generated"
