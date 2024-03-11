@@ -1,4 +1,4 @@
-# This file was generated from MapReduce_Primer_HelloWorld with nbconvert
+# This file was generated from MapReduce_Primer_HelloWorld.ipynb with nbconvert
 # Source: https://github.com/groda/big_data
 
  #!/usr/bin/env python
@@ -22,7 +22,9 @@
 # 
 # > ❝ _Hadoop streaming is a utility that comes with the Hadoop distribution. The utility allows you to create and run Map/Reduce jobs with any executable or script as the mapper and/or the reducer._ ❞
 # 
-# MapReduce streaming defaults to using `IdentityMapper` `IdentityReducer`, thus eliminating the need for explicit specification of a mapper or reducer. Finally, we show how to run a map-only job by setting `mapreduce.job.reduce` equal to $0$.
+# MapReduce streaming defaults to using [`IdentityMapper`](https://hadoop.apache.org/docs/stable/api/index.html) and [`IdentityReducer`](https://hadoop.apache.org/docs/stable/api/index.html), thus eliminating the need for explicit specification of a mapper or reducer. Finally, we show how to run a map-only job by setting `mapreduce.job.reduce` equal to $0$.
+# 
+# Both input and output are standard files since Hadoop's default filesystem is the regular file system, as specified by the `fs.defaultFS` property in [core-default.xml](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/core-default.xml)).
 # 
 
 # # Download core Hadoop
