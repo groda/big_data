@@ -63,6 +63,7 @@ jobs:
         # just "runnable" notebooks  
         # Hadoop_single_node_cluster_setup_Python.ipynb cannot install ssh server
         # OK: ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb 
+        start=`date +%s`
         for n in MapReduce_Primer_HelloWorld_bash.ipynb MapReduce_Primer_HelloWorld.ipynb \
                  Encoding+dataframe+columns.ipynb \
                  generate_data_with_Faker.ipynb Apache_Sedona_with_PySpark.ipynb \
@@ -88,6 +89,8 @@ jobs:
             echo ❌ $n >>action_log.txt
           fi
         done
+        end=`date +%s`
+        echo "Runtime: $((end-start))" >>action_log.txt
         # https://github.com/actions/checkout?tab=readme-ov-file#push-a-commit-using-the-built-in-token
         git add ./action_log.txt
         git commit -m "generated"
