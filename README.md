@@ -4,12 +4,12 @@
 
 Explore a variety of tutorials and interactive demonstrations focused on Big Data technologies like Hadoop, Spark, and more, primarily presented in the format of Jupyter notebooks.
 
-## Setting Up Hadoop on Google Colab: Single-Node Configuration
+## Setting Up Hadoop: Single-Node Configuration
   - **[Hadoop_Setting_up_a_Single_Node_Cluster.ipynb](Hadoop_Setting_up_a_Single_Node_Cluster.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/Hadoop_Setting_up_a_Single_Node_Cluster.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Set up a single-node Hadoop cluster on Google Colab and run some basic HDFS and MapReduce examples 
   - **[Hadoop_single_node_cluster_setup_Python.ipynb](Hadoop_single_node_cluster_setup_Python.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/Hadoop_single_node_cluster_setup_Python.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Set up a single-node Hadoop cluster on Google Colab using Python ![recently updated](https://github.com/groda/big_data/blob/master/updated.gif?raw=true)
 
-## Running Apache Spark in Standalone Mode on Google Colab
+## Running Apache Spark in Standalone Mode
   - **[Hadoop_Setting_up_Spark_Standalone_on_Google_Colab.ipynb](Hadoop_Setting_up_Spark_Standalone_on_Google_Colab.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/Hadoop_Setting_up_Spark_Standalone_on_Google_Colab.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Set up a single-node Spark server on Google Colab and estimate „π“ with a Montecarlo method
   - **[Run_Spark_on_Google_Colab.ipynb](Run_Spark_on_Google_Colab.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/Run_Spark_on_Google_Colab.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Set up a single-node standalone Spark server on Google Colab including Web UI and History Server - compact version ![recently updated](https://github.com/groda/big_data/blob/master/updated.gif?raw=true)
   - **[PySpark_On_Google_Colab.ipynb](PySpark_On_Google_Colab.ipynb)** <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/PySparkOnColab.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> Explore the inner workings of PySpark on Google Colab ![recently updated](https://github.com/groda/big_data/blob/master/updated.gif?raw=true)
