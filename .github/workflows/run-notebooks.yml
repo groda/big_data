@@ -61,10 +61,10 @@ jobs:
         echo "The following notebooks were successfully executed on ubuntu-latest:" >> action_log.txt
         set -e
         # just "runnable" notebooks  
-        # Not OK: MapReduce_Primer_HelloWorld_bash.ipynb hostname Hadoop_single_node_cluster_setup_Python.ipynb cannot install ssh server
-        # OK: ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb 
+        # Not OK: MapReduce_Primer_HelloWorld_bash.ipynb (hostname issue?) 
+        #         Hadoop_single_node_cluster_setup_Python.ipynb (ssh server?)
         start=`date +%s`
-        for n in Hadoop_minicluster.ipynb \
+        for n in GutenbergBooks.ipynb Hadoop_minicluster.ipynb \
                  MapReduce_Primer_HelloWorld.ipynb \
                  Encoding+dataframe+columns.ipynb \
                  generate_data_with_Faker.ipynb Apache_Sedona_with_PySpark.ipynb \
