@@ -61,8 +61,8 @@ jobs:
         echo "The following notebooks were successfully executed on ubuntu-latest:" >> action_log.txt
         set -e
         # just "runnable" notebooks  
-        # Not OK: MapReduce_Primer_HelloWorld_bash.ipynb (hostname issue?) 
-        #         Hadoop_single_node_cluster_setup_Python.ipynb (ssh server?)
+        # Hadoop_single_node_cluster_setup_Python.ipynb cannot install ssh server
+        # OK: ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb 
         start=`date +%s`
         for n in GutenbergBooks.ipynb Hadoop_minicluster.ipynb \
                  MapReduce_Primer_HelloWorld.ipynb \
@@ -70,7 +70,7 @@ jobs:
                  generate_data_with_Faker.ipynb Apache_Sedona_with_PySpark.ipynb \
                  ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb
         do
-          jupyter nbconvert --to notebook --execute $n 2>/dev/null
+          jupyter nbconvert --to notebook --execute $n
           if [ $? -eq 0 ]; then
            echo ✅ $n >>action_log.txt
            jupyter nbconvert --to python $n 
