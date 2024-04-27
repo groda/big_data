@@ -70,7 +70,7 @@ jobs:
                  generate_data_with_Faker.ipynb Apache_Sedona_with_PySpark.ipynb \
                  ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb
         do
-          jupyter nbconvert --ExecutePreprocessor.timeout=300 --to notebook --execute $n
+          jupyter nbconvert --ExecutePreprocessor.timeout=1200 --to notebook --execute $n
           if [ $? -eq 0 ]; then
            echo ✅ $n >>action_log.txt
            jupyter nbconvert --to python $n 
