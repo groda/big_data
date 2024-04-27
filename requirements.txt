@@ -2,3 +2,4 @@ nbconvert
 jupyter
 pandas
 matplotlib
+portpicker
