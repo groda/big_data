@@ -71,11 +71,12 @@ jobs:
         # just "runnable" notebooks  
         # Not OK: Hadoop_single_node_cluster_setup_Python.ipynb cannot install ssh server
         #         MapReduce_Primer_HelloWorld.ipynb 
+        #         Apache_Sedona_with_PySpark.ipynb 
         start=`date +%s`
         for n in Spark_Standalone_Architecture_on_Google_Colab \
                  GutenbergBooks.ipynb Hadoop_minicluster.ipynb \
                  Encoding+dataframe+columns.ipynb \
-                 generate_data_with_Faker.ipynb Apache_Sedona_with_PySpark.ipynb \
+                 generate_data_with_Faker.ipynb \ 
                  ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb
         do
           jupyter nbconvert --log-level=DEBUG --to notebook --execute $n
