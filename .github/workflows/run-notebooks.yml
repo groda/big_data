@@ -76,7 +76,7 @@ jobs:
         for n in Spark_Standalone_Architecture_on_Google_Colab \
                  GutenbergBooks.ipynb Hadoop_minicluster.ipynb \
                  Encoding+dataframe+columns.ipynb \
-                 generate_data_with_Faker.ipynb \ 
+                 generate_data_with_Faker.ipynb \
                  ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb
         do
           jupyter nbconvert --log-level=DEBUG --to notebook --execute $n
