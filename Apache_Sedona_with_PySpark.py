@@ -10,171 +10,93 @@
 # <a href="https://github.com/groda/big_data"><div><img src="https://github.com/groda/big_data/blob/master/logo_bdb.png?raw=true" align=right width="90" alt="Logo Big Data for Beginners"></div></a>
 # # Apache Sedona with PySpark
 # 
-# Apache Sedona™ is
+# Apache Sedona™ is a prime example of a distributed engine built on top of Spark, specifically designed for geographic data processing.
 # 
-# > *a cluster computing system for processing large-scale spatial data. Sedona extends existing cluster computing systems, such as Apache Spark, Apache Flink, and Snowflake, with a set of out-of-the-box distributed Spatial Datasets and Spatial SQL that efficiently load, process, and analyze large-scale spatial data across machines.* ([https://sedona.apache.org/](https://sedona.apache.org/))
+# The home page describes Apache Sedona ([https://sedona.apache.org/](https://sedona.apache.org/)) as:
 # 
-# To execute a basic Sedona demonstration using PySpark on Google Colab, we made a few minor adjustments. The Sedona notebook starts below at [Apache Sedona Core demo](#scrollTo=Apache_Sedona_Core_demo).
+# > *a cluster computing system for processing large-scale spatial data. Sedona extends existing cluster computing systems, such as Apache Spark, Apache Flink, and Snowflake, with a set of out-of-the-box distributed Spatial Datasets and Spatial SQL that efficiently load, process, and analyze large-scale spatial data across machines.*
+# 
+# In this notebook we are going to execute a basic Sedona demonstration using PySpark. The Sedona notebook starts below at [Apache Sedona Core demo](#scrollTo=Apache_Sedona_Core_demo).
 # 
 # 
 
-# ## Install Apache Sedona and PySpark
+# ## Install Apache Sedona, PySpark, and required libraries
 # 
-# To start with, we are going to install PySpark with Sedona following the instructions at: https://sedona.apache.org/latest-snapshot/setup/install-python/ but first we need to downgrade `shapely` because the version 2.0.2 that comes with Google Colab does not play well with the current version of Apache Sedona (see https://shapely.readthedocs.io/en/stable/migration.html).
+# To start with, we are going to install `apache-sedona` and PySpark making sure that we have the desired Spark version.
+# 
+# 
+# The required packages are specified in this [Pipfile](https://github.com/apache/sedona/blob/master/python/Pipfile) under `[packages]`:
+# 
+# ```
+# [packages]
+# pandas="<=1.5.3"
+# geopandas="*"
+# shapely=">=1.7.0"
+# pyspark=">=2.3.0"
+# attrs="*"
+# pyarrow="*"
+# keplergl = "==0.3.2"
+# pydeck = "===0.8.0"
+# rasterio = ">=1.2.10"
+# ```
 
-# ### Downgrade Shapely to version 1.7.1
-# 
-# We need to install install any version of `shapely>=1.7.0` but smaller than `2.0`. We picked `1.7.1` because with 1.7.0 we got the error
-# 
-#     geopandas 0.13.2 requires shapely>=1.7.1, but you have shapely 1.7.0 which is incompatible.
-# 
-# Explanation for `pip -I`:
-# 
-# - [`-I, --ignore-installed`](https://pip.pypa.io/en/stable/cli/pip_install/#cmdoption-I)
-# > Ignore the installed packages, overwriting them. This can break your system if the existing package is of a different version or was installed with a different package manager!
-# 
-# 
-# 
-# 
-# 
-# 
+# Install Apache Sedona without Spark. To install Spark as well you can use `pip install apache-sedona[spark]` but we chose to use the Spark engine that comes with PySpark.
 
 # In[1]:
 
 
-get_ipython().system('pip install -I shapely==1.7.1')
+get_ipython().system('pip install apache-sedona')
 
 
-# ### Install Geopandas
-# 
-# This step is only needed outside of Colab because on Google Colab `geopandas` is available by default.
+# For the sake of this tutorial we are going to use the Spark engine that is included in the Pyspark distribution. Since Sedona needs Spark $3.4.0$ we need to make sure that we choose the correct PySpark version.
 
 # In[2]:
 
 
-get_ipython().system('pip install geopandas==0.13.2')
+get_ipython().system('pip install pyspark==3.4.0')
 
 
-# ### Install Apache Sedona and PySpark
-# 
-# We can now install Apache Sedona together with PySpark (and Spark).
+# Verify that PySpark is using Spark version $3.4.0$.
 
 # In[3]:
 
 
-get_ipython().system('pip install apache-sedona[spark]')
+get_ipython().system('pyspark --version')
 
+
+# ### Install Geopandas
+# 
+# The libraries `geopandas` and `shapely` are available by default on Google Colab.
 
 # In[4]:
 
 
-get_ipython().run_line_magic('env', 'SPARK_HOME = "/usr/local/lib/python3.10/dist-packages/pyspark"')
+get_ipython().system('pip install geopandas')
 
 
 # In[5]:
 
 
-get_ipython().run_line_magic('env', 'PYTHONPATH = /usr/local/lib/python3.10/dist-packages/pyspark/python')
+get_ipython().system('pip install shapely')
 
+
+# ## Download the data
+# 
+# Since the data for the demo is in the Sedona's Github repository, we are going to clone Sedona's GitHub source code and copy the `data` folder under the current directory. We actually do not need the whole repository, just the `data` folder.
 
 # In[6]:
 
 
-get_ipython().system('pip info pyspark')
-
-
-# ## Setup environment variables
-# 
-# We need to set two environment variables:
-# 
-# - `SPARK_HOME`
-# - `PYTHONPATH`
-# 
-# Once we have set `SPARK_HOME`, the variable `PYTHONPATH` is `$SPARK_HOME/python`.
-# 
-# ### Find Spark home
-# 
-# There's an utility to find Spark home and I always forget how it's called exactly, what I remember is that it contains `"find"` and `"spark"`. Let us search for it:
-
-# In[7]:
-
-
-get_ipython().system('find / -name "*find*spark*"')
-
-
-# The script `/usr/local/bin/find_spark_home.py` is successful at finding Spark's home.
-
-# #### Set `SPARK_HOME`
-
-# In[8]:
-
-
-import sys
-import os
-IN_COLAB = 'google.colab' in sys.modules
-if IN_COLAB:
-  output = get_ipython().getoutput('python /usr/local/bin/find_spark_home.py')
-else:
-  output = get_ipython().getoutput('find / -name "pyspark" -type d 2>/dev/null|head -1')
-# Store the output using %store
-get_ipython().run_line_magic('store', 'output')
-# get rid of extra quotation marks
-os.environ['SPARK_HOME'] = output[0].replace('"', '')
-
-
-# In[9]:
-
-
-get_ipython().system('pip show pyspark')
-
-
-# Verify that the correct `SPARK_HOME` has been set.
-
-# In[10]:
-
-
-os.environ['SPARK_HOME']
-
-
-# In[11]:
-
-
-get_ipython().run_line_magic('env', 'SPARK_HOME')
-
-
-# #### Set `PYTHONPATH`
-
-# In[12]:
-
-
-os.environ['PYTHONPATH'] = os.environ['SPARK_HOME'] + '/python'
-
-
-# Check
-
-# In[13]:
-
-
-get_ipython().run_line_magic('env', 'PYTHONPATH')
-
-
-# ## Download data
-# 
-# In order to run, the Sedona notebook expects to find some specific files in the local folder `data`. Let us populate `data` with the files from the Sedona Github repository.
-
-# In[14]:
-
-
-get_ipython().run_cell_magic('bash', '', '# it would be more efficient to just download the "data" folder and not the whole repo
+get_ipython().run_cell_magic('bash', '', '
 [ -d sedona ] || git clone https://github.com/apache/sedona.git
 
-cp -r sedona/binder/data ./
+cp -r sedona/docs/usecases/data ./
 ')
 
 
 # Verify the presence of data in the designated `data` folder.
 
-# In[15]:
+# In[7]:
 
 
 get_ipython().system('ls data')
@@ -182,8 +104,11 @@ get_ipython().system('ls data')
 
 # # Apache Sedona Core demo
 # 
-# The notebook is available at the following link:
-# https://github.com/apache/sedona/blob/master/binder/ApacheSedonaCore.ipynb
+# The notebook is available at the following link: https://github.com/apache/sedona/blob/master/docs/usecases/ApacheSedonaCore.ipynb.
+# 
+# Refer to https://mvnrepository.com/artifact/org.apache.sedona/sedona-spark-3.4 for making sense of packages and versions.
+# 
+# 
 # 
 
 # ```
@@ -203,7 +128,7 @@ get_ipython().system('ls data')
 # under the License.
 # ```
 
-# In[16]:
+# In[8]:
 
 
 from pyspark.sql import SparkSession
@@ -221,31 +146,42 @@ from sedona.spark import *
 from sedona.core.geom.envelope import Envelope
 
 
-# In[17]:
+# Note: the next cell might take a while to execute. Stretch your legs and contemplate the mysteries of the universe in the meantime. Hang tight!
+
+# In[9]:
 
 
 config = SedonaContext.builder() .\
     config('spark.jars.packages',
-           'org.apache.sedona:sedona-spark-3.4_2.12:1.5.1,'
-           'org.datasyslab:geotools-wrapper:1.5.1-28.2,'
+           'org.apache.sedona:sedona-spark-3.4_2.12:1.6.0,'
+           'org.datasyslab:geotools-wrapper:1.6.0-28.2,'
            'uk.co.gresearch.spark:spark-extension_2.12:2.11.0-3.4'). \
-    config('spark.jars.repositories', 'https://artifacts.unidata.ucar.edu/repository/unidata-all'). \
     getOrCreate()
+
 
 sedona = SedonaContext.create(config)
 
 
-# In[18]:
+# In[10]:
 
 
 sc = sedona.sparkContext
+sc
+
+
+# `config` is the Spark session
+
+# In[11]:
+
+
+type(config)
 
 
 # # Create SpatialRDD
 
 # ## Reading to PointRDD from CSV file
 
-# Suppose we want load the CSV file into Apache Sedona PointRDD
+# We now want load the CSV file into Apache Sedona PointRDD
 # ```
 # testattribute0,-88.331492,32.324142,testattribute1,testattribute2
 # testattribute0,-88.175933,32.360763,testattribute1,testattribute2
@@ -255,20 +191,26 @@ sc = sedona.sparkContext
 # testattribute0,-88.231077,32.700812,testattribute1,testattribute2
 # ```
 
-# In[19]:
+# In[12]:
+
+
+get_ipython().system('head data/arealm-small.csv')
+
+
+# In[13]:
 
 
 point_rdd = PointRDD(sc, "data/arealm-small.csv", 1, FileDataSplitter.CSV, True, 10)
 
 
-# In[20]:
+# In[14]:
 
 
 ## Getting approximate total count
 point_rdd.approximateTotalCount
 
 
-# In[21]:
+# In[15]:
 
 
 # getting boundary for PointRDD or any other SpatialRDD, it returns Enelope object which inherits from
@@ -276,14 +218,14 @@ point_rdd.approximateTotalCount
 point_rdd.boundary()
 
 
-# In[22]:
+# In[16]:
 
 
 # To run analyze please use function analyze
 point_rdd.analyze()
 
 
-# In[23]:
+# In[17]:
 
 
 # Finding boundary envelope for PointRDD or any other SpatialRDD, it returns Enelope object which inherits from
@@ -291,28 +233,28 @@ point_rdd.analyze()
 point_rdd.boundaryEnvelope
 
 
-# In[24]:
+# In[18]:
 
 
 # Calculate number of records without duplicates
 point_rdd.countWithoutDuplicates()
 
 
-# In[25]:
+# In[19]:
 
 
 # Getting source epsg code
 point_rdd.getSourceEpsgCode()
 
 
-# In[26]:
+# In[20]:
 
 
 # Getting target epsg code
 point_rdd.getTargetEpsgCode()
 
 
-# In[27]:
+# In[21]:
 
 
 # Spatial partitioning data
@@ -327,21 +269,21 @@ point_rdd.spatialPartitioning(GridType.KDBTREE)
 # 
 # You can use any operations on those objects and spread across machines
 
-# In[28]:
+# In[22]:
 
 
 # take firs element
 point_rdd.rawSpatialRDD.take(1)
 
 
-# In[29]:
+# In[23]:
 
 
 # collect to Python list
 point_rdd.rawSpatialRDD.collect()[:5]
 
 
-# In[30]:
+# In[24]:
 
 
 # apply map functions, for example distance to Point(52 21)
@@ -354,13 +296,13 @@ point_rdd.rawSpatialRDD.map(lambda x: x.geom.distance(Point(21, 52))).take(5)
 
 # ### Directly from RDD
 
-# In[31]:
+# In[25]:
 
 
 point_rdd_to_geo = point_rdd.rawSpatialRDD.map(lambda x: [x.geom, *x.getUserData().split("	")])
 
 
-# In[32]:
+# In[26]:
 
 
 point_gdf = gpd.GeoDataFrame(
@@ -368,7 +310,7 @@ point_gdf = gpd.GeoDataFrame(
 )
 
 
-# In[33]:
+# In[27]:
 
 
 point_gdf[:5]
@@ -376,13 +318,13 @@ point_gdf[:5]
 
 # ### Using Adapter
 
-# In[34]:
+# In[28]:
 
 
 # Adapter allows you to convert geospatial data types introduced with sedona to other ones
 
 
-# In[35]:
+# In[29]:
 
 
 spatial_df = Adapter.\
@@ -392,13 +334,13 @@ spatial_df = Adapter.\
 spatial_gdf = sedona.sql("Select attr1, attr2, attr3, geometry as geom from spatial_df")
 
 
-# In[36]:
+# In[30]:
 
 
 spatial_gdf.show(5, False)
 
 
-# In[37]:
+# In[31]:
 
 
 gpd.GeoDataFrame(spatial_gdf.toPandas(), geometry="geom")[:5]
@@ -406,7 +348,7 @@ gpd.GeoDataFrame(spatial_gdf.toPandas(), geometry="geom")[:5]
 
 # ### With DataFrame creation
 
-# In[38]:
+# In[32]:
 
 
 schema = StructType(
@@ -419,13 +361,13 @@ schema = StructType(
 )
 
 
-# In[39]:
+# In[33]:
 
 
 geo_df = sedona.createDataFrame(point_rdd_to_geo, schema, verifySchema=False)
 
 
-# In[40]:
+# In[34]:
 
 
 gpd.GeoDataFrame(geo_df.toPandas(), geometry="geometry")[:5]
@@ -440,7 +382,7 @@ gpd.GeoDataFrame(geo_df.toPandas(), geometry="geometry")[:5]
 # <li> LineStringRDD </li>
 # <li> CircleRDD </li>
 
-# In[41]:
+# In[35]:
 
 
 rectangle_rdd = RectangleRDD(sc, "data/zcta510-small.csv", FileDataSplitter.CSV, True, 11)
@@ -449,7 +391,7 @@ polygon_rdd = PolygonRDD(sc, "data/primaryroads-polygon.csv", FileDataSplitter.C
 linestring_rdd = LineStringRDD(sc, "data/primaryroads-linestring.csv", FileDataSplitter.CSV, True)
 
 
-# In[42]:
+# In[36]:
 
 
 rectangle_rdd.analyze()
@@ -462,7 +404,7 @@ linestring_rdd.analyze()
 
 # Apache Sedona spatial partitioning method can significantly speed up the join query. Three spatial partitioning methods are available: KDB-Tree, Quad-Tree and R-Tree. Two SpatialRDD must be partitioned by the same way.
 
-# In[43]:
+# In[37]:
 
 
 point_rdd.spatialPartitioning(GridType.KDBTREE)
@@ -472,7 +414,7 @@ point_rdd.spatialPartitioning(GridType.KDBTREE)
 
 # Apache Sedona provides two types of spatial indexes, Quad-Tree and R-Tree. Once you specify an index type, Apache Sedona will build a local tree index on each of the SpatialRDD partition.
 
-# In[44]:
+# In[38]:
 
 
 point_rdd.buildIndex(IndexType.RTREE, True)
@@ -502,7 +444,7 @@ point_rdd.buildIndex(IndexType.RTREE, True)
 
 # ## Example SpatialJoinQueryFlat PointRDD with RectangleRDD
 
-# In[45]:
+# In[39]:
 
 
 # partitioning the data
@@ -517,47 +459,42 @@ result = JoinQuery.SpatialJoinQueryFlat(point_rdd, rectangle_rdd, False, True)
 # As result we will get RDD[GeoData, GeoData]
 # It can be used like any other Python RDD. You can use map, take, collect and other functions  
 
-# In[46]:
+# In[40]:
 
 
 result
 
 
-# In[47]:
+# In[41]:
 
 
 result.take(2)
 
 
-# In[48]:
+# In[42]:
 
 
 result.collect()[:3]
 
 
-# In[49]:
+# In[43]:
 
 
 # getting distance using SpatialObjects
 result.map(lambda x: x[0].geom.distance(x[1].geom)).take(5)
 
 
-# In[50]:
+# In[44]:
 
 
 # getting area of polygon data
 result.map(lambda x: x[0].geom.area).take(5)
 
 
-# In[51]:
+# In[45]:
 
 
 # Base on result you can create DataFrame object, using map function and build DataFrame from RDD
-
-
-# In[52]:
-
-
 schema = StructType(
     [
         StructField("geom_left", GeometryType(), False),
@@ -566,7 +503,7 @@ schema = StructType(
 )
 
 
-# In[53]:
+# In[46]:
 
 
 # Set verifySchema to False
@@ -574,21 +511,16 @@ spatial_join_result = result.map(lambda x: [x[0].geom, x[1].geom])
 sedona.createDataFrame(spatial_join_result, schema, verifySchema=False).show(5, True)
 
 
-# In[54]:
+# In[47]:
 
 
 # Above code produces DataFrame with geometry Data type
-
-
-# In[55]:
-
-
 sedona.createDataFrame(spatial_join_result, schema, verifySchema=False).printSchema()
 
 
 # We can create DataFrame object from Spatial Pair RDD using Adapter object as follows
 
-# In[56]:
+# In[48]:
 
 
 Adapter.toDf(result, ["attr1"], ["attr2"], sedona).show(5, True)
@@ -596,7 +528,7 @@ Adapter.toDf(result, ["attr1"], ["attr2"], sedona).show(5, True)
 
 # This also produce DataFrame with geometry DataType
 
-# In[57]:
+# In[49]:
 
 
 Adapter.toDf(result, ["attr1"], ["attr2"], sedona).printSchema()
@@ -607,27 +539,27 @@ Adapter.toDf(result, ["attr1"], ["attr2"], sedona).printSchema()
 
 # To do that we can use code specified below
 
-# In[58]:
+# In[50]:
 
 
 point_rdd.spatialPartitioning(GridType.KDBTREE)
 rectangle_rdd.spatialPartitioning(point_rdd.getPartitioner())
 
 
-# In[59]:
+# In[51]:
 
 
 spatial_join_result_non_flat = JoinQuery.SpatialJoinQuery(point_rdd, rectangle_rdd, False, True)
 
 
-# In[60]:
+# In[52]:
 
 
 # number of point for each polygon
 number_of_points = spatial_join_result_non_flat.map(lambda x: [x[0].geom, x[1].__len__()])
 
 
-# In[61]:
+# In[53]:
 
 
 schema = StructType([
@@ -636,7 +568,7 @@ schema = StructType([
 ])
 
 
-# In[62]:
+# In[54]:
 
 
 sedona.createDataFrame(number_of_points, schema, verifySchema=False).show()
@@ -655,13 +587,13 @@ sedona.createDataFrame(number_of_points, schema, verifySchema=False).show()
 
 # ### Finds 5 closest points from PointRDD to given Point
 
-# In[63]:
+# In[55]:
 
 
 result = KNNQuery.SpatialKnnQuery(point_rdd, Point(-84.01, 34.01), 5, False)
 
 
-# In[64]:
+# In[56]:
 
 
 result
@@ -669,7 +601,7 @@ result
 
 # As Reference geometry you can also use Polygon or LineString object
 
-# In[65]:
+# In[57]:
 
 
 polygon = Polygon(
@@ -680,13 +612,13 @@ polygon = Polygon(
 polygons_nearby = KNNQuery.SpatialKnnQuery(polygon_rdd, polygon, 5, False)
 
 
-# In[66]:
+# In[58]:
 
 
 polygons_nearby
 
 
-# In[67]:
+# In[59]:
 
 
 polygons_nearby[0].geom.wkt
@@ -701,13 +633,13 @@ polygons_nearby[0].geom.wkt
 # SpatialRangeQuery(self, spatialRDD: SpatialRDD, rangeQueryWindow: BaseGeometry, considerBoundaryIntersection: bool, usingIndex: bool) -> RDD
 # ```
 
-# In[68]:
+# In[60]:
 
 
 from sedona.core.geom.envelope import Envelope
 
 
-# In[69]:
+# In[61]:
 
 
 query_envelope = Envelope(-85.01, -60.01, 34.01, 50.01)
@@ -715,31 +647,31 @@ query_envelope = Envelope(-85.01, -60.01, 34.01, 50.01)
 result_range_query = RangeQuery.SpatialRangeQuery(linestring_rdd, query_envelope, False, False)
 
 
-# In[70]:
+# In[62]:
 
 
 result_range_query
 
 
-# In[71]:
+# In[63]:
 
 
 result_range_query.take(6)
 
 
-# In[72]:
+# In[64]:
 
 
 # Creating DataFrame from result
 
 
-# In[73]:
+# In[65]:
 
 
 schema = StructType([StructField("geometry", GeometryType(), False)])
 
 
-# In[74]:
+# In[66]:
 
 
 sedona.createDataFrame(
@@ -757,101 +689,85 @@ sedona.createDataFrame(
 # <li> WKB </li>
 # <li> WKT </li>
 
-# In[75]:
+# ## ShapeFile - load to SpatialRDD
 
-
-## ShapeFile - load to SpatialRDD
-
-
-# In[76]:
+# In[67]:
 
 
 shape_rdd = ShapefileReader.readToGeometryRDD(sc, "data/polygon")
 
 
-# In[77]:
+# In[68]:
 
 
 shape_rdd
 
 
-# In[78]:
+# In[69]:
 
 
 Adapter.toDf(shape_rdd, sedona).show(5, True)
 
 
-# In[79]:
-
-
-## GeoJSON - load to SpatialRDD
-
+# ## GeoJSON - load to SpatialRDD
 
 # ```
 # { "type": "Feature", "properties": { "STATEFP": "01", "COUNTYFP": "077", "TRACTCE": "011501", "BLKGRPCE": "5", "AFFGEOID": "1500000US010770115015", "GEOID": "010770115015", "NAME": "5", "LSAD": "BG", "ALAND": 6844991, "AWATER": 32636 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -87.621765, 34.873444 ], [ -87.617535, 34.873369 ], [ -87.6123, 34.873337 ], [ -87.604049, 34.873303 ], [ -87.604033, 34.872316 ], [ -87.60415, 34.867502 ], [ -87.604218, 34.865687 ], [ -87.604409, 34.858537 ], [ -87.604018, 34.851336 ], [ -87.603716, 34.844829 ], [ -87.603696, 34.844307 ], [ -87.603673, 34.841884 ], [ -87.60372, 34.841003 ], [ -87.603879, 34.838423 ], [ -87.603888, 34.837682 ], [ -87.603889, 34.83763 ], [ -87.613127, 34.833938 ], [ -87.616451, 34.832699 ], [ -87.621041, 34.831431 ], [ -87.621056, 34.831526 ], [ -87.62112, 34.831925 ], [ -87.621603, 34.8352 ], [ -87.62158, 34.836087 ], [ -87.621383, 34.84329 ], [ -87.621359, 34.844438 ], [ -87.62129, 34.846387 ], [ -87.62119, 34.85053 ], [ -87.62144, 34.865379 ], [ -87.621765, 34.873444 ] ] ] } },
 # ```
 
-# In[80]:
+# In[70]:
 
 
 geo_json_rdd = GeoJsonReader.readToGeometryRDD(sc, "data/testPolygon.json")
 
 
-# In[81]:
+# In[71]:
 
 
 geo_json_rdd
 
 
-# In[82]:
+# In[72]:
 
 
 Adapter.toDf(geo_json_rdd, sedona).drop("AWATER").show(5, True)
 
 
-# In[83]:
+# ## WKT - loading to SpatialRDD
 
-
-## WKT - loading to SpatialRDD
-
-
-# In[84]:
+# In[73]:
 
 
 wkt_rdd = WktReader.readToGeometryRDD(sc, "data/county_small.tsv", 0, True, False)
 
 
-# In[85]:
+# In[74]:
 
 
 wkt_rdd
 
 
-# In[86]:
+# In[75]:
 
 
 Adapter.toDf(wkt_rdd, sedona).printSchema()
 
 
-# In[87]:
+# In[76]:
 
 
 Adapter.toDf(wkt_rdd, sedona).show(5, True)
 
 
-# In[88]:
+# ## WKB - load to SpatialRDD
 
-
-## WKB - load to SpatialRDD
-
-
-# In[89]:
+# In[77]:
 
 
 wkb_rdd = WkbReader.readToGeometryRDD(sc, "data/county_small_wkb.tsv", 0, True, False)
 
 
-# In[90]:
+# In[78]:
 
 
 Adapter.toDf(wkb_rdd, sedona).show(5, True)
@@ -859,7 +775,7 @@ Adapter.toDf(wkb_rdd, sedona).show(5, True)
 
 # ## Converting RDD Spatial join result to DF directly, avoiding jvm python serde
 
-# In[91]:
+# In[79]:
 
 
 point_rdd.spatialPartitioning(GridType.KDBTREE)
@@ -870,26 +786,26 @@ point_rdd.buildIndex(IndexType.RTREE, True)
 result = JoinQueryRaw.SpatialJoinQueryFlat(point_rdd, rectangle_rdd, False, True)
 
 
-# In[92]:
+# In[80]:
 
 
 # without passing column names, the result will contain only two geometries columns
 geometry_df = Adapter.toDf(result, sedona)
 
 
-# In[93]:
+# In[81]:
 
 
 geometry_df.printSchema()
 
 
-# In[94]:
+# In[82]:
 
 
 geometry_df.show(5)
 
 
-# In[95]:
+# In[83]:
 
 
 geometry_df.collect()[0]
@@ -897,13 +813,13 @@ geometry_df.collect()[0]
 
 # ## Passing column names
 
-# In[96]:
+# In[84]:
 
 
 geometry_df = Adapter.toDf(result, ["left_user_data"], ["right_user_data"], sedona)
 
 
-# In[97]:
+# In[85]:
 
 
 geometry_df.show(5)
@@ -911,7 +827,7 @@ geometry_df.show(5)
 
 # # Converting RDD Spatial join result to DF directly, avoiding jvm python serde
 
-# In[98]:
+# In[86]:
 
 
 query_envelope = Envelope(-85.01, -60.01, 34.01, 50.01)
@@ -919,26 +835,26 @@ query_envelope = Envelope(-85.01, -60.01, 34.01, 50.01)
 result_range_query = RangeQueryRaw.SpatialRangeQuery(linestring_rdd, query_envelope, False, False)
 
 
-# In[99]:
+# In[87]:
 
 
 # converting to df
 gdf = Adapter.toDf(result_range_query, sedona)
 
 
-# In[100]:
+# In[88]:
 
 
 gdf.show(5)
 
 
-# In[101]:
+# In[89]:
 
 
 gdf.printSchema()
 
 
-# In[102]:
+# In[90]:
 
 
 # Passing column names
@@ -946,13 +862,13 @@ gdf.printSchema()
 gdf_with_columns = Adapter.toDf(result_range_query, sedona, ["_c1"])
 
 
-# In[103]:
+# In[91]:
 
 
 gdf_with_columns.show(5)
 
 
-# In[104]:
+# In[92]:
 
 
 gdf_with_columns.printSchema()
@@ -960,4 +876,4 @@ gdf_with_columns.printSchema()
 
 # # Summary
 # 
-# We have shown how to install Sedona with Pyspark and run a basic example (source: https://github.com/apache/sedona/blob/master/binder/ApacheSedonaCore.ipynb) on Google Colab.
+# We have shown how to install Sedona with Pyspark and run a basic example (source: https://github.com/apache/sedona/blob/master/docs/usecases/ApacheSedonaCore.ipynb) on Google Colab. This demo uses the Spark engine provided by PySpark.

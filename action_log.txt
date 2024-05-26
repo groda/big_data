@@ -1,6 +1,7 @@
-Thu May  9 20:37:51 UTC 2024
+Sun May 26 08:11:00 UTC 2024
 The following notebooks were successfully executed on ubuntu-latest:
 ✅ Spark_Standalone_Architecture_on_Google_Colab
+✅ Apache_Sedona_with_PySpark.ipynb
 ✅ GutenbergBooks.ipynb
 ✅ Hadoop_minicluster.ipynb
 ✅ Encoding+dataframe+columns.ipynb
@@ -8,4 +9,4 @@ The following notebooks were successfully executed on ubuntu-latest:
 ✅ ngrams_with_pyspark.ipynb
 ✅ PySpark_On_Google_Colab.ipynb
 ✅ Run_Spark_on_Google_Colab.ipynb
-Runtime: 9:32
+Runtime: 9:55
