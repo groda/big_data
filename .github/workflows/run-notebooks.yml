@@ -73,12 +73,14 @@ jobs:
         #         MapReduce_Primer_HelloWorld.ipynb 
         #         Apache_Sedona_with_PySpark.ipynb 
         start=`date +%s`
-        for n in Spark_Standalone_Architecture_on_Google_Colab \
+        for n in polynomial_regression.ipynb \
+                 Spark_Standalone_Architecture_on_Google_Colab \
                  Apache_Sedona_with_PySpark.ipynb \
                  GutenbergBooks.ipynb Hadoop_minicluster.ipynb \
                  Encoding+dataframe+columns.ipynb \
                  generate_data_with_Faker.ipynb \
-                 ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb Run_Spark_on_Google_Colab.ipynb
+                 ngrams_with_pyspark.ipynb PySpark_On_Google_Colab.ipynb \
+                 Run_Spark_on_Google_Colab.ipynb 
         do
           jupyter nbconvert --log-level=DEBUG --to notebook --execute $n
           if [ $? -eq 0 ]; then
