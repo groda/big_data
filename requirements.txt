@@ -1,5 +1,6 @@
 nbconvert
 jupyter
 pandas
+numpy
 matplotlib
 portpicker
