@@ -354,7 +354,7 @@ get_ipython().system('lsof -n -i -P +c0 -sTCP:LISTEN')
 # Options used in `lsof`:
 # 
 # * `-i` specifies that you want to display only network files, that is open network connections
-# * `-n` and `-P` tell `lsof` to show ports and IP addresses in numeric form
+# * `-n` and `-P` tell `lsof` to show IP addresses (`-n`) and ports (`-P`) in numeric form. This makes `lsof` faster as it saves the time for name lookups.
 # * the option `+c0` is used to show a longer substring of the name of the UNIX command associated with the process (https://linux.die.net/man/8/lsof)
 # * `-sTCP:LISTEN` filters for TCP connections in state `LISTEN`
 # 
