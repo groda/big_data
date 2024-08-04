@@ -1,2 +1,9 @@
 /.github/workflows/
 *.swp
+hadoop*.tar.gz
+hadoop-3.4.0
+.ipynb_checkpoints
+out.txt
+err.txt
+target
+
