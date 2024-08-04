@@ -1,4 +1,4 @@
-Sat Jul 27 14:06:50 UTC 2024
+Sun Aug  4 21:08:11 UTC 2024
 The following notebooks were successfully executed on ubuntu-latest:
 ✅ polynomial_regression.ipynb
 ✅ Spark_Standalone_Architecture_on_Google_Colab
@@ -10,4 +10,4 @@ The following notebooks were successfully executed on ubuntu-latest:
 ✅ ngrams_with_pyspark.ipynb
 ✅ PySpark_On_Google_Colab.ipynb
 ✅ Run_Spark_on_Google_Colab.ipynb
-Runtime: 12:14
+Runtime: 10:11
