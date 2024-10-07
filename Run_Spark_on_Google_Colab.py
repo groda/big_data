@@ -19,7 +19,7 @@
 # 
 # The following code should also run on any Ubuntu machine or Docker container except for the Web servers links.
 
-# In[ ]:
+# In[1]:
 
 
 import requests
@@ -79,7 +79,7 @@ else:
 print("
 1️⃣   Download and install Hadoop and Spark")
 # URL for downloading Hadoop and Spark
-SPARK_VERSION = "3.5.1"
+SPARK_VERSION = "3.5.3"
 HADOOP_SPARK_URL = "https://dlcdn.apache.org/spark/spark-" + SPARK_VERSION + \
                    "/spark-" + SPARK_VERSION + "-bin-hadoop3.tgz"
 r = requests.head(HADOOP_SPARK_URL)
@@ -197,7 +197,7 @@ if IN_COLAB:
 # 
 # $100$ is the number of iterations.
 
-# In[ ]:
+# In[2]:
 
 
 get_ipython().run_cell_magic('bash', '', '
@@ -217,7 +217,7 @@ $SPARK_HOME/bin/spark-submit \
 # 
 # The source code for this example is available on GitHub at: https://github.com/apache/spark/blob/master/examples/src/main/java/org/apache/spark/examples/JavaWordCount.java
 
-# In[ ]:
+# In[3]:
 
 
 get_ipython().run_cell_magic('bash', '', '
@@ -227,7 +227,7 @@ URL="https://www.gutenberg.org/cache/epub/71036/pg71036.txt"
 ')
 
 
-# In[ ]:
+# In[4]:
 
 
 get_ipython().run_cell_magic('bash', '', '
@@ -246,7 +246,7 @@ head /tmp/JavaWordCount.out
 ')
 
 
-# To download a larger amount of data from the Gutenberg collection, see the tutorial [Explore and download books from the Gutenberg Books collection](https://github.com/groda/big_data/blob/master/GutenbergBooks.ipynb) from the <a href="https://github.com/groda/big_data">BDb repository</a>.
+# To download a larger amount of data from the Gutenberg collection, see the tutorial [Explore and download books from the Gutenberg Books collection](https://github.com/groda/big_data/blob/master/GutenbergBooks.ipynb) from the <a href="https://github.com/groda/big_data/blob/master/README.md">BDb repository</a>.
 
 # ## Where to find things
 
@@ -254,7 +254,7 @@ head /tmp/JavaWordCount.out
 # 
 # The Spark Web UI is available at:
 
-# In[ ]:
+# In[5]:
 
 
 if IN_COLAB:
@@ -268,7 +268,7 @@ if IN_COLAB:
 
 # Check the NGROK box below if you want to use ngrok (by default this is set to `False`).
 
-# In[ ]:
+# In[6]:
 
 
 # you should set this to True
@@ -277,7 +277,7 @@ NGROK = False #@param {type:"boolean"}
 
 # We are going to use the Python ngrok client `pyngrok` (see the [Colab example](https://pyngrok.readthedocs.io/en/latest/integrations.html#colab-http-example)).
 
-# In[ ]:
+# In[7]:
 
 
 if NGROK:
@@ -294,7 +294,7 @@ if NGROK:
 
 # After entering the ngrok authorization token, you can open a connection.
 
-# In[ ]:
+# In[8]:
 
 
 if NGROK:
@@ -317,7 +317,7 @@ if NGROK:
 # 
 # The Spark History Server is available at:
 
-# In[ ]:
+# In[9]:
 
 
 if IN_COLAB:
@@ -327,7 +327,7 @@ if IN_COLAB:
 
 # With ngrok:
 
-# In[ ]:
+# In[10]:
 
 
 if NGROK:
@@ -340,7 +340,7 @@ if NGROK:
 
 # ### Logs for the Spark Master
 
-# In[ ]:
+# In[11]:
 
 
 get_ipython().system('head -20 $SPARK_HOME/logs/*Master*.out')
@@ -348,7 +348,7 @@ get_ipython().system('head -20 $SPARK_HOME/logs/*Master*.out')
 
 # ### Logs for the Spark Worker
 
-# In[ ]:
+# In[12]:
 
 
 get_ipython().system('head -20 $SPARK_HOME/logs/*Worker*.out')
@@ -356,7 +356,7 @@ get_ipython().system('head -20 $SPARK_HOME/logs/*Worker*.out')
 
 # ### Spark events (used by History Server)
 
-# In[ ]:
+# In[13]:
 
 
 get_ipython().system('head -20 /tmp/spark-events/*')
@@ -367,7 +367,7 @@ get_ipython().system('head -20 /tmp/spark-events/*')
 # To customize Spark use the configuration templates in `$SPARK_HOME/conf` (remove the template extension).
 # 
 
-# In[ ]:
+# In[14]:
 
 
 get_ipython().system('ls -al $SPARK_HOME/conf')
@@ -377,7 +377,7 @@ get_ipython().system('ls -al $SPARK_HOME/conf')
 # 
 # Stop all services.
 
-# In[ ]:
+# In[15]:
 
 
 get_ipython().run_cell_magic('bash', '', '$SPARK_HOME/sbin/stop-history-server.sh
@@ -388,11 +388,8 @@ $SPARK_HOME/sbin/stop-master.sh
 
 # Terminate the ngrok processes.
 
-# In[ ]:
+# In[16]:
 
 
 if NGROK:
   ngrok.kill()
-
-
-# In[ ]:
