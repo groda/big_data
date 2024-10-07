@@ -1,13 +1,12 @@
-Mon Oct  7 12:00:25 UTC 2024
+Mon Oct  7 16:12:02 UTC 2024
 The following notebooks were successfully executed on ubuntu-latest:
 ✅ polynomial_regression.ipynb
 ✅ Spark_Standalone_Architecture_on_Google_Colab
+✅ Run_Spark_on_Google_Colab.ipynb
 ✅ Apache_Sedona_with_PySpark.ipynb
-✅ GutenbergBooks.ipynb
 ✅ Hadoop_minicluster.ipynb
 ✅ Encoding+dataframe+columns.ipynb
 ✅ generate_data_with_Faker.ipynb
 ✅ ngrams_with_pyspark.ipynb
 ✅ PySpark_On_Google_Colab.ipynb
-✅ Run_Spark_on_Google_Colab.ipynb
-Runtime: 22:24
+Runtime: 32:04
