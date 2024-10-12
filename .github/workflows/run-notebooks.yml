@@ -75,7 +75,7 @@ jobs:
         
         start=`date +%s`
         for n in polynomial_regression.ipynb \
-                 Spark_Standalone_Architecture_on_Google_Colab \
+                 Spark_Standalone_Architecture_on_Google_Colab.ipynb \
                  Run_Spark_on_Google_Colab.ipynb \
                  Apache_Sedona_with_PySpark.ipynb \
                  Hadoop_minicluster.ipynb \
@@ -84,12 +84,12 @@ jobs:
                  ngrams_with_pyspark.ipynb \
                  PySpark_On_Google_Colab.ipynb
         do
-          jupyter nbconvert --log-level=DEBUG --to notebook --execute $n
+          jupyter nbconvert --log-level=ERROR --to notebook --execute $n
           if [ $? -eq 0 ]; then
            echo ✅ $n >>action_log.txt
            jupyter nbconvert --to python $n 
            # get the Python file's name by removing .ipynb extension from $n and then adding .py
-           file=$(basename $n ipynb)'py'
+           file=$(basename $n .ipynb)'.py'
            echo "Python file: $file"
            if ! [ -f $file ]; then
              echo "File does not exist."
