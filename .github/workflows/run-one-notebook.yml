@@ -16,7 +16,7 @@ on:
 permissions:
   contents: write
 jobs:
-  List-Notebook-Files:
+  List-Notebook-File:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -28,9 +28,9 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
         run: |
-          ls ${{ github.workspace }}/*.ipynb
+          ls ${{ github.event.inputs.notebook }}.ipynb
       - run: echo "🍏 This job's status is ${{ job.status }}."
-  Run-Notebooks:
+  Run-Notebook:
     runs-on: ubuntu-latest
 
     steps:
@@ -60,7 +60,7 @@ jobs:
         java-version: '11'
         
     # Runs a set of commands using the runners shell
-    - name: Run Jupyter Notebooks testing
+    - name: Run Jupyter Notebook testing
       run: |
         git pull
         git config user.name github-actions
