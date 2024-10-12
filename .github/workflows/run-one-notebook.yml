@@ -1,5 +1,5 @@
-name: Run Notebooks on Ubuntu
-run-name: Run notebooks 🚀
+name: Run One Notebook on Ubuntu
+run-name: Run one notebook 🚀
 # work in progress
 # this action runs two jobs: List-Notebook-Files and Run-Notebooks
 # Run-Notebooks converts ipynb files to Python with nbconvert and runs them on the Ubuntu box
