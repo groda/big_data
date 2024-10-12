@@ -10,3 +10,7 @@ The following notebooks were successfully executed on ubuntu-latest:
 ✅ ngrams_with_pyspark.ipynb
 ✅ PySpark_On_Google_Colab.ipynb
 Runtime: 32:04
+Sat Oct 12 23:05:19 UTC 2024
+The following notebooks were successfully executed on ubuntu-latest:
+✅ GutenbergBooks.ipynb
+Runtime: 0:50
