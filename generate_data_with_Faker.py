@@ -14,17 +14,15 @@
 # 
 # Explore the capabilities of the Python Faker library (https://faker.readthedocs.io/) for dynamic data generation!
 # 
-# Whether you're a data scientist, engineer, or analyst, this tutorial will guide you through the process of creating realistic and diverse datasets using Faker and then harnessing the distributed computing capabilities of PySpark to aggregate and analyze the generated data.
+# Whether you're a data scientist, engineer, or analyst, this tutorial will guide you through the process of creating realistic and diverse datasets using Faker and then harnessing the distributed computing capabilities of PySpark to aggregate and analyze the generated data. Throughout this guide, you will explore effective techniques for data generation that enhance performance and optimize resource usage. Whether you're working with large datasets or simply seeking to streamline your data generation process, this tutorial offers valuable insights to elevate your skills.
 # 
-# 
-# 
-# **Note:** This is not _synthetic_ data as it is generated using simple methods and will most likely not fit any real-life distribution. Still, it serves as a valuable resource for testing purposes when authentic data is unavailable.
+# **Note:** This is not _synthetic_ data, as it is generated using straightforward methods and is unlikely to conform to any real-life distribution.  Still, it serves as a valuable resource for testing purposes when authentic data is unavailable.
 
 # # Install Faker
 # 
 # The Python `faker` module needs to be installed. Note that on Google Colab you can use `!pip` as well as just `pip` (no exclamation mark).
 
-# In[ ]:
+# In[1]:
 
 
 get_ipython().system('pip install faker')
@@ -34,7 +32,7 @@ get_ipython().system('pip install faker')
 
 # Import `Faker` and set a random seed ($42$).
 
-# In[ ]:
+# In[2]:
 
 
 from faker import Faker
@@ -45,7 +43,7 @@ Faker.seed(42)
 
 # `fake` is a fake data generator with `DE_de` locale.
 
-# In[ ]:
+# In[3]:
 
 
 fake = Faker('de_DE')
@@ -55,9 +53,18 @@ fake.seed_locale('de_DE', 42)
 fake.seed_instance(42)
 
 
+# With `fake` you can generate fake data, such as name, email, etc.
+
+# In[4]:
+
+
+print(f"A fake name: {fake.name()}")
+print(f"A fake email: {fake.email()}")
+
+
 # Import Pandas to save data into a dataframe
 
-# In[ ]:
+# In[5]:
 
 
 # true if running on Google Colab
@@ -75,10 +82,13 @@ import pandas as pd
 #  - `fake.email()`
 #  - `fake.country()`.
 
-# In[ ]:
+# In[6]:
 
 
 def create_row_faker(num=1):
+    fake = Faker('de_DE')
+    fake.seed_locale('de_DE', 42)
+    fake.seed_instance(42)
     output = [{"name": fake.name(),
                "age": fake.random_int(0, 100),
                "postcode": fake.postcode(),
@@ -90,17 +100,25 @@ def create_row_faker(num=1):
 
 # Generate a single row
 
-# In[ ]:
+# In[7]:
 
 
 create_row_faker()
+
+
+# Generate `n=3` rows
+
+# In[8]:
+
+
+create_row_faker(3)
 
 
 # Generate a dataframe `df_fake` of 5000 rows using `create_row_faker`.
 # 
 # We're using the _cell magic_ `%%time` to time the operation.
 
-# In[ ]:
+# In[9]:
 
 
 get_ipython().run_cell_magic('time', '', 'df_fake = pd.DataFrame(create_row_faker(5000))
@@ -109,7 +127,7 @@ get_ipython().run_cell_magic('time', '', 'df_fake = pd.DataFrame(create_row_fake
 
 # View dataframe
 
-# In[ ]:
+# In[10]:
 
 
 df_fake
@@ -121,13 +139,13 @@ df_fake
 
 # Install PySpark.
 
-# In[ ]:
+# In[11]:
 
 
 get_ipython().system('pip install pyspark')
 
 
-# In[ ]:
+# In[12]:
 
 
 from pyspark.sql import SparkSession
@@ -137,7 +155,7 @@ spark = SparkSession \
     .getOrCreate()
 
 
-# In[ ]:
+# In[13]:
 
 
 df = spark.createDataFrame(create_row_faker(5000))
@@ -145,7 +163,7 @@ df = spark.createDataFrame(create_row_faker(5000))
 
 # To avoid getting the warning, either use [pyspark.sql.Row](https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.Row) and let Spark infer datatypes or create a schema for the dataframe specifying the datatypes of all fields (here's the list of all [datatypes](http://spark.apache.org/docs/latest/api/python/pyspark.sql.html?highlight=types#module-pyspark.sql.types)).
 
-# In[ ]:
+# In[14]:
 
 
 from pyspark.sql.types import *
@@ -156,13 +174,13 @@ schema = StructType([StructField('name', StringType()),
                      StructField('nationality',StringType())])
 
 
-# In[ ]:
+# In[15]:
 
 
 df = spark.createDataFrame(create_row_faker(5000), schema)
 
 
-# In[ ]:
+# In[16]:
 
 
 df.printSchema()
