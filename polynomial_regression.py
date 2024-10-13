@@ -6,13 +6,12 @@
 
 # <a href="https://colab.research.google.com/github/groda/big_data/blob/master/polynomial_regression.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
-# 
 # <a href="https://github.com/groda/big_data"><div><img src="https://github.com/groda/big_data/blob/master/logo_bdb.png?raw=true" align=right width="90" alt="Logo Big Data for Beginners"></div></a>
-# # Polynomial regression with numpy and matplotlib
+# # Polynomial regression with NumPy and Matplotlib
 # 
-# A worked out example of polynomial regression with `numpy` using `matplotlib` for visualization.
+# This tutorial provides a comprehensive, step-by-step example of polynomial regression using NumPy, with Matplotlib for visualizing the results.
 
-# In[8]:
+# In[1]:
 
 
 import numpy as np
@@ -21,7 +20,7 @@ import matplotlib.pyplot as plt
 
 # Set a random seed
 
-# In[9]:
+# In[2]:
 
 
 np.random.seed(12)
@@ -31,14 +30,14 @@ np.random.seed(12)
 # 
 # **Note:** for `D = 1` this is _linear regression_.
 
-# In[10]:
+# In[3]:
 
 
 N = 100 # number of points
 D = 2   # degree of polynomial
 
 
-# ### Generate random data
+# ### Generate some random data
 # 
 # To generate some random data that is suitable for polynomial regression we're going to use the following functions:
 # - [`np.random.uniform`](https://docs.scipy.org/doc/numpy-1.16.0/reference/generated/numpy.random.uniform.html) draws samples from a uniform distribution
@@ -50,7 +49,7 @@ D = 2   # degree of polynomial
 # 
 # The array `c` is used to store the coefficients of a random polynomial. To generate a random polynomial of degree $D$ we're going to generate $D$ random coefficients and set the coefficient of the leading term to $1$.
 
-# In[11]:
+# In[4]:
 
 
 x = np.random.uniform(-N , N, N)    # x values are uniformly distributed between -100 and +100
@@ -63,7 +62,7 @@ plt.scatter(x, y)
 plt.show()
 
 
-# In[12]:
+# In[5]:
 
 
 t = np.linspace(-N, N, num=N)
@@ -76,7 +75,7 @@ plt.show()
 # 
 # Show the coefficients of the approximating polynomial `p`.
 
-# In[13]:
+# In[6]:
 
 
 np.set_printoptions(formatter={'float': '{: 12.6f}'.format})
@@ -86,7 +85,7 @@ print("Original coefficients: {}".format(c))
 
 # Visualize the original polynomial `p_orig` and its approximation `p` obtained with polynomial regression.
 
-# In[14]:
+# In[7]:
 
 
 p_orig = np.poly1d(c)

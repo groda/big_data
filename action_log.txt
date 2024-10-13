@@ -16,3 +16,7 @@ Sun Oct 13 21:33:08 UTC 2024
 The following notebooks were successfully executed on ubuntu-latest:
 ✅ generate_data_with_Faker.ipynb
 Runtime: 1:05
+Sun Oct 13 21:47:48 UTC 2024
+The following notebooks were successfully executed on ubuntu-latest:
+✅ polynomial_regression.ipynb
+Runtime: 0:05
