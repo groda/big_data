@@ -20,3 +20,7 @@ Sun Oct 13 21:47:48 UTC 2024
 The following notebooks were successfully executed on ubuntu-latest:
 ✅ polynomial_regression.ipynb
 Runtime: 0:05
+Mon Oct 14 20:41:35 UTC 2024
+The following notebooks were successfully executed on ubuntu-latest:
+✅ Apache_Sedona_with_PySpark.ipynb
+Runtime: 1:19
