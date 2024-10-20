@@ -4,7 +4,7 @@ on:
   # needs to be started manually
   workflow_dispatch:
 jobs:
-  List-Input-File:
+  Runner-Info-RAM-CPU:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🔶  🔶  🔶  🔶  🔶  🔶  🔶  🔶  🔶"
