@@ -50,8 +50,10 @@ Explore a variety of tutorials and interactive demonstrations focused on Big Dat
 
 ## Notebooks Testing and CI
 
-Most executable Jupyter notebooks are tested on an Ubuntu virtual machine through a GitHub automated workflow. The log file for successful executions is named: [action_log.txt](https://github.com/groda/big_data/blob/master/action_log.txt).
+Most executable Jupyter notebooks are tested on an Ubuntu virtual machine through a GitHub automated workflow. The log file for successful executions is named: [action_log.txt](https://github.com/groda/big_data/blob/master/action_log.txt) (see also: [Google Colab vs. GitHub Ubuntu Runner](Google_Colab_vs_GitHub_ubuntu_runner.ipynb) <a target="_blank" href="https://colab.research.google.com/github/groda/big_data/blob/master/Google_Colab_vs_GitHub_ubuntu_runner.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> <a target="_blank" href="https://nbviewer.org/github/groda/big_data/blob/master/Google_Colab_vs_GitHub_ubuntu_runner.ipynb"><img src="https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.svg" alt="Render in nbviewer"></a>).
 
 Current status: [![Run Notebooks on Ubuntu](https://github.com/groda/big_data/actions/workflows/run-notebooks.yml/badge.svg)](https://github.com/groda/big_data/actions/workflows/run-notebooks.yml)
 
 The Github workflow is a starting point for what is known as _Continuous Integration_ (CI) in DevOps/Platform Engineering circles.
+
+
