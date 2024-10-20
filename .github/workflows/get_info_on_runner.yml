@@ -1,0 +1,15 @@
+name: Get info on runner
+run-name: Runner info
+on: 
+  # needs to be started manually
+  workflow_dispatch:
+jobs:
+  List-Input-File:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🔶  🔶  🔶  🔶  🔶  🔶  🔶  🔶  🔶"
+      - run: lscpu
+      - run: echo "🔶  🔶  🔶  🔶  🔶  🔶  🔶  🔶  🔶"
+      - run: free -h
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: echo "🎉 Woohoo! Your action is complete! Have an amazing day and happy coding! 🚀"
