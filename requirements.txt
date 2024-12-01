@@ -6,3 +6,4 @@ matplotlib
 portpicker
 bokeh
 google
+plotly
