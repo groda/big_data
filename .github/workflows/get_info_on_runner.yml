@@ -11,5 +11,6 @@ jobs:
       - run: lscpu
       - run: echo "🔶  🔶  🔶  🔶  🔶  🔶  🔶  🔶  🔶"
       - run: free -h
+      - run: cat /etc/os-release
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: echo "🎉 Woohoo! Your action is complete! Have an amazing day and happy coding! 🚀"
