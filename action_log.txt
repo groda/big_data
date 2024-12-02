@@ -24,3 +24,7 @@ Mon Oct 14 20:41:35 UTC 2024
 The following notebooks were successfully executed on ubuntu-latest:
 ✅ Apache_Sedona_with_PySpark.ipynb
 Runtime: 1:19
+Mon Dec  2 21:08:36 UTC 2024
+The following notebooks were successfully executed on ubuntu-latest:
+✅ downloadSpark.ipynb
+Runtime: 1:49
