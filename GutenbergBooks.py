@@ -336,6 +336,8 @@ if IN_COLAB:
   data_table.enable_dataframe_formatter()
 else:
   get_ipython().system('pip install itables')
+  get_ipython().system('pip install bokeh')
+  get_ipython().system('pip install matplotlib')
   from itables import init_notebook_mode
   init_notebook_mode(all_interactive=True)
 

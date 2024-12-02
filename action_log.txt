@@ -28,3 +28,7 @@ Mon Dec  2 21:08:36 UTC 2024
 The following notebooks were successfully executed on ubuntu-latest:
 ✅ downloadSpark.ipynb
 Runtime: 1:49
+Mon Dec  2 21:46:50 UTC 2024
+The following notebooks were successfully executed on ubuntu-latest:
+✅ GutenbergBooks.ipynb
+Runtime: 0:58
