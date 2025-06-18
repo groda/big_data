@@ -77,7 +77,7 @@ jobs:
         start=`date +%s`
         for n in ${{ github.event.inputs.notebook }}.ipynb
         do
-          jupyter nbconvert --log-level=ERROR --to notebook --execute $n
+          sudo jupyter nbconvert --log-level=ERROR --to notebook --execute $n
           if [ $? -eq 0 ]; then
            echo ✅ $n >>action_log.txt
            jupyter nbconvert --to python $n 
