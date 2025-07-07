@@ -1,4 +1,4 @@
-Sun Oct 13 09:35:41 UTC 2024
+Mon Jul  7 21:05:07 UTC 2025
 The following notebooks were successfully executed on ubuntu-latest:
 ✅ polynomial_regression.ipynb
 ✅ Spark_Standalone_Architecture_on_Google_Colab.ipynb
@@ -11,32 +11,4 @@ The following notebooks were successfully executed on ubuntu-latest:
 ✅ PySpark_On_Google_Colab.ipynb
 ✅ Unicode.ipynb
 ✅ GutenbergBooks.ipynb
-Runtime: 10:57
-Sun Oct 13 21:33:08 UTC 2024
-The following notebooks were successfully executed on ubuntu-latest:
-✅ generate_data_with_Faker.ipynb
-Runtime: 1:05
-Sun Oct 13 21:47:48 UTC 2024
-The following notebooks were successfully executed on ubuntu-latest:
-✅ polynomial_regression.ipynb
-Runtime: 0:05
-Mon Oct 14 20:41:35 UTC 2024
-The following notebooks were successfully executed on ubuntu-latest:
-✅ Apache_Sedona_with_PySpark.ipynb
-Runtime: 1:19
-Mon Dec  2 21:08:36 UTC 2024
-The following notebooks were successfully executed on ubuntu-latest:
-✅ downloadSpark.ipynb
-Runtime: 1:49
-Mon Dec  2 21:46:50 UTC 2024
-The following notebooks were successfully executed on ubuntu-latest:
-✅ GutenbergBooks.ipynb
-Runtime: 0:58
-Thu Jan  2 13:51:34 UTC 2025
-The following notebooks were successfully executed on ubuntu-latest:
-✅ PySpark_miscellanea.ipynb
-Runtime: 6:26
-Mon Jul  7 19:36:44 UTC 2025
-The following notebooks were successfully executed on ubuntu-latest:
-✅ Spark_Standalone_Architecture_on_Google_Colab.ipynb
-Runtime: 0:33
+Runtime: 12:22

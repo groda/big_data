@@ -79,7 +79,7 @@ else:
 print("
 1️⃣   Download and install Hadoop and Spark")
 # URL for downloading Hadoop and Spark
-SPARK_VERSION = "3.5.3"
+SPARK_VERSION = "3.5.6"
 HADOOP_SPARK_URL = "https://dlcdn.apache.org/spark/spark-" + SPARK_VERSION + \
                    "/spark-" + SPARK_VERSION + "-bin-hadoop3.tgz"
 r = requests.head(HADOOP_SPARK_URL)
