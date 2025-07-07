@@ -116,7 +116,7 @@ else:
 # In[2]:
 
 
-SPARK_VERSION = '3.5.3'
+SPARK_VERSION = '3.5.6'
 SPARK_URL = f'https://dlcdn.apache.org/spark/spark-{SPARK_VERSION}/spark-{SPARK_VERSION}-bin-hadoop3.tgz'
 
 
@@ -152,7 +152,7 @@ else:
 
 # #### Check Spark folder
 # 
-# You should now have a directory called `spark-3.5.3-bin-hadoop3`.
+# You should now have a directory called `spark-3.5.6-bin-hadoop3`.
 # 
 # 
 # 

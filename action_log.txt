@@ -36,3 +36,7 @@ Thu Jan  2 13:51:34 UTC 2025
 The following notebooks were successfully executed on ubuntu-latest:
 ✅ PySpark_miscellanea.ipynb
 Runtime: 6:26
+Mon Jul  7 19:36:44 UTC 2025
+The following notebooks were successfully executed on ubuntu-latest:
+✅ Spark_Standalone_Architecture_on_Google_Colab.ipynb
+Runtime: 0:33
