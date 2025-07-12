@@ -13,6 +13,8 @@ on:
         description: 'Notebook name (without extension)'     
         required: true
         default: 'GutenbergBooks'
+# Set a timeout for the entire workflow (e.g., 60 minutes)
+timeout-minutes: 10
 permissions:
   contents: write
 jobs:
