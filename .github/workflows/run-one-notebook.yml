@@ -115,7 +115,7 @@ jobs:
         #git push 
         
     - name: Commit and push changes
-        run: |
+      run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add . # Add all changes, including the new notebook
