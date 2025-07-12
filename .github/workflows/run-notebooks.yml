@@ -87,7 +87,8 @@ jobs:
                  ngrams_with_pyspark.ipynb \
                  PySpark_On_Google_Colab.ipynb \
                  Unicode.ipynb \
-                 GutenbergBooks.ipynb
+                 GutenbergBooks.ipynb \
+                 Hadoop_Setting_up_a_Single_Node_Cluster
         do
           jupyter nbconvert --log-level=ERROR --to notebook --execute $n
           if [ $? -eq 0 ]; then
