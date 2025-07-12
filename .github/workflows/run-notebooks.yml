@@ -14,6 +14,9 @@ on:
   #   branches: [master, dev]
   #   paths:
   #     - '/*.ipynb'
+# Set a timeout for the entire workflow (e.g., 60 minutes)
+timeout-minutes: 30
+
 permissions:
   contents: write
 jobs:
