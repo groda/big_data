@@ -7,9 +7,6 @@ run-name: Run one notebook 🚀
 # (at the moment this is done only for one file since not all notebook files are ready)
 # also it would be better to create an image instead of downloading software every time
 ## see https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
-# Set a timeout for the entire workflow (e.g., 60 minutes)
-timeout-minutes: 10
-
 on: 
   workflow_dispatch:
     inputs:
@@ -38,7 +35,8 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
   Run-Notebook:
     runs-on: ubuntu-latest
-
+    # Set a timeout for the entire workflow (e.g., 60 minutes)
+    timeout-minutes: 10
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
