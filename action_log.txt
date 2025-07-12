@@ -12,3 +12,7 @@ The following notebooks were successfully executed on ubuntu-latest:
 ✅ Unicode.ipynb
 ✅ GutenbergBooks.ipynb
 Runtime: 12:22
+Sat Jul 12 14:55:25 UTC 2025
+The following notebooks were successfully executed on ubuntu-latest:
+✅ Hadoop_Setting_up_a_Single_Node_Cluster.ipynb
+Runtime: 1:56
