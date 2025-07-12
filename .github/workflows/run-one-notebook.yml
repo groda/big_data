@@ -35,7 +35,7 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
   Run-Notebook:
     runs-on: ubuntu-latest
-    # Set a timeout for the entire workflow (e.g., 60 minutes)
+    # Set a timeout for this job (e.g., 60 minutes)
     timeout-minutes: 10
     steps:
     - name: Checkout code
