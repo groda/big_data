@@ -286,10 +286,10 @@ export YARN_NODEMANAGER_USER=root
 # In[ ]:
 
 
-get_ipython().run_cell_magic('bash', '', "apt-get update
-apt-get -y install openssh-server
+get_ipython().run_cell_magic('bash', '', "sudo apt-get update
+sudo apt-get -y install openssh-server
 echo 'StrictHostKeyChecking no' >> /etc/ssh/ssh_config
-/etc/init.d/ssh restart
+sudo /etc/init.d/ssh restart
 ")
 
 
