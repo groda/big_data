@@ -108,7 +108,6 @@ jobs:
               git add $file
            fi
            git add $(basename $n .ipynb)'.nbconvert.ipynb' 2>/dev/null
-           git add $(basename $n .ipynb)'.py' 2>/dev/null
           else
             echo ❌ $n >>action_log.txt
           fi
