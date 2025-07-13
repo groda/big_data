@@ -80,8 +80,7 @@ jobs:
         #         GutenbergBooks.ipynb 
         
         start=`date +%s`
-        for n in Hadoop_Setting_up_a_Single_Node_Cluster \
-                 polynomial_regression.ipynb \
+        for n in polynomial_regression.ipynb \
                  Spark_Standalone_Architecture_on_Google_Colab.ipynb \
                  Run_Spark_on_Google_Colab.ipynb \
                  Apache_Sedona_with_PySpark.ipynb \
@@ -109,6 +108,7 @@ jobs:
               git add $file
            fi
            git add $(basename $n .ipynb)'.nbconvert.ipynb' 2>/dev/null
+           git add $(basename $n .ipynb)'.py' 2>/dev/null
           else
             echo ❌ $n >>action_log.txt
           fi
