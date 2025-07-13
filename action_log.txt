@@ -1,4 +1,4 @@
-Mon Jul  7 21:05:07 UTC 2025
+Sun Jul 13 15:20:27 UTC 2025
 The following notebooks were successfully executed on ubuntu-latest:
 ✅ polynomial_regression.ipynb
 ✅ Spark_Standalone_Architecture_on_Google_Colab.ipynb
@@ -11,8 +11,4 @@ The following notebooks were successfully executed on ubuntu-latest:
 ✅ PySpark_On_Google_Colab.ipynb
 ✅ Unicode.ipynb
 ✅ GutenbergBooks.ipynb
-Runtime: 12:22
-Sat Jul 12 14:55:25 UTC 2025
-The following notebooks were successfully executed on ubuntu-latest:
-✅ Hadoop_Setting_up_a_Single_Node_Cluster.ipynb
-Runtime: 1:56
+Runtime: 10:10
