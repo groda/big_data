@@ -80,7 +80,8 @@ jobs:
         #         GutenbergBooks.ipynb 
         
         start=`date +%s`
-        for n in polynomial_regression.ipynb \
+        for n in Hadoop_Setting_up_a_Single_Node_Cluster \
+                 polynomial_regression.ipynb \
                  Spark_Standalone_Architecture_on_Google_Colab.ipynb \
                  Run_Spark_on_Google_Colab.ipynb \
                  Apache_Sedona_with_PySpark.ipynb \
@@ -90,9 +91,8 @@ jobs:
                  ngrams_with_pyspark.ipynb \
                  PySpark_On_Google_Colab.ipynb \
                  Unicode.ipynb \
-                 GutenbergBooks.ipynb \
-                 Hadoop_Setting_up_a_Single_Node_Cluster
-        do
+                 GutenbergBooks.ipynb 
+          do
           jupyter nbconvert --log-level=ERROR --to notebook --execute $n
           if [ $? -eq 0 ]; then
            echo ✅ $n >>action_log.txt
