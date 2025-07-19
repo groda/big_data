@@ -93,7 +93,7 @@ jobs:
                  GutenbergBooks.ipynb \
                  Hadoop_Setting_up_a_Single_Node_Cluster
           do
-          jupyter nbconvert --log-level=INFO --to notebook --execute $n
+          jupyter nbconvert --stdout --debug --log-level=INFO --to notebook --execute $n
           if [ $? -eq 0 ]; then
            echo ✅ $n >>action_log.txt
            jupyter nbconvert --to python $n 
