@@ -71,7 +71,7 @@ jobs:
         git pull
         git config user.name github-actions
         git config user.email github-actions@github.com
-        date > action_log.txt
+        date >> action_log.txt
         echo "The following notebooks were successfully executed on ubuntu-latest:" >> action_log.txt
         set -e
         # just "runnable" notebooks  
