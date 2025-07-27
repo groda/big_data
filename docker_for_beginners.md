@@ -30,7 +30,7 @@
 
 ## Introduction
 
-Containers are useful tools for saving the computing environments for running applications and this tutorial provides the bare minimum to get started with them. Written while learning Docker myself, this guide has the quality of naivety that only a real beginner can attain.
+Containers are useful tools for saving the computing environments for running applications and this tutorial provides the bare minimum to get started with them. Written during my own journey of learning Docker, this guide carries the kind of naïve clarity that only a true beginner can offer.
 
 ## Part I: Getting started
 ### Install Docker
