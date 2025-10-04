@@ -61,4 +61,9 @@ Current status:
 
 The Github workflow is a starting point for what is known as _Continuous Integration_ (CI) in DevOps/Platform Engineering circles.
 
+## 💡 Keep Learning, Keep Sharing
+
+💌 Be kind, share what you learn, and help others take their first steps too.  
+If these tutorials helped you, consider giving the repo a ⭐ — it really encourages me to keep creating and improving!
+
 
