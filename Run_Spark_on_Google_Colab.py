@@ -19,7 +19,7 @@
 # 
 # The following code should also run on any Ubuntu machine or Docker container except for the Web servers links.
 
-# In[1]:
+# In[21]:
 
 
 import requests
@@ -79,7 +79,7 @@ else:
 print("
 1️⃣   Download and install Hadoop and Spark")
 # URL for downloading Hadoop and Spark
-SPARK_VERSION = "3.5.6"
+SPARK_VERSION = "3.5.7"
 HADOOP_SPARK_URL = "https://dlcdn.apache.org/spark/spark-" + SPARK_VERSION + \
                    "/spark-" + SPARK_VERSION + "-bin-hadoop3.tgz"
 r = requests.head(HADOOP_SPARK_URL)
@@ -104,7 +104,7 @@ run(cmd)
 # uncompress
 try:
     # Run the command and capture stdout and stderr
-    cmd = "([ -d $(basename {0}|sed 's/\.[^.]*$//') ] && echo -n 'Folder already exists') || (tar xzf $(basename {0}) && echo 'Uncompressed Spark distribution')"
+    cmd = r"([ -d $(basename {0}|sed 's/\.[^.]*$//') ] && echo -n 'Folder already exists') || (tar xzf $(basename {0}) && echo 'Uncompressed Spark distribution')"
     subprocess_output = subprocess.run(cmd.format(HADOOP_SPARK_URL), shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     # Access stdout (stderr redirected to stdout)
     stdout_result = subprocess_output.stdout
@@ -144,7 +144,7 @@ print("
 master_log = out.partition("logging to")[2].strip()
 print("Search for port number in log file {}".format(master_log))
 attempts = 10
-search_pattern = "Successfully started service 'MasterUI' on port (\d+)"
+search_pattern = r"Successfully started service 'MasterUI' on port (\d+)"
 found = False
 for i in range(attempts):
   if not found:
@@ -197,7 +197,7 @@ if IN_COLAB:
 # 
 # $100$ is the number of iterations.
 
-# In[2]:
+# In[22]:
 
 
 get_ipython().run_cell_magic('bash', '', '
@@ -217,7 +217,7 @@ $SPARK_HOME/bin/spark-submit \
 # 
 # The source code for this example is available on GitHub at: https://github.com/apache/spark/blob/master/examples/src/main/java/org/apache/spark/examples/JavaWordCount.java
 
-# In[3]:
+# In[23]:
 
 
 get_ipython().run_cell_magic('bash', '', '
@@ -227,7 +227,7 @@ URL="https://www.gutenberg.org/cache/epub/71036/pg71036.txt"
 ')
 
 
-# In[4]:
+# In[24]:
 
 
 get_ipython().run_cell_magic('bash', '', '
@@ -254,12 +254,13 @@ head /tmp/JavaWordCount.out
 # 
 # The Spark Web UI is available at:
 
-# In[5]:
+# In[25]:
 
 
 if IN_COLAB:
-    from google.colab.output import eval_js
-    print(eval_js( "google.colab.kernel.proxyPort(" + str(webUIport) + ")" ))
+    # serve the Web UI on Colab
+    print("Click on the link below to open the Spark Web UI 🚀")
+    output.serve_kernel_port_as_window(webUIport)
 
 
 # In the free tier of Google Colab this functionality might not be available (see https://research.google.com/colaboratory/faq.html#limitations-and-restrictions). As an alternative, you can use [ngrok](https://ngrok.com/) after signing up for a free account.
@@ -268,7 +269,7 @@ if IN_COLAB:
 
 # Check the NGROK box below if you want to use ngrok (by default this is set to `False`).
 
-# In[6]:
+# In[26]:
 
 
 # you should set this to True
@@ -277,7 +278,7 @@ NGROK = False #@param {type:"boolean"}
 
 # We are going to use the Python ngrok client `pyngrok` (see the [Colab example](https://pyngrok.readthedocs.io/en/latest/integrations.html#colab-http-example)).
 
-# In[7]:
+# In[27]:
 
 
 if NGROK:
@@ -294,7 +295,7 @@ if NGROK:
 
 # After entering the ngrok authorization token, you can open a connection.
 
-# In[8]:
+# In[28]:
 
 
 if NGROK:
@@ -317,17 +318,17 @@ if NGROK:
 # 
 # The Spark History Server is available at:
 
-# In[9]:
+# In[29]:
 
 
 if IN_COLAB:
-    from google.colab.output import eval_js
-    print(eval_js( "google.colab.kernel.proxyPort(" + str(18080) + ")" ))
+    print("Click on the link below to open the Spark History Server Web UI 🚀")
+    output.serve_kernel_port_as_window(18080)
 
 
 # With ngrok:
 
-# In[10]:
+# In[30]:
 
 
 if NGROK:
@@ -340,7 +341,7 @@ if NGROK:
 
 # ### Logs for the Spark Master
 
-# In[11]:
+# In[31]:
 
 
 get_ipython().system('head -20 $SPARK_HOME/logs/*Master*.out')
@@ -348,7 +349,7 @@ get_ipython().system('head -20 $SPARK_HOME/logs/*Master*.out')
 
 # ### Logs for the Spark Worker
 
-# In[12]:
+# In[32]:
 
 
 get_ipython().system('head -20 $SPARK_HOME/logs/*Worker*.out')
@@ -356,7 +357,7 @@ get_ipython().system('head -20 $SPARK_HOME/logs/*Worker*.out')
 
 # ### Spark events (used by History Server)
 
-# In[13]:
+# In[33]:
 
 
 get_ipython().system('head -20 /tmp/spark-events/*')
@@ -367,7 +368,7 @@ get_ipython().system('head -20 /tmp/spark-events/*')
 # To customize Spark use the configuration templates in `$SPARK_HOME/conf` (remove the template extension).
 # 
 
-# In[14]:
+# In[34]:
 
 
 get_ipython().system('ls -al $SPARK_HOME/conf')
@@ -377,7 +378,7 @@ get_ipython().system('ls -al $SPARK_HOME/conf')
 # 
 # Stop all services.
 
-# In[15]:
+# In[35]:
 
 
 get_ipython().run_cell_magic('bash', '', '$SPARK_HOME/sbin/stop-history-server.sh
@@ -388,7 +389,7 @@ $SPARK_HOME/sbin/stop-master.sh
 
 # Terminate the ngrok processes.
 
-# In[16]:
+# In[36]:
 
 
 if NGROK:
