@@ -80,10 +80,11 @@ jobs:
         #         GutenbergBooks.ipynb 
         
         start=`date +%s`
+        # takes too long
+        # Apache_Sedona_with_PySpark.ipynb \
         for n in polynomial_regression.ipynb \
                  Spark_Standalone_Architecture_on_Google_Colab.ipynb \
                  Run_Spark_on_Google_Colab.ipynb \
-                 Apache_Sedona_with_PySpark.ipynb \
                  Hadoop_minicluster.ipynb \
                  Encoding+dataframe+columns.ipynb \
                  generate_data_with_Faker.ipynb \
