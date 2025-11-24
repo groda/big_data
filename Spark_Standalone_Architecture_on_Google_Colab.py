@@ -54,15 +54,29 @@ import os
 import shutil
 import subprocess
 
-
 # set variable JAVA_HOME (install Java if necessary)
 def is_java_installed():
-  java = shutil.which("java")
-  if java:
-    os.environ['JAVA_HOME'] = os.path.realpath(java).split('/bin')[0]
-    return True
-  else:
-    return False
+  try:
+      # Execute the command to get Java version and redirect stderr to stdout
+      result = subprocess.run(['java', '-version'], capture_output=True, text=True, check=True, encoding='utf-8')
+      java_version_output = result.stderr.strip() # Java version is typically in stderr
+      print(java_version_output)
+
+      if "version \"17" in java_version_output:
+        print("Java version 17 is installed.")
+        os.environ['JAVA_HOME'] = os.path.realpath(shutil.which("java")).split('/bin')[0]
+        return True
+      else:
+        print("Java version 17 is NOT installed. Current version:
+" + java_version_output)
+        return False
+
+  except subprocess.CalledProcessError as e:
+    print(f"Error checking Java version: {e.stderr}")
+  except FileNotFoundError:
+    print("Java executable not found. Please ensure Java is installed and in your PATH.")
+
+
 
 def install_java():
     # Uncomment and modify the desired version
@@ -70,7 +84,7 @@ def install_java():
     # java_version= 'default-jre'
     # java_version= 'openjdk-17-jre-headless'
     # java_version= 'openjdk-18-jre-headless'
-    java_version= 'openjdk-19-jre-headless'
+    java_version= 'openjdk-17-jre-headless'
     print(f"Java not found. Installing {java_version} ... (this might take a while)")
     try:
         cmd = f"apt install -y {java_version}"
@@ -88,7 +102,7 @@ def install_java():
 
 # Install Java if not available
 if is_java_installed():
-    print("Java is already installed: {}".format(os.environ['JAVA_HOME']))
+    print("JAVA_HOME: {}".format(os.environ['JAVA_HOME']))
 else:
     print("Installing Java")
     install_java()
@@ -116,7 +130,7 @@ else:
 # In[2]:
 
 
-SPARK_VERSION = '3.5.6'
+SPARK_VERSION = '4.0.1'
 SPARK_URL = f'https://dlcdn.apache.org/spark/spark-{SPARK_VERSION}/spark-{SPARK_VERSION}-bin-hadoop3.tgz'
 
 
@@ -152,7 +166,7 @@ else:
 
 # #### Check Spark folder
 # 
-# You should now have a directory called `spark-3.5.6-bin-hadoop3`.
+# You should now have a directory called `spark-4.0.1-bin-hadoop3`.
 # 
 # 
 # 
