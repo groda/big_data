@@ -1,0 +1,15 @@
+name: Trigger Notebook Execution
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  call-reusable-logic:
+    # Path to the reusable workflow file
+    uses: groda/gha-workflows/.github/workflows/run-jupyter-notebooks.yml@main
+    with:
+      # target_repo is the current "owner/repo"
+      target_repo: ${{ github.repository }}
+    # secrets: inherit # Uncomment this if you need to pass secrets like PATs
