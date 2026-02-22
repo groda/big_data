@@ -10,6 +10,7 @@ jobs:
     # Path to the reusable workflow file
     uses: groda/gha-workflows/.github/workflows/run-jupyter-notebooks.yml@main
     with:
+      ubuntu_image: 'ubuntu-22.04'
       # target_repo is the current "owner/repo"
       target_repo: ${{ github.repository }}
       # timeout for notebook execution
