@@ -12,4 +12,6 @@ jobs:
     with:
       # target_repo is the current "owner/repo"
       target_repo: ${{ github.repository }}
+      # timeout for notebook execution
+      timeout: 900
     # secrets: inherit # Uncomment this if you need to pass secrets like PATs
