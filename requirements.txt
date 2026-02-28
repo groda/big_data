@@ -12,3 +12,5 @@ nbformat>=5.10.4
 kaleido==0.2.1
 itables>=2.7.0
 vega_datasets
+# for backward compatibility (as Python 3.12 no longer includes distutils)
+setuptools
