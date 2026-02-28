@@ -1,5 +1,3 @@
-nbconvert
-jupyter
 pandas
 numpy
 matplotlib
@@ -8,3 +6,9 @@ bokeh
 google
 plotly
 pyspark
+papermill
+ipykernel
+nbformat>=5.10.4
+kaleido==0.2.1
+itables>=2.7.0
+vega_datasets
