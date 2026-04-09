@@ -1,0 +1,39 @@
+<svg width="182" height="182" viewBox="0 0 182 182" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="180" height="180" fill="none" stroke="#1a1a1a" stroke-width="2" />
+
+  <g fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round">
+    
+    <line id="stem-B" x1="6" y1="11" x2="6" y2="171" />
+    <line id="stem-D" x1="66" y1="11" x2="66" y2="171" />
+    <line id="stem-b" x1="126" y1="11" x2="126" y2="171" />
+
+    <path id="D-curve">
+      <animate attributeName="d" dur="1.8s" begin="0.2s" fill="freeze"
+        calcMode="spline" keyTimes="0; 1" keySplines="0.4 0 0.2 1"
+        values="M 66 11 Q 66 11 66 91 Q 66 171 66 171;
+                M 66 11 Q 118 9 118 91 Q 118 173 66 171" />
+    </path>
+
+    <path id="B-upper-curve">
+      <animate attributeName="d" dur="1.6s" begin="0.8s" fill="freeze"
+        calcMode="spline" keyTimes="0; 1" keySplines="0.4 0 0.2 1"
+        values="M 6 11 Q 6 11 6 49 Q 6 87 6 87;
+                M 6 11 Q 58 9 58 49 Q 58 87 6 87" />
+    </path>
+
+    <path id="B-lower-curve">
+      <animate attributeName="d" dur="1.6s" begin="1.4s" fill="freeze"
+        calcMode="spline" keyTimes="0; 1" keySplines="0.4 0 0.2 1"
+        values="M 6 87 Q 6 87 6 131 Q 6 171 6 171;
+                M 6 87 Q 58 87 58 131 Q 58 173 6 171" />
+    </path>
+
+    <path id="b-curve">
+      <animate attributeName="d" dur="1.6s" begin="2.0s" fill="freeze"
+        calcMode="spline" keyTimes="0; 1" keySplines="0.4 0 0.2 1"
+        values="M 126 91 Q 126 91 126 131 Q 126 171 126 171;
+                M 126 91 Q 178 89 178 131 Q 178 173 126 171" />
+    </path>
+  </g>
+</svg>
+
