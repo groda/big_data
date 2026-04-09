@@ -1,0 +1,56 @@
+<svg width="182" height="182" viewBox="0 0 182 182" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title desc">
+  <title id="title">BDb Logo Animation</title>
+  <desc id="desc">Animated version where bumps are pulled out from straight lines</desc>
+
+  <!-- Outer frame -->
+  <rect 
+    x="1" y="1" width="180" height="180" 
+    fill="none" stroke="#1a1a1a" stroke-width="2" />
+
+  <g>
+    <!-- Big D -->
+    <path id="D" 
+      d="M 66 11 Q 66 11 66 91 Q 66 171 66 171 Z" 
+      fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round">
+      <animate attributeName="d" values="
+        M 66 11 Q 66 11 66 91 Q 66 171 66 171 Z;
+        M 66 11 Q 116 11 116 91 Q 116 171 66 171 Z" 
+        dur="1.8s" begin="0.2s" fill="freeze" repeatCount="1"/>
+    </path>
+
+    <!-- Upper B bump -->
+    <path id="B-upper" 
+      d="M 6 11 Q 6 11 6 51 Q 6 91 6 91 Z" 
+      fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round">
+      <animate attributeName="d" values="
+        M 6 11 Q 6 11 6 51 Q 6 91 6 91 Z;
+        M 6 11 Q 56 11 56 51 Q 56 91 6 91 Z" 
+        dur="1.6s" begin="0.8s" fill="freeze" repeatCount="1"/>
+    </path>
+
+    <!-- Lower B bump -->
+    <path id="B-lower" 
+      d="M 6 91 Q 6 91 6 131 Q 6 171 6 171 Z" 
+      fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round">
+      <animate attributeName="d" values="
+        M 6 91 Q 6 91 6 131 Q 6 171 6 171 Z;
+        M 6 91 Q 56 91 56 131 Q 56 171 6 171 Z" 
+        dur="1.6s" begin="1.4s" fill="freeze" repeatCount="1"/>
+    </path>
+
+    <!-- Small b bump -->
+    <path id="b" 
+      d="M 126 91 Q 126 91 126 131 Q 126 171 126 171 Z" 
+      fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round">
+      <animate attributeName="d" values="
+        M 126 91 Q 126 91 126 131 Q 126 171 126 171 Z;
+        M 126 91 Q 176 91 176 131 Q 176 171 126 171 Z" 
+        dur="1.6s" begin="2.0s" fill="freeze" repeatCount="1"/>
+    </path>
+
+    <!-- Vertical connector for B -->
+    <line 
+      x1="126" y1="11" x2="126" y2="91" 
+      stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round"/>
+  </g>
+</svg>
