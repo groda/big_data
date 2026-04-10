@@ -3,8 +3,7 @@ name: Links CI
 
 on:
   push:
-    branches:
-      - [main, master]
+    branches: [main, master]
     paths:
       - 'README.ipynb' # Run only if README changes
       - '!**.ipynb'     # Ignore changes in the .ipynb files (recursively)
