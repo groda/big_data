@@ -3,6 +3,9 @@
 [![Run Notebooks on Ubuntu](https://github.com/groda/big_data/actions/workflows/run-jupyter-notebooks.yml/badge.svg)](https://github.com/groda/big_data/actions/workflows/run-jupyter-notebooks.yml)
 [![Link Check](https://github.com/groda/big_data/actions/workflows/link-check.yml/badge.svg)](https://github.com/groda/big_data/actions/workflows/link-check.yml)
 [![Last Commit](https://img.shields.io/github/last-commit/groda/big_data)](https://github.com/groda/big_data/commits/main)
+![GitHub top language](https://img.shields.io/github/languages/top/groda/big_data)
+![GitHub repo size](https://img.shields.io/github/repo-size/groda/big_data)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Big Data for beginners
 
