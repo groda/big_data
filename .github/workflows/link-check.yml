@@ -1,0 +1,20 @@
+# This workflow checks all repository links once a week and creates an issue in case of errors. 
+name: Links CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'README.ipynb' # Run only if README changes
+      - '!**.ipynb'     # Ignore changes in the .ipynb files (recursively)
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  
+jobs:
+  linkChecker:
+    uses: groda/gha-workflows/.github/workflows/link-check.yml@main
+    with:
+      issue-labels: "report, automated issue"
