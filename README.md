@@ -1,5 +1,9 @@
 ![big_data](https://socialify.git.ci/groda/big_data/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Diagonal%20Stripes&stargazers=1&forks=1&theme=Light)
 
+[![Run Notebooks on Ubuntu](https://github.com/groda/big_data/actions/workflows/run-jupyter-notebooks.yml/badge.svg)](https://github.com/groda/big_data/actions/workflows/run-jupyter-notebooks.yml)
+[![Link Check](https://github.com/groda/big_data/actions/workflows/link-check.yml/badge.svg)](https://github.com/groda/big_data/actions/workflows/link-check.yml)
+[![Last Commit](https://img.shields.io/github/last-commit/groda/big_data)](https://github.com/groda/big_data/commits/main)
+
 # Big Data for beginners
 
 Explore a variety of tutorials and interactive demonstrations focused on Big Data technologies like Hadoop, Spark, and more, primarily presented in the format of Jupyter notebooks. Most notebooks are self-contained, with instructions for installing all required services. They can be run on Google Colab or in a virtual Ubuntu machine/container.
@@ -59,7 +63,6 @@ Explore a variety of tutorials and interactive demonstrations focused on Big Dat
 [![Run Notebooks on Ubuntu](https://github.com/groda/big_data/actions/workflows/run-jupyter-notebooks.yml/badge.svg)](https://github.com/groda/big_data/actions/workflows/run-jupyter-notebooks.yml)
 
 All Jupyter notebooks are tested on an Ubuntu virtual machine through a GitHub automated workflow. The executions results are saved in: [report.md](https://github.com/groda/big_data/blob/master/report.md).
-
 
 
 ## 💡 Keep Learning, Keep Sharing
