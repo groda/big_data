@@ -7,6 +7,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/groda/big_data)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+
 # Big Data for beginners
 
 Explore a variety of tutorials and interactive demonstrations focused on Big Data technologies like Hadoop, Spark, and more, primarily presented in the format of Jupyter notebooks. Most notebooks are self-contained, with instructions for installing all required services. They can be run on Google Colab or in a virtual Ubuntu machine/container.
